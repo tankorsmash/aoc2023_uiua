@@ -14,14 +14,15 @@ Lines = part box !=RawInput @\n RawInput
 Range = "123456789"
 NumericalRange = -@\0 Range
 
-
 &p "Lines from RawInput:"
 &p Lines
 
 &p "\nProgram:"
 
-PerLine = keep <@a.
-rows (under unbox PerLine) Lines
+# must be a more elegant way of take1 and rev take 1 without all the stack manipulation
+PerLine = ? ;: parse under rev (join take 1) , take 1 . keep <@a.
+
+rows unbox rows (under unbox PerLine) Lines
 # keep <@a . unbox first Lines
 # PerLine unbox first Lines
 
