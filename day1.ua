@@ -27,9 +27,8 @@ FullWords = {
 
 First = select 0 Lines
 
-isTrue = unbox select , [box "False" box "True"] =1
-
-&p isTrue 1
+IsTrue = unbox select dip {"False" "True"} =1
+# &p IsTrue 1
 
 # window 6 unbox First
 
@@ -42,13 +41,21 @@ Eight = unbox select 7 FullWords
 
 UnbFirst = unbox First
 LenEight = length Eight
-take LenEight UnbFirst
 WinFirst = windows LenEight UnbFirst
+WinSecond = windows LenEight unbox select 1 Lines
+
+
+# LineContainsString =
+# 	"two"
+# 	IsTrue /+ rows (match ) ? windows  length ,  unbox select 1 Lines
+# LineContainsString
 
 # take 1_1 WinFirst
 &p "whether 'eight' is in any of the first line?"
-/+ rows (match Eight) WinFirst
-# match "eight" "eight"
+# &p IsTrue /+ rows (match Eight) WinFirst
+
+&p IsTrue /+ rows (match "two") windows  length "two"  unbox select 1 Lines
+
 
 
 # PerLine ←  ? ;:   parse ⍜⇌ (⊂↙1), ↙1 ? . ▽ <@a.
