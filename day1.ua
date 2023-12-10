@@ -45,16 +45,17 @@ WinFirst = windows LenEight UnbFirst
 WinSecond = windows LenEight unbox select 1 Lines
 
 
-# LineContainsString =
-# 	"two"
-# 	IsTrue /+ rows (match ) ? windows  length ,  unbox select 1 Lines
-# LineContainsString
+LineContainsString =
+	"two"
+	? IsTrue /+  ? rows (match "two" ) ?  windows length , unbox select 1 Lines .
 
 # take 1_1 WinFirst
-&p "whether 'eight' is in any of the first line?"
+&p "whether the word is in any of the first line?"
+
+# &p LineContainsString
 # &p IsTrue /+ rows (match Eight) WinFirst
 
-&p IsTrue /+ rows (match "two") windows  length "two"  unbox select 1 Lines
+# &p IsTrue /+ rows (match "two") windows  length "two"  unbox select 1 Lines
 
 
 
