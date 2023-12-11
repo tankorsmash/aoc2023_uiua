@@ -2,13 +2,13 @@ FileName ← "sample2_input_day_1.txt"
 RawInput ← &fras FileName
 
 StringJoin ← ⊐/⊂
-&p StringJoin {"RawInput, `" FileName "`:"}
-&p RawInput
+# &p StringJoin {"RawInput, `" FileName "`:"}
+# &p RawInput
 
 Lines ← ⊜□≠RawInput@\n RawInput
 
-&p "Lines from RawInput:"
-&p Lines
+# &p "Lines from RawInput:"
+# &p Lines
 
 &p "\nProgram:"
 
@@ -45,12 +45,18 @@ WinFirst = windows LenEight UnbFirst
 WinSecond = windows LenEight unbox select 1 Lines
 
 
-LineContainsString =
-	"two"
-	? IsTrue /+  ? rows (match "two" ) ?  windows length , unbox select 1 Lines .
+LineContainsString = (
+	# IsTrue /+  ? rows (match "two") ?  windows length , ? unbox select 1 Lines
+	# IsTrue /+ rows (? dip match "two" ) ? .   windows length , "eightwothree" 
+	# IsTrue /+ rows (match  .   ) ?  windows  length , "twoth" 
+	IsTrue  /+ ? rows (match   ? dip.   ) ?fix :  windows  length , "ninety"
+)
 
-# take 1_1 WinFirst
 &p "whether the word is in any of the first line?"
+LineContainsString "nine"
+
+
+# match @a @a
 
 # &p LineContainsString
 # &p IsTrue /+ rows (match Eight) WinFirst
