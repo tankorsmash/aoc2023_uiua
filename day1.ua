@@ -46,14 +46,20 @@ WinSecond = windows LenEight unbox select 1 Lines
 
 
 LineContainsString = (
-	# IsTrue /+  ? rows (match "two") ?  windows length , ? unbox select 1 Lines
-	# IsTrue /+ rows (? dip match "two" ) ? .   windows length , "eightwothree" 
-	# IsTrue /+ rows (match  .   ) ?  windows  length , "twoth" 
-	IsTrue  /+ ? rows (match   ? dip.   ) ?fix :  windows  length , "ninety"
+	# lookup a single line in input lines list
+	unbox select 3 Lines
+	&p "line we're looking through:"
+	&p .
+	# get the windows of the length of the word passed in
+	windows  length ,
+	IsTrue  /+ rows (match  dip . ) fix :
+
+	#clean up the stack at the end, since there's an array left
+	;:
 )
 
 &p "whether the word is in any of the first line?"
-LineContainsString "nine"
+LineContainsString "four"
 
 
 # match @a @a
