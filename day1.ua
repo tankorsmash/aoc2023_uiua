@@ -52,14 +52,14 @@ LineContainsString = (
 	&p .
 	# get the windows of the length of the word passed in
 	windows  length ,
-	IsTrue  /+ rows (match  dip . ) fix :
+	/+ rows (match  dip . ) fix :
 
 	#clean up the stack at the end, since there's an array left
 	;:
 )
 
 &p "whether the word is in any of the first line?"
-LineContainsString "four"
+&p IsTrue LineContainsString "four"
 
 
 # match @a @a
