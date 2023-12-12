@@ -63,37 +63,12 @@ Line = unbox select 3 Lines
 &pf "`Line`: "
 &p Line
 
-# LineContainsString Line "one"
-# LineContainsString Line "two"
-# LineContainsString Line "three"
 
 
-# indexof "two" . windows 3 Line
-# find "two" Line
-# find "one" Line
-# find "four" Line
-
-# length FullWords
-Line = unbox select 3 Lines
-rows ( find    un box  , Line ) FullWords
-# rows (? find  , Line ) FullWords
-# FullWords
-# :
-# keep
-
-
-# match @a @a
-
-# &p LineContainsString
-# &p IsTrue /+ rows (match Eight) WinFirst
-
-# &p IsTrue /+ rows (match "two") windows  length "two"  unbox select 1 Lines
-
-
-
-# PerLine ←  ? ;:   parse ⍜⇌ (⊂↙1), ↙1 ? . ▽ <@a.
-# PartTwo ← /+ ≡(PerLine ⊔) Lines
-#
-# PartTwo
-
+# Line = unbox select 3 Lines
+# index of matched string, with each character it lines up with
+rows ( box find    un box  , Line ) FullWords
+rows box range length FullWords
+couple
+trans
 
