@@ -69,6 +69,7 @@ Line = unbox select 3 Lines
 # index of matched string, with each character it lines up with
 rows ( box find    un box  , Line ) FullWords
 rows box range length FullWords
+rows (pick unbox : FullWords)
 couple
 trans
 
