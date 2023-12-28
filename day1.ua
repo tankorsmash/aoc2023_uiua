@@ -51,7 +51,9 @@ Line ← °□ ⊏ 3 Lines
 &pf "`Line`: "
 &p Line
 
-AllStrings ← ⊂ FullWords ∵(□ToString) ⇡ 9
+AllStrings ← ⊂ FullWords +1 ∵(□ToString) ⇡ 9
+# &p "`AllStrings`: "
+# &p AllStrings
 
 # index of matched string, with each character it lines up with
 IndexLine ← ≡(⍜°□(⊚ ⌕) ⊙∘)
@@ -119,5 +121,5 @@ PartTwo ← (
   ∵(PartTwoPerLine °□)
   /+
 )
-# PartTwo ? Lines
-PartTwo □ "two1nine"
+PartTwo Lines
+# PartTwo □ "jpxt9"
