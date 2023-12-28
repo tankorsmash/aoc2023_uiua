@@ -29,11 +29,11 @@ WordsToNum ← (
   # numbers 1 to 9
   +1 ⇡ ⧻ FullWords
   # the string "1" to "9" and ints 1 to 9
-  ⊃(∵(⊟ □ ToString □ .))(⍉ ⊟ FullWords)
+  ⊃(∵(⊟ □ ToString .))(⍉ ⊟ FullWords)
   # couple them both
   ⊂
 )
-WordsToNum
+# WordsToNum
 
 # first line
 First ← ⊏ 0 Lines
@@ -71,4 +71,38 @@ BuildFinalArray ⊃(EnumerateLine|IndexLine) AllStrings
 # sort result
 ⊏ ⍏ .
 
-;
+# pick first and last rows
+⊢ .
+⊙(⊡ -1 ⧻ .)
+⊟
+
+⍉
+≡↻ 1
+⇌
+
+# # take the index from the rows
+⊢
+# ∵°□
+♭
+
+# /(⊡ ? ⊗  : WordsToNum )
+
+# find index of 'one'
+
+StringToNum ← (
+  # first string in string, number pair
+  ≡⊢ WordsToNum
+  # index of arg1 inside the list of strings
+  ⊗□,
+  # get the unboxed int from the string, number map
+  °□ ⊡ 1 ⊡ : WordsToNum
+)
+
+# &p WordsToNum
+
+# StringToNum "one"
+# StringToNum "nine"
+# StringToNum "4"
+# StringToNum "four"
+
+≡(⊟ ⊙□ ? StringToNum °□)
