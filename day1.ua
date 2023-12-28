@@ -24,6 +24,17 @@ FullWords ← {
   "four" "five" "six"
   "seven" "eight" "nine"}
 
+# list of boxed int 1 to boxed "one", and boxed string "1" to boxed "one"
+WordsToNum ← (
+  # numbers 1 to 9
+  +1 ⇡ ⧻ FullWords
+  # the string "1" to "9" and ints 1 to 9
+  ⊃(∵(⊟ □ ToString □ .))(⍉ ⊟ FullWords)
+  # couple them both
+  ⊂
+)
+WordsToNum
+
 # first line
 First ← ⊏ 0 Lines
 
@@ -40,7 +51,7 @@ Line ← °□ ⊏ 3 Lines
 AllStrings ← ⊂ FullWords ∵(□ToString) ⇡ 9
 
 # index of matched string, with each character it lines up with
-IndexLine ← ≡(⍜°□(⊚ ⌕)⊙Line)
+IndexLine ← ≡(⍜°□(⊚ ⌕) ⊙Line)
 # enumerate each character in the things to match
 EnumerateLine ← ≡□ ⇡ ⧻
 
@@ -54,3 +65,10 @@ BuildFinalArray ← (
 )
 
 BuildFinalArray ⊃(EnumerateLine|IndexLine) AllStrings
+
+# find nonempty rows
+⊏ ⊚ ≡(⧻⊢) .
+# sort result
+⊏ ⍏ .
+
+;
