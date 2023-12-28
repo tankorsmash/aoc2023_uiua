@@ -48,10 +48,11 @@ Eight ← °□ ⊏ 7 FullWords
 # Single line in the input
 Line ← °□ ⊏ 3 Lines
 # Line = "onetwothreefourfivesixseveneightnine"
-&pf "`Line`: "
-&p Line
+# &pf "`Line`: "
+# &p Line
 
-AllStrings ← ⊂ FullWords +1 ∵(□ToString) ⇡ 9
+AllStrings ← des trans ⊟ FullWords +1 ∵(□ToString) ⇡ 9
+&p AllStrings
 # &p "`AllStrings`: "
 # &p AllStrings
 
@@ -72,8 +73,10 @@ BuildFinalArray ← (
 # gets the first and last string in a FinalArray we pass in
 GetFirstLastStrings ← (
   # find nonempty rows
+  ?
   ⊏ ⊚ ≡(⧻⊢) .
   # sort result
+  ?
   ⊏ ⍏ .
 
   # pick first and last rows
@@ -109,17 +112,20 @@ StringToNum ← (
 # StringToNum "four"
 
 PartTwoPerLine ← (
+  &p .
   ¤
   BuildFinalArray ⊃(EnumerateLine|IndexLine) AllStrings
   GetFirstLastStrings
   ≡(StringToNum °□)
   ♭ ∵ToString
   ⋕
+  &p .
 )
 
 PartTwo ← (
   ∵(PartTwoPerLine °□)
   /+
 )
-PartTwo Lines
-# PartTwo □ "jpxt9"
+# PartTwo Lines
+# PartTwo □ "eighthree"
+PartTwo □ "364twoqvqr4"
