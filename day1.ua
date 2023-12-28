@@ -7,8 +7,9 @@ IsTrue ← °□ ⊏ ⊙{"False" "True"} =1
 # a to-string function
 ToString ← $"_"
 
-FileName ← "sample2_input_day_1.txt"
-# FileName ← "input_day_1.txt"
+# FileName ← "sample_input_day_1.txt"
+# FileName ← "sample2_input_day_1.txt"
+FileName ← "input_day_1.txt"
 # raw input data
 RawInput ← &fras FileName
 
@@ -110,11 +111,13 @@ PartTwoPerLine ← (
   BuildFinalArray ⊃(EnumerateLine|IndexLine) AllStrings
   GetFirstLastStrings
   ≡(StringToNum °□)
-  /+
+  ♭ ∵ToString
+  ⋕
 )
 
 PartTwo ← (
-  /+ ∵(PartTwoPerLine °□)
+  ∵(PartTwoPerLine °□)
+  /+
 )
 # PartTwo ? Lines
-PartTwo box"two1nine"
+PartTwo □ "two1nine"
