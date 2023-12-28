@@ -14,7 +14,6 @@ RawInput ← &fras FileName
 # Joins strings together
 StringJoin ← ⊐/⊂
 # &p StringJoin {"RawInput, `" FileName "`:"}
-# &p RawInput
 
 # input split by newlines
 Lines ← ⊜□≠RawInput@\n RawInput
@@ -54,16 +53,16 @@ LenEight ← ⧻ Eight
 WinFirst ← ◫ LenEight UnbFirst
 WinSecond ← ◫ LenEight °□ ⊏ 1 Lines
 
-# takes a word and returns whether its in a specific line
-LineContainsString ← (
-  # get the windows of the length of the word passed in
-  ◫ ⧻ ,
-  ¤ :
-  /+ ≡(≍ ⊙.)
-
-  # clean up the stack at the end, since there's an array left
-  ;:
-)
+# # takes a word and returns whether its in a specific line
+# LineContainsString ← (
+#   # get the windows of the length of the word passed in
+#   ◫ ⧻ ,
+#   ¤ :
+#   /+ ≡(≍ ⊙.)
+# 
+#   # clean up the stack at the end, since there's an array left
+#   ;:
+# )
 
 # &p IsTrue LineContainsString "four"
 
@@ -74,15 +73,20 @@ Line ← °□ ⊏ 3 Lines
 &pf "`Line`: "
 &p Line
 
+AllStrings ← ⊂ FullWords ∵(□ToString) ⇡ 9
+
 # index of matched string, with each character it lines up with
-≡(⍜°□(⊚ ⌕), Line) FullWords
-≡□ ⇡ ⧻ FullWords
-≡(⊡ °□ : FullWords)
+# fork (rows⊡ °□ |≡□ ⇡ ⧻|≡(⍜°□(⊚ ⌕), Line)) FullWords FullWords
+≡(⍜°□(⊚ ⌕)⊙Line) AllStrings
+# enumerate each character in the things to match
+≡□ ⇡ ⧻ AllStrings
+# lookup the index of each character in the line
+≡(⊡ °□ : AllStrings)
 ⊟
 ⍉
 
+# flip arrays so the index is first
 ≡↻ 1
-
 
 Left ← ≡(□ +1 ⇡) +1 ⇡ 9
 # Left
@@ -90,21 +94,16 @@ Left ← ≡(□ +1 ⇡) +1 ⇡ 9
 LongestRow ← /↥ ≡⧻ Left
 # LongestRow
 
+# ∵ToString ⇡ LongestRow
 
-∵ToString ⇡ LongestRow
-# 
-# 
 # Right = rows (reverse) Left
-# 
-# 
 # # &p "left columns"
 # # &p Left
 # #
 # # &p "right columns"
 # # &p Right
-# 
+
 # # &p "left sum"
 # # &p /+ rows (parse /join rows ToString unbox) Left
 # # &p "right sum"
 # # &p /+ rows (parse /join rows ToString unbox) Right
-# 
