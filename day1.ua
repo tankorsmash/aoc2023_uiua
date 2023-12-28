@@ -66,49 +66,44 @@ BuildFinalArray ← (
 
 BuildFinalArray ⊃(EnumerateLine|IndexLine) AllStrings
 
-# find nonempty rows
-⊏ ⊚ ≡(⧻⊢) .
-# sort result
-⊏ ⍏ .
+# gets the first and last string in a FinalArray we pass in
+GetFirstLastStrings ← (
+  # find nonempty rows
+  ⊏ ⊚ ≡(⧻⊢) .
+  # sort result
+  ⊏ ⍏ .
 
-# pick first and last rows
-⊢ .
-⊙(⊡ -1 ⧻ .)
-⊟
+  # pick first and last rows
+  ⊢ .
+  ⊙(⊡ -1 ⧻ .)
+  ⊟
 
-⍉
-≡↻ 1
-⇌
+  ⍉
+  ≡↻ 1
+  ⇌
 
-# # take the index from the rows
-⊢
-# ∵°□
-♭
-
-# /(⊡ ? ⊗  : WordsToNum )
-
-# find index of 'one'
-
-;
+  # # take the index from the rows
+  ♭ ⊢
+)
+GetFirstLastStrings
 
 StringToNum ← (
   # first string in string, number pair
   ≡⊢ WordsToNum
   # index of arg1 inside the list of strings
-  # dip (⊗□)
   :
   ⍜□ ⊗
   # get the unboxed int from the string, number map
   ⊡ : WordsToNum
   °□ ⊢ ⇌
 )
-# StringToNum
 
 # &p WordsToNum
 
-StringToNum "one"
-StringToNum "nine"
-StringToNum "4"
-StringToNum "four"
+# StringToNum "one"
+# StringToNum "nine"
+# StringToNum "4"
+# StringToNum "four"
 
-# ≡(⊟ ⊙□ ? StringToNum °□)
+?
+≡(StringToNum °□)
