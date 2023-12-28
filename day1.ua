@@ -51,7 +51,7 @@ Line ← °□ ⊏ 3 Lines
 AllStrings ← ⊂ FullWords ∵(□ToString) ⇡ 9
 
 # index of matched string, with each character it lines up with
-IndexLine ← ≡(⍜°□(⊚ ⌕) ⊙Line)
+IndexLine ← ≡(⍜°□(⊚ ⌕) : Line)
 # enumerate each character in the things to match
 EnumerateLine ← ≡□ ⇡ ⧻
 
