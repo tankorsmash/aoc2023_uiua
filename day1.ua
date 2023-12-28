@@ -52,7 +52,7 @@ Line ← °□ ⊏ 3 Lines
 # &p Line
 
 AllStrings ← des trans ⊟ FullWords +1 ∵(□ToString) ⇡ 9
-&p AllStrings
+# &p AllStrings
 # &p "`AllStrings`: "
 # &p AllStrings
 
@@ -128,4 +128,10 @@ PartTwo ← (
 )
 # PartTwo Lines
 # PartTwo □ "eighthree"
-PartTwo □ "364twoqvqr4"
+# PartTwo □ "364twoqvqr4"
+
+
+# rows (deshape repeat . length uncouple ) fix { 1_2 "e" }
+# rows (deshape repeat . length ? uncouple ? ) fix { 1_2 "e" }
+# drop ? div2 len.deshape repeat , ? length . ? uncouple ?  { 1_2 "e" }
+# drop ? 1 ? first {[ 1 2 ]}
