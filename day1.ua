@@ -89,20 +89,26 @@ BuildFinalArray ⊃(EnumerateLine|IndexLine) AllStrings
 
 # find index of 'one'
 
+;
+
 StringToNum ← (
   # first string in string, number pair
   ≡⊢ WordsToNum
   # index of arg1 inside the list of strings
-  ⊗□,
+  # dip (⊗□)
+  :
+  ⍜□ ⊗
   # get the unboxed int from the string, number map
-  °□ ⊡ 1 ⊡ : WordsToNum
+  ⊡ : WordsToNum
+  °□ ⊢ ⇌
 )
+# StringToNum
 
 # &p WordsToNum
 
-# StringToNum "one"
-# StringToNum "nine"
-# StringToNum "4"
-# StringToNum "four"
+StringToNum "one"
+StringToNum "nine"
+StringToNum "4"
+StringToNum "four"
 
-≡(⊟ ⊙□ ? StringToNum °□)
+# ≡(⊟ ⊙□ ? StringToNum °□)
