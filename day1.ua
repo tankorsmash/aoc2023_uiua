@@ -51,7 +51,7 @@ Line ← °□ ⊏ 3 Lines
 AllStrings ← ⊂ FullWords ∵(□ToString) ⇡ 9
 
 # index of matched string, with each character it lines up with
-IndexLine ← ≡(⍜°□(⊚ ⌕) : Line)
+IndexLine ← ≡(⍜°□(⊚ ⌕) ⊙∘)
 # enumerate each character in the things to match
 EnumerateLine ← ≡□ ⇡ ⧻
 
@@ -64,7 +64,7 @@ BuildFinalArray ← (
   ≡↻ 1
 )
 
-BuildFinalArray ⊃(EnumerateLine|IndexLine) AllStrings
+BuildFinalArray ⊃(EnumerateLine|IndexLine) AllStrings ¤ Line
 
 # gets the first and last string in a FinalArray we pass in
 GetFirstLastStrings ← (
@@ -105,5 +105,4 @@ StringToNum ← (
 # StringToNum "4"
 # StringToNum "four"
 
-?
 ≡(StringToNum °□)
