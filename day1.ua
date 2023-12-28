@@ -18,7 +18,6 @@ StringJoin ← ⊐/⊂
 # input split by newlines
 Lines ← ⊜□≠RawInput@\n RawInput
 
-
 # full english words
 FullWords ← {
   "one" "two" "three"
@@ -44,14 +43,14 @@ AllStrings ← ⊂ FullWords ∵(□ToString) ⇡ 9
 IndexLine ← ≡(⍜°□(⊚ ⌕)⊙Line)
 # enumerate each character in the things to match
 EnumerateLine ← ≡□ ⇡ ⧻
-# lookup the index of each character in the line
-RetrieveString ← ≡(⊡ : AllStrings °□)
 
-⊃(EnumerateLine|IndexLine) AllStrings
-RetrieveString
-# join previous two arrays together
-⊟
-⍉
+# lookup the index of each character in the line, then join them together
+BuildFinalArray ← (
+  ≡(⊡ : AllStrings °□)
+  # couple the indices and the strings
+  ⍉ ⊟
+  # flip arrays so the index is first
+  ≡↻ 1
+)
 
-# flip arrays so the index is first
-≡↻ 1
+BuildFinalArray ⊃(EnumerateLine|IndexLine) AllStrings
