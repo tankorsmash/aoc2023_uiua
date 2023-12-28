@@ -8,6 +8,7 @@ IsTrue ← °□ ⊏ ⊙{"False" "True"} =1
 ToString ← $"_"
 
 FileName ← "sample2_input_day_1.txt"
+# FileName ← "input_day_1.txt"
 # raw input data
 RawInput ← &fras FileName
 
@@ -45,6 +46,7 @@ Eight ← °□ ⊏ 7 FullWords
 
 # Single line in the input
 Line ← °□ ⊏ 3 Lines
+# Line = "onetwothreefourfivesixseveneightnine"
 &pf "`Line`: "
 &p Line
 
@@ -64,8 +66,6 @@ BuildFinalArray ← (
   ≡↻ 1
 )
 
-BuildFinalArray ⊃(EnumerateLine|IndexLine) AllStrings ¤ Line
-
 # gets the first and last string in a FinalArray we pass in
 GetFirstLastStrings ← (
   # find nonempty rows
@@ -84,8 +84,8 @@ GetFirstLastStrings ← (
 
   # # take the index from the rows
   ♭ ⊢
+  ⇌
 )
-GetFirstLastStrings
 
 StringToNum ← (
   # first string in string, number pair
@@ -105,4 +105,16 @@ StringToNum ← (
 # StringToNum "4"
 # StringToNum "four"
 
-≡(StringToNum °□)
+PartTwoPerLine ← (
+  ¤
+  BuildFinalArray ⊃(EnumerateLine|IndexLine) AllStrings
+  GetFirstLastStrings
+  ≡(StringToNum °□)
+  /+
+)
+
+PartTwo ← (
+  /+ ∵(PartTwoPerLine °□)
+)
+PartTwo ? Lines
+# PartTwo "two1nine"
