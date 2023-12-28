@@ -76,7 +76,6 @@ Line ← °□ ⊏ 3 Lines
 AllStrings ← ⊂ FullWords ∵(□ToString) ⇡ 9
 
 # index of matched string, with each character it lines up with
-# fork (rows⊡ °□ |≡□ ⇡ ⧻|≡(⍜°□(⊚ ⌕), Line)) FullWords FullWords
 ≡(⍜°□(⊚ ⌕)⊙Line) AllStrings
 # enumerate each character in the things to match
 ≡□ ⇡ ⧻ AllStrings
