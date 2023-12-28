@@ -116,5 +116,5 @@ PartTwoPerLine ← (
 PartTwo ← (
   /+ ∵(PartTwoPerLine °□)
 )
-PartTwo ? Lines
-# PartTwo "two1nine"
+# PartTwo ? Lines
+PartTwo box"two1nine"
