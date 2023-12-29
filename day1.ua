@@ -1,15 +1,6 @@
-# a separator for printing
-Separator ← ▽ 60 "-"
-# turns 0 or 1 into "True" or "False"
-IsTrue ← °□ ⊏ ⊙{"False" "True"} =1
-# &p IsTrue 1
-
-# a to-string function
-ToString ← $"_"
-
-# prints the stack but takes a string too
-Helper  = |1.0;?
-
+Utils = &i "utils.ua"
+ToString = Utils "ToString"
+Helper = Utils "Helper"
 
 # FileName ← "sample_input_day_1.txt"
 # FileName ← "sample2_input_day_1.txt"
@@ -178,7 +169,7 @@ PartTwoPerLine ← |1.1 (
 
 PartTwo ← (
   &pf "input string is: "
-  &s .
+  &p .
   ∵(PartTwoPerLine °□)
   /+
 
