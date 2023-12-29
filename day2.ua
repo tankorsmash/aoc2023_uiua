@@ -15,19 +15,35 @@ SplitBy ← |2 (
 
 ParseGameCount ← (
   °□
-  SplitBy @  # space
+  SplitBy @ # space
   # get second element (boxed string of game count)
   ↘ 1
   # flatten,parse and take just the number
   ⊢ ⋕ ♭
 )
 
+ParseBag ← (
+  ⍜°□ (
+    °□ SplitBy @,
+    ≡(SplitBy @ °□)
+  )
+)
+
 ParseLine ← (
   °□
   SplitBy @:
   ParseGameCount ⊢.
+  &p "Game Count: "
+  &p .
   :
-  drop 1
+  ↘ 1
+
+  ⊢
+  °□
+  SplitBy @;
+  ≡ParseBag
+  &p "Bags: "
+  ∵&p .
 )
 
 ParseLine ⊢ Lines
