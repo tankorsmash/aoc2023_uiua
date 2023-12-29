@@ -1,19 +1,13 @@
 Utils = &i "utils.ua"
 ToString = Utils "ToString"
 Helper = Utils "Helper"
+ReadLines = Utils "ReadLines" 
 
 # FileName ← "sample_input_day_1.txt"
 # FileName ← "sample2_input_day_1.txt"
 FileName ← "input_day_1.txt"
-# raw input data
-RawInput ← &fras FileName
 
-# Joins strings together
-StringJoin ← ⊐/⊂
-# &p StringJoin {"RawInput, `" FileName "`:"}
-
-# input split by newlines
-Lines ← ⊜□≠RawInput@\n RawInput
+Lines ← ReadLines FileName
 
 # full english words
 FullWords ← {
@@ -30,7 +24,6 @@ WordsToNum ← (
   # couple them both
   ⊂
 )
-# WordsToNum
 
 # first line
 First ← ⊏ 0 Lines
@@ -47,9 +40,6 @@ Line ← °□ ⊏ 3 Lines
 # &p Line
 
 AllStrings ← ♭ ⍉ ⊟ FullWords +1 ∵(□ToString) ⇡ 9
-# &p AllStrings
-# &p "`AllStrings`: "
-# &p AllStrings
 
 # index of matched string, with each character it lines up with
 IndexLine ← ≡(⍜°□(⊚ ⌕) ⊙∘)
@@ -97,13 +87,6 @@ StringToNum ← (
   °□ ⊢ ⇌
 )
 
-# &p WordsToNum
-
-# StringToNum "one"
-# StringToNum "nine"
-# StringToNum "4"
-# StringToNum "four"
-
 UnjoinDuplicateIndices ← (
   # &p "!!! UnjoinDuplicateIndices !!!\n"
 
@@ -121,23 +104,12 @@ UnjoinDuplicateIndices ← (
 	dip unbox
 	# Helper "unboxed"
 	:
-    # ↻1⍉
 	couple
-	# rows (rotate1)
 	trans
-	# rows rotate1
 	# Helper "paired"
-	# des
 	box
-	# ; :
 
   )
-
-
-  # des
-  # res ¯1_2
-
-  # Helper "after res"
 )
 
 PartTwoPerLine ← |1.1 (
@@ -180,19 +152,8 @@ PartTwo ← (
 # UnjoinDuplicateIndices [{ [1 1] "a" } { {} "b" } { 31 "c" } { 44 "d" } { 50 "e" }]
 
 PartTwo Lines
+# example lines to test
 # PartTwo □ "eighthree"
 # PartTwo □ "364twoqvqr4"
 # PartTwo □ "33364twoqvqr444"
 # PartTwo □ "4445333"
-# &p
-
-# rows (deshape repeat . length uncouple ) fix { 1_2 "e" }
-# rows (deshape repeat . length ? uncouple ? ) fix { 1_2 "e" }
-# drop ? div2 len.deshape repeat , ? length . ? uncouple ?  { 1_2 "e" }
-# drop ? 1 ? first {[ 1 2 ]}
-
-# UnjoinDuplicateIndices [{{} "c" }{{0_0} "a"} {{1_2} "e"} {{3_4} "d"}]
-
-# .
-# rows (length first)
-# keep .
