@@ -74,6 +74,33 @@ StringToNum ← (
 )
 
 UnjoinDuplicateIndices ← |1 (
+  ≡(
+    # ⊃(⊡ 1|⧻⊢|⊢)
+    # ▽ :
+
+    ⊃(⧻⊢|⊡1|⊢)
+    ▽
+
+    # ..
+    # ⧻⊢
+    # ⊙⊙⊢
+    # ⊡1 :
+    # # Helper "the element to copy"
+
+    # Helper "the element duplicated"
+    ⊙°□
+    # Helper "unboxed"
+    :
+    ⊟
+    ⍉
+    # Helper "paired"
+    □
+  )
+
+  ⊐/⊂
+)
+
+OrigUnjoinDuplicateIndices ← |1 (
   &p .
   ≡(
     ..
@@ -138,9 +165,28 @@ PartTwo ← (
 
 # UnjoinDuplicateIndices [{ [1 1] "a" } { {} "b" } { 31 "c" } { 44 "d" } { 50 "e" }]
 
-# PartTwo Lines
+PartTwo Lines
 # example lines to test
 # PartTwo □ "eighthree"
 # PartTwo □ "364twoqvqr4"
 # PartTwo □ "33364twoqvqr444"
-PartTwo □ "4445333"
+# PartTwo □ "4445333"
+
+Data ← [[□[4 5 6] □"3"]
+        [□[1 2] □"4"]
+        [□[3] □"5"]]
+
+# UnjoinDuplicateIndices Data
+
+# DataTwo ← [□[1 2] □3]
+# 
+# # # version 1
+# # DataTwo
+# # ..
+# # ⧻⊢
+# # ⊙⊙⊢
+# # ⊡1 :
+# #
+# # # version 2
+# # fork (pick 1|⧻ ⊢|⊢) DataTwo
+# 
