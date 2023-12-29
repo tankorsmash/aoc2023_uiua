@@ -75,25 +75,14 @@ StringToNum ← (
 
 UnjoinDuplicateIndices ← |1 (
   ≡(
-    # ⊃(⊡ 1|⧻⊢|⊢)
-    # ▽ :
+    # take the first element of the list and the second,
+    #  and get length of first element
+    ⊃(⧻⊢|⊡1|°□⊢)
+    # duplicate the character for each index and pair them
+    ⊟ ▽
 
-    ⊃(⧻⊢|⊡1|⊢)
-    ▽
-
-    # ..
-    # ⧻⊢
-    # ⊙⊙⊢
-    # ⊡1 :
-    # # Helper "the element to copy"
-
-    # Helper "the element duplicated"
-    ⊙°□
-    # Helper "unboxed"
-    :
-    ⊟
-    ⍉
-    # Helper "paired"
+    # instead of a column, make it a row iwth the index first
+    ≡↻1⍉
     □
   )
 
@@ -165,7 +154,7 @@ PartTwo ← (
 
 # UnjoinDuplicateIndices [{ [1 1] "a" } { {} "b" } { 31 "c" } { 44 "d" } { 50 "e" }]
 
-PartTwo Lines
+# PartTwo Lines
 # example lines to test
 # PartTwo □ "eighthree"
 # PartTwo □ "364twoqvqr4"
@@ -176,7 +165,7 @@ Data ← [[□[4 5 6] □"3"]
         [□[1 2] □"4"]
         [□[3] □"5"]]
 
-# UnjoinDuplicateIndices Data
+UnjoinDuplicateIndices Data
 
 # DataTwo ← [□[1 2] □3]
 # 
