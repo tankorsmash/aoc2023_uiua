@@ -2,7 +2,7 @@ Utils ← &i "utils.ua"
   ToString ← Utils "ToString"
   Helper ← Utils "Helper"
   ReadLines ← Utils "ReadLines"
-  ReadActual = Utils "ReadActual"
+  ReadActual ← Utils "ReadActual"
 
 # FileName ← "sample_input_day_1.txt"
 # FileName ← "sample2_input_day_1.txt"
@@ -14,6 +14,14 @@ Lines ← ReadActual 2
 SplitBy ← |2 (
   ⊜□≠,
 )
+
+MaxRed ← 12
+MaxGreen ← 13
+MaxBlue ← 14
+
+Limits ← [{"green" MaxGreen}
+          {"red" MaxRed}
+          {"blue" MaxBlue}]
 
 ParseGameCount ← (
   °□
@@ -27,16 +35,18 @@ ParseGameCount ← (
 ParseBag ← (
   ⍜°□ (
     °□ SplitBy @,
-    ≡(SplitBy @ °□)
+    ≡(⇌ SplitBy @ °□)
   )
 )
 
+# return game count and the bags in a pair of arrays
 ParseLine ← (
   °□
   SplitBy @:
   ParseGameCount ⊢.
-  &p "Game Count: "
-  &p .
+  # &p "Game Count: "
+  # &p .
+  □
   :
   ↘ 1
 
@@ -44,13 +54,34 @@ ParseLine ← (
   °□
   SplitBy @;
   ≡ParseBag
-  &p "Bags: "
-  ∵&p .
+  # &p "Bags: "
+  # ∵&p .
+  ?
+  □
+  ⊟
+  ↻1
 )
 
-MaxRed = 12
-MaxGreen = 13
-MaxBlue = 14
+# get which limit matches the color
+GetMatchingLimitRow ← (
+  ⊢ ▽ ≡⊢ ⌕ .. Limits
+)
 
-ParseLine ⊢ Lines
+GetMatchingColorLimit ← (
+  °□ ⊡1 GetMatchingLimitRow
+)
 
+ParsedLines ← ≡(□ ParseLine) ⊢ Lines
+⊢ ParsedLines
+# # remove game count
+# # ⊙;
+#
+# &p "done parsing\n"
+#
+# # boxed 'green'
+# SampleRow ← ⊢ °□ ⊢
+# SampleColor ← ⊢ SampleRow
+#
+#
+# # get the limit of green (13)
+# GetMatchingColorLimit SampleColor

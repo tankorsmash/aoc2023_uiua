@@ -25,7 +25,7 @@ ReadLines ← |1 (
 
 ReadActual ← (
   °⋕
-  ⊐/⊂{"inputs/actuals/day_" ⊙⊙;, ".txt"}
+  ⊐/⊂{"inputs/actuals/day_" flip ".txt"}
   ReadLines
 )
 
