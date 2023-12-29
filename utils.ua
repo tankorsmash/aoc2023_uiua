@@ -24,8 +24,7 @@ ReadLines ← |1 (
 )
 
 ReadActual ← (
-  unparse
-  unpack/join{"inputs/actuals/day_" dd;, ".txt" }
-
-  ReadLines  
+  °⋕
+  ⊐/⊂{"inputs/actuals/day_" ⊙⊙;, ".txt"}
+  ReadLines
 )
