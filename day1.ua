@@ -51,7 +51,7 @@ Line ← °□ ⊏ 3 Lines
 # &pf "`Line`: "
 # &p Line
 
-AllStrings ← des trans ⊟ FullWords +1 ∵(□ToString) ⇡ 9
+AllStrings ← ♭ ⍉ ⊟ FullWords +1 ∵(□ToString) ⇡ 9
 # &p AllStrings
 # &p "`AllStrings`: "
 # &p AllStrings
@@ -73,10 +73,8 @@ BuildFinalArray ← (
 # gets the first and last string in a FinalArray we pass in
 GetFirstLastStrings ← (
   # find nonempty rows
-  ?
   ⊏ ⊚ ≡(⧻⊢) .
   # sort result
-  ?
   ⊏ ⍏ .
 
   # pick first and last rows
@@ -111,10 +109,29 @@ StringToNum ← (
 # StringToNum "4"
 # StringToNum "four"
 
+UnjoinDuplicateIndices ← (
+  &p "UnjoinDuplicateIndices"
+  ?
+  ≡(
+    ⧻ ⊢ . .
+    ⊡ 1 :
+    : ▽ :
+    ↻1 ⍉
+    &p "qwe"
+	:
+	;
+  )
+
+  /⊂
+)
+
 PartTwoPerLine ← (
-  &p .
   ¤
   BuildFinalArray ⊃(EnumerateLine|IndexLine) AllStrings
+  # keep only the non empty strings
+  ▽ ≡(⧻ ⊢) .
+  ?
+  UnjoinDuplicateIndices
   GetFirstLastStrings
   ≡(StringToNum °□)
   ♭ ∵ToString
@@ -126,12 +143,21 @@ PartTwo ← (
   ∵(PartTwoPerLine °□)
   /+
 )
+
+# UnjoinDuplicateIndices [{ [1 1] "a" } { {} "b" } { 31 "c" } { 44 "d" } { 50 "e" }]
+
 # PartTwo Lines
 # PartTwo □ "eighthree"
-# PartTwo □ "364twoqvqr4"
-
+PartTwo □ "364twoqvqr4"
+# &p
 
 # rows (deshape repeat . length uncouple ) fix { 1_2 "e" }
 # rows (deshape repeat . length ? uncouple ? ) fix { 1_2 "e" }
 # drop ? div2 len.deshape repeat , ? length . ? uncouple ?  { 1_2 "e" }
 # drop ? 1 ? first {[ 1 2 ]}
+
+# UnjoinDuplicateIndices [{{} "c" }{{0_0} "a"} {{1_2} "e"} {{3_4} "d"}]
+
+# .
+# rows (length first)
+# keep .
