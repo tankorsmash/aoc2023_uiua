@@ -73,11 +73,11 @@ StringToNum ← (
   °□ ⊢ ⇌
 )
 
-UnjoinDuplicateIndices ← (
-  # &p "!!! UnjoinDuplicateIndices !!!\n"
-
+UnjoinDuplicateIndices ← |1 (
+  &p .
   ≡(
-    ⧻⊢ ..
+    ..
+    ⧻⊢
     # Helper "how many in duplicates"
 
     ⊙⊙⊢
@@ -85,6 +85,7 @@ UnjoinDuplicateIndices ← (
 
     ⊡1 :
     # Helper "the element to copy"
+
     ▽ :
     # Helper "the element duplicated"
     ⊙°□
@@ -95,6 +96,8 @@ UnjoinDuplicateIndices ← (
     # Helper "paired"
     □
   )
+  ⊐/⊂
+  &p .
 )
 
 PartTwoPerLine ← |1 (
@@ -112,7 +115,6 @@ PartTwoPerLine ← |1 (
   # &p "after"
   # &p .
 
-  ⊐/⊂
   # Helper "asd"
   # Helper "after"
 
@@ -136,9 +138,9 @@ PartTwo ← (
 
 # UnjoinDuplicateIndices [{ [1 1] "a" } { {} "b" } { 31 "c" } { 44 "d" } { 50 "e" }]
 
-PartTwo Lines
+# PartTwo Lines
 # example lines to test
 # PartTwo □ "eighthree"
 # PartTwo □ "364twoqvqr4"
 # PartTwo □ "33364twoqvqr444"
-# PartTwo □ "4445333"
+PartTwo □ "4445333"
