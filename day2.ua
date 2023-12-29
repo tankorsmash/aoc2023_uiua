@@ -3,6 +3,7 @@ Utils ← &i "utils.ua"
   Helper ← Utils "Helper"
   ReadLines ← Utils "ReadLines"
   ReadActual ← Utils "ReadActual"
+  ReadSample ← Utils "ReadSample"
 
 # FileName ← "sample_input_day_1.txt"
 # FileName ← "sample2_input_day_1.txt"
@@ -74,20 +75,31 @@ GetMatchingColorLimitForColor ← (
   °□ ⊡1 GetMatchingLimitRowForColor
 )
 
+IsValidBag ← (
+  °□
+  /↧ ≡(≤ : ⋕ °□ ⊢ ⇌ : GetMatchingColorLimitForColor ⊢ .)
+)
+
+IsValidRow ← (
+  /↧ ≡IsValidBag °□ ⊡1
+)
+
 ParsedLines ← ≡(ParseLine) Lines
+ParsedSamples ← ≡(ParseLine) ReadSample 2
 
-△ ParsedLines
-&p $"shape of lines _"
-
-SampleRow ← ⊡ 51 ParsedLines
+SampleRow ← ⊡ 50 ParsedLines
 SampleBag ← ⊡1 °□ ⊡1 SampleRow
 SampleColor ← ⊢ ⊢ SampleBag
 
 # # # get the limit of green (13)
 # GetMatchingColorLimit SampleColor
-SampleRow
-SampleBag
-
-°□ SampleBag
-≡(< : ⋕ °□ ⊢ ⇌ : GetMatchingColorLimitForColor ⊢ .)
+# SampleRow
+#
 # SampleColor
+
+/+ ≡⊢ ▽ ≡IsValidRow . ParsedSamples
+≡IsValidRow . ParsedLines
+≡⊢ ▽
+?
+≡&p .
+/+
