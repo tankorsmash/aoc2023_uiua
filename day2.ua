@@ -56,32 +56,35 @@ ParseLine ← (
   ≡ParseBag
   # &p "Bags: "
   # ∵&p .
-  ?
   □
   ⊟
   ↻1
 )
 
 # get which limit matches the color
+# GetMatchingLimitRow ← |1 (
 GetMatchingLimitRow ← (
-  ⊢ ▽ ≡⊢ ⌕ .. Limits
+  # ⊢ ▽ ≡⊢ ⌕ ..Limits
+  # ⊢ ▽ ≡⊢ ⌕ .Limits "green" ;
+  ⊢ ▽ : Limits ⌕ : ⊢ ⍉ Limits
 )
+
+GetMatchingLimitRow □ "blue"
 
 GetMatchingColorLimit ← (
   °□ ⊡1 GetMatchingLimitRow
 )
-
-ParsedLines ← ≡(□ ParseLine) ⊢ Lines
-⊢ ParsedLines
-# # remove game count
-# # ⊙;
 #
-# &p "done parsing\n"
+ParsedLines ← ≡(□ ParseLine) ⊢ Lines
 #
 # # boxed 'green'
-# SampleRow ← ⊢ °□ ⊢
-# SampleColor ← ⊢ SampleRow
+SampleRow ← ⊢ ⊡1 °□ ⊢ ParsedLines
+SampleColor ← ⊢ ⊢ SampleRow
 #
+# &p "start"
+# &p ≡(GetMatchingLimitRow  ⊢)unbox SampleRow
+# &p "done"
 #
 # # get the limit of green (13)
-# GetMatchingColorLimit SampleColor
+&p SampleColor
+GetMatchingColorLimit box "red"
