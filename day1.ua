@@ -1,7 +1,7 @@
-Utils = &i "utils.ua"
-ToString = Utils "ToString"
-Helper = Utils "Helper"
-ReadLines = Utils "ReadLines" 
+Utils ← &i "utils.ua"
+  ToString ← Utils "ToString"
+  Helper ← Utils "Helper"
+  ReadLines ← Utils "ReadLines"
 
 # FileName ← "sample_input_day_1.txt"
 # FileName ← "sample2_input_day_1.txt"
@@ -92,32 +92,31 @@ UnjoinDuplicateIndices ← (
 
   ≡(
     ⧻⊢ ..
-	# Helper "how many in duplicates"
+    # Helper "how many in duplicates"
 
-	dipdip first
-	# Helper "keep just the indices in one stack"
+    ⊙⊙⊢
+    # Helper "keep just the indices in one stack"
 
     ⊡1 :
-	# Helper "the element to copy"
+    # Helper "the element to copy"
     ▽ :
-	# Helper "the element duplicated"
-	dip unbox
-	# Helper "unboxed"
-	:
-	couple
-	trans
-	# Helper "paired"
-	box
-
+    # Helper "the element duplicated"
+    ⊙°□
+    # Helper "unboxed"
+    :
+    ⊟
+    ⍉
+    # Helper "paired"
+    □
   )
 )
 
-PartTwoPerLine ← |1.1 (
+PartTwoPerLine ← |1 (
   ¤
   BuildFinalArray ⊃(EnumerateLine|IndexLine) AllStrings
 
   # duplicate rows per number of indices
-  ▽ !=0 ≡(⧻⊢) .
+  ▽ ≠0 ≡(⧻⊢) .
 
   # &p "before"
   # &p .
@@ -127,7 +126,7 @@ PartTwoPerLine ← |1.1 (
   # &p "after"
   # &p .
 
-  unpack/join
+  ⊐/⊂
   # Helper "asd"
   # Helper "after"
 

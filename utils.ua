@@ -1,11 +1,9 @@
-
 # a separator for printing
 Separator ← ▽ 60 "-"
 
 # turns 0 or 1 into "True" or "False"
 # &p IsTrue 1
 IsTrue ← °□ ⊏ ⊙{"False" "True"} =1
-
 
 # a to-string function
 ToString ← $"_"
@@ -18,7 +16,7 @@ StringJoin ← ⊐/⊂
 
 # read lines of a file
 # then split by newlines and box
-ReadLines ← |1.1 (
+ReadLines ← |1 (
   # read file
   &fras
 
