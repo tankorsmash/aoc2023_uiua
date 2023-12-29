@@ -25,20 +25,6 @@ WordsToNum ← (
   ⊂
 )
 
-# first line
-First ← ⊏ 0 Lines
-
-# boxed string 'one' in a list
-One ← ↙ 1 FullWords
-# unboxed string 'eight'
-Eight ← °□ ⊏ 7 FullWords
-
-# Single line in the input
-Line ← °□ ⊏ 3 Lines
-# Line = "onetwothreefourfivesixseveneightnine"
-# &pf "`Line`: "
-# &p Line
-
 AllStrings ← ♭ ⍉ ⊟ FullWords +1 ∵(□ToString) ⇡ 9
 
 # index of matched string, with each character it lines up with
@@ -139,8 +125,8 @@ PartTwoPerLine ← |1 (
 )
 
 PartTwo ← (
-  &pf "input string is: "
-  &p .
+  # &pf "input string is: "
+  # &p .
   ∵(PartTwoPerLine °□)
   /+
 
