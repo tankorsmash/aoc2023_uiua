@@ -28,3 +28,9 @@ ReadActual ← (
   ⊐/⊂{"inputs/actuals/day_" ⊙⊙;, ".txt"}
   ReadLines
 )
+
+ReadSample ← (
+  °⋕
+  ⊐/⊂{"inputs/samples/day_" ⊙⊙;, ".txt"}
+  ReadLines
+)
