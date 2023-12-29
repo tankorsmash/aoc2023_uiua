@@ -7,6 +7,10 @@ IsTrue ← °□ ⊏ ⊙{"False" "True"} =1
 # a to-string function
 ToString ← $"_"
 
+# prints the stack but takes a string too
+Helper  = |1.0;?
+
+
 # FileName ← "sample_input_day_1.txt"
 # FileName ← "sample2_input_day_1.txt"
 FileName ← "input_day_1.txt"
@@ -110,19 +114,38 @@ StringToNum ← (
 # StringToNum "four"
 
 UnjoinDuplicateIndices ← (
-  &p "UnjoinDuplicateIndices"
-  ?
+  &p "!!! UnjoinDuplicateIndices !!!\n"
   ≡(
-    ⧻ ⊢ . .
-    ⊡ 1 :
-    : ▽ :
-    ↻1 ⍉
-    &p "qwe"
+    ⧻⊢ ..
+	# Helper "how many in duplicates"
+
+	dipdip first
+	# Helper "keep just the indices in one stack"
+
+    ⊡1 :
+	# Helper "the element to copy"
+    ▽ :
+	# Helper "the element duplicated"
+	dip unbox
+	# Helper "unboxed"
 	:
-	;
+    # ↻1⍉
+	couple
+	# rows (rotate1)
+	trans
+	# rows rotate1
+	Helper "paired"
+	# des
+	box
+	# ; :
+
   )
 
-  /⊂
+
+  # des
+  # res ¯1_2
+
+  Helper "after res"
 )
 
 PartTwoPerLine ← (
@@ -130,9 +153,20 @@ PartTwoPerLine ← (
   BuildFinalArray ⊃(EnumerateLine|IndexLine) AllStrings
   # keep only the non empty strings
   ▽ ≡(⧻ ⊢) .
-  ?
+  # &p "before"
+  # &p .
   UnjoinDuplicateIndices
+  # &p "after"
+  # &p .
+  # reshape 2_2_¯1
+
+  # each deshape
+  # fill 0 each unbox
+  # reshape ¯1_2
+
+  Helper "after"
   GetFirstLastStrings
+  Helper "first and last"
   ≡(StringToNum °□)
   ♭ ∵ToString
   ⋕
@@ -148,7 +182,9 @@ PartTwo ← (
 
 # PartTwo Lines
 # PartTwo □ "eighthree"
-PartTwo □ "364twoqvqr4"
+# PartTwo □ "364twoqvqr4"
+# PartTwo □ "33364twoqvqr444"
+PartTwo □ "4445333"
 # &p
 
 # rows (deshape repeat . length uncouple ) fix { 1_2 "e" }
