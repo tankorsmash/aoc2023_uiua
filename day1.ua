@@ -152,10 +152,13 @@ PartTwoPerLine ← (
   ¤
   BuildFinalArray ⊃(EnumerateLine|IndexLine) AllStrings
   # keep only the non empty strings
-  ▽ ≡(⧻ ⊢) .
-  # &p "before"
-  # &p .
-  UnjoinDuplicateIndices
+  &p "before1"
+  &p .
+  # duplicate rows per number of indices
+  ▽ ? !=0 ≡(⧻⊢) .
+  &p "before"
+  &p .
+  # UnjoinDuplicateIndices
   # &p "after"
   # &p .
   # reshape 2_2_¯1
@@ -164,7 +167,7 @@ PartTwoPerLine ← (
   # fill 0 each unbox
   # reshape ¯1_2
 
-  Helper "after"
+  # Helper "after"
   GetFirstLastStrings
   Helper "first and last"
   ≡(StringToNum °□)
