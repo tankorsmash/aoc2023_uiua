@@ -188,11 +188,11 @@ PartTwo ← (
 
 # UnjoinDuplicateIndices [{ [1 1] "a" } { {} "b" } { 31 "c" } { 44 "d" } { 50 "e" }]
 
-# PartTwo Lines
+PartTwo Lines
 # PartTwo □ "eighthree"
 # PartTwo □ "364twoqvqr4"
-PartTwo □ "33364twoqvqr444"
-PartTwo □ "4445333"
+# PartTwo □ "33364twoqvqr444"
+# PartTwo □ "4445333"
 # &p
 
 # rows (deshape repeat . length uncouple ) fix { 1_2 "e" }
