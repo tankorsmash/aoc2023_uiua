@@ -95,11 +95,11 @@ SampleColor ← ⊢ ⊢ SampleBag
 # GetMatchingColorLimit SampleColor
 # SampleRow
 #
-# SampleColor
+# Sa pleColor
 
-/+ ≡⊢ ▽ ≡IsValidRow . ParsedSamples
-≡IsValidRow . ParsedLines
-≡⊢ ▽
-?
-≡&p .
-/+
+PartOne ← (
+  ≡IsValidRow .
+  ≡⊢ ▽
+  /+
+)
+PartOne ParsedLines
