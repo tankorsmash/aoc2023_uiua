@@ -62,29 +62,32 @@ ParseLine ← (
 )
 
 # get which limit matches the color
-# GetMatchingLimitRow ← |1 (
-GetMatchingLimitRow ← (
+GetMatchingLimitRowForColor ← |1 (
   # ⊢ ▽ ≡⊢ ⌕ ..Limits
   # ⊢ ▽ ≡⊢ ⌕ .Limits "green" ;
   ⊢ ▽ : Limits ⌕ : ⊢ ⍉ Limits
 )
 
-GetMatchingLimitRow □ "blue"
+# GetMatchingLimitRow □ "blue"
 
-GetMatchingColorLimit ← (
-  °□ ⊡1 GetMatchingLimitRow
+GetMatchingColorLimitForColor ← (
+  °□ ⊡1 GetMatchingLimitRowForColor
 )
-#
-ParsedLines ← ≡(□ ParseLine) ⊢ Lines
-#
-# # boxed 'green'
-SampleRow ← ⊢ ⊡1 °□ ⊢ ParsedLines
-SampleColor ← ⊢ ⊢ SampleRow
-#
-# &p "start"
-# &p ≡(GetMatchingLimitRow  ⊢)unbox SampleRow
-# &p "done"
-#
-# # get the limit of green (13)
-&p SampleColor
-GetMatchingColorLimit box "red"
+
+ParsedLines ← ≡( ParseLine) Lines
+
+shape ParsedLines
+&p $"shape of lines _"
+
+SampleRow ← pick 51 ParsedLines
+SampleBag ← pick1 unbox ⊡1 SampleRow
+SampleColor ← ⊢ ⊢ SampleBag
+
+# # # get the limit of green (13)
+# GetMatchingColorLimit SampleColor
+SampleRow
+SampleBag
+
+°□ SampleBag
+≡(< : ⋕ °□ ⊢ ⇌ : GetMatchingColorLimitForColor ⊢ .)
+# SampleColor
