@@ -74,13 +74,13 @@ GetMatchingColorLimitForColor ← (
   °□ ⊡1 GetMatchingLimitRowForColor
 )
 
-ParsedLines ← ≡( ParseLine) Lines
+ParsedLines ← ≡(ParseLine) Lines
 
-shape ParsedLines
+△ ParsedLines
 &p $"shape of lines _"
 
-SampleRow ← pick 51 ParsedLines
-SampleBag ← pick1 unbox ⊡1 SampleRow
+SampleRow ← ⊡ 51 ParsedLines
+SampleBag ← ⊡1 °□ ⊡1 SampleRow
 SampleColor ← ⊢ ⊢ SampleBag
 
 # # # get the limit of green (13)
