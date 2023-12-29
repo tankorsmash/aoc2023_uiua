@@ -148,20 +148,32 @@ UnjoinDuplicateIndices ← (
   Helper "after res"
 )
 
-PartTwoPerLine ← (
+PartTwoPerLine ← |1.1 (
   ¤
   BuildFinalArray ⊃(EnumerateLine|IndexLine) AllStrings
-  # keep only the non empty strings
-  &p "before1"
-  &p .
+
   # duplicate rows per number of indices
   ▽ ? !=0 ≡(⧻⊢) .
-  &p "before"
-  &p .
-  # UnjoinDuplicateIndices
-  # &p "after"
+  # &p "before"
   # &p .
+  UnjoinDuplicateIndices
+  &p "after"
+  &p .
   # reshape 2_2_¯1
+
+  # # reshape [¯1]
+  # shape unbox first .
+  # rows (fill {} reshape ¯1_2 unbox )
+  # rows ( reshape 3_2 unbox )
+  # shape .
+  # reshape ¯1_2
+  unpack/join
+  Helper "asd"
+  # ;
+
+  # .
+  #
+  # &p
 
   # each deshape
   # fill 0 each unbox
