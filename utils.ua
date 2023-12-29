@@ -18,7 +18,14 @@ StringJoin ← ⊐/⊂
 # then split by newlines and box
 ReadLines ← |1 (
   # read file
-  &fras
+  ⍣&fras (Helper)
 
   ⊜□≠@\n .
+)
+
+ReadActual ← (
+  unparse
+  unpack/join{"inputs/actuals/day_" dd;, ".txt" }
+
+  ReadLines  
 )

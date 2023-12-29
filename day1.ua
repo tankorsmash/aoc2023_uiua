@@ -2,12 +2,13 @@ Utils ← &i "utils.ua"
   ToString ← Utils "ToString"
   Helper ← Utils "Helper"
   ReadLines ← Utils "ReadLines"
+  ReadActual = Utils "ReadActual"
 
 # FileName ← "sample_input_day_1.txt"
 # FileName ← "sample2_input_day_1.txt"
 FileName ← "input_day_1.txt"
 
-Lines ← ReadLines FileName
+Lines ← ReadActual 1
 
 # full english words
 FullWords ← {

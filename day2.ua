@@ -2,12 +2,14 @@ Utils ← &i "utils.ua"
   ToString ← Utils "ToString"
   Helper ← Utils "Helper"
   ReadLines ← Utils "ReadLines"
+  ReadActual = Utils "ReadActual"
 
 # FileName ← "sample_input_day_1.txt"
 # FileName ← "sample2_input_day_1.txt"
 FileName ← "input_day_2.txt"
 
-Lines ← ReadLines FileName
+# Lines ← ReadLines FileName
+Lines ← ReadActual 2
 
 SplitBy ← |2 (
   ⊜□≠,
@@ -46,4 +48,9 @@ ParseLine ← (
   ∵&p .
 )
 
+MaxRed = 12
+MaxGreen = 13
+MaxBlue = 14
+
 ParseLine ⊢ Lines
+
