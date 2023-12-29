@@ -114,7 +114,8 @@ StringToNum ← (
 # StringToNum "four"
 
 UnjoinDuplicateIndices ← (
-  &p "!!! UnjoinDuplicateIndices !!!\n"
+  # &p "!!! UnjoinDuplicateIndices !!!\n"
+
   ≡(
     ⧻⊢ ..
 	# Helper "how many in duplicates"
@@ -134,7 +135,7 @@ UnjoinDuplicateIndices ← (
 	# rows (rotate1)
 	trans
 	# rows rotate1
-	Helper "paired"
+	# Helper "paired"
 	# des
 	box
 	# ; :
@@ -145,7 +146,7 @@ UnjoinDuplicateIndices ← (
   # des
   # res ¯1_2
 
-  Helper "after res"
+  # Helper "after res"
 )
 
 PartTwoPerLine ← |1.1 (
@@ -153,44 +154,36 @@ PartTwoPerLine ← |1.1 (
   BuildFinalArray ⊃(EnumerateLine|IndexLine) AllStrings
 
   # duplicate rows per number of indices
-  ▽ ? !=0 ≡(⧻⊢) .
+  ▽ !=0 ≡(⧻⊢) .
+
   # &p "before"
   # &p .
+
   UnjoinDuplicateIndices
-  &p "after"
-  &p .
-  # reshape 2_2_¯1
 
-  # # reshape [¯1]
-  # shape unbox first .
-  # rows (fill {} reshape ¯1_2 unbox )
-  # rows ( reshape 3_2 unbox )
-  # shape .
-  # reshape ¯1_2
+  # &p "after"
+  # &p .
+
   unpack/join
-  Helper "asd"
-  # ;
-
-  # .
-  #
-  # &p
-
-  # each deshape
-  # fill 0 each unbox
-  # reshape ¯1_2
-
+  # Helper "asd"
   # Helper "after"
+
   GetFirstLastStrings
-  Helper "first and last"
+  # Helper "first and last"
+
   ≡(StringToNum °□)
   ♭ ∵ToString
   ⋕
-  &p .
 )
 
 PartTwo ← (
+  &pf "input string is: "
+  &s .
   ∵(PartTwoPerLine °□)
   /+
+
+  &pf "result is: "
+  &s .
 )
 
 # UnjoinDuplicateIndices [{ [1 1] "a" } { {} "b" } { 31 "c" } { 44 "d" } { 50 "e" }]
@@ -198,7 +191,7 @@ PartTwo ← (
 # PartTwo Lines
 # PartTwo □ "eighthree"
 # PartTwo □ "364twoqvqr4"
-# PartTwo □ "33364twoqvqr444"
+PartTwo □ "33364twoqvqr444"
 PartTwo □ "4445333"
 # &p
 
