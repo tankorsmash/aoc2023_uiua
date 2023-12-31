@@ -106,5 +106,8 @@ PartOne ← (
 )
 # PartOne ParsedLines
 
-FilterByColor ← |3 ⍜°□ (▽ ⊙°□ ≡/↥ =□ ⊙°□ H"stack")
-rows join reshape ¯1_2 trans couple≡(≡⊃(FilterByColor"red"|FilterByColor "green"|FilterByColor"blue")). SampleBags
+FilterByColor ← |3 ⍜°□ (▽ ⊙°□ ≡/↥ =□ ⊙°□)
+
+≡⊂ ↯ ¯1_2 ⍉ ⊟≡(≡⊃(FilterByColor"red"|FilterByColor "green"|FilterByColor"blue")). SampleBags
+
+≡(≡FilterByColor {"red" "green" "blue"}). SampleBags
