@@ -105,12 +105,12 @@ PartOne ← (
   /+
 )
 # PartOne ParsedLines
-FilterByColor ← |3 Helper"done" ▽ ? ≡/↥ =□?
-# ≡(≡⊃(FilterByColor"red"|FilterByColor "green"|FilterByColor"blue")). SampleBags
+FilterByColor ← |3  under unbox (▽ dip unbox ≡/↥ =□  dip unbox)
+≡(≡⊃(FilterByColor"red"|FilterByColor "green"|FilterByColor"blue")). SampleBags
 # ≡(≡(FilterByColor"red")). SampleBags
 # FilterByColor"red" .SampleBags
 
-≡(□ ≡(▽ ≡/↥ =□"green" . °□).) SampleBags
+# ≡(□ ≡(▽ ≡/↥ =□"green" . °□).) SampleBags
 # rows(rows(▽ ≡/↥ =□"red")) . SampleBags
 # rows unbox
 
