@@ -37,7 +37,7 @@ ParseGameCount ← (
 ParseBag ← (
   ⍜°□ (
     °□ SplitBy @,
-    ≡(⇌ SplitBy @ °□)
+    ≡(⇌ ⍜(⊏0) ⋕ SplitBy @ °□)
   )
 )
 
@@ -108,6 +108,7 @@ PartOne ← (
 
 FilterByColor ← |3 ⍜°□ (▽ ⊙°□ ≡/↥ =□ ⊙°□)
 
-≡⊂ ↯ ¯1_2 ⍉ ⊟≡(≡⊃(FilterByColor"red"|FilterByColor "green"|FilterByColor"blue")). SampleBags
+# colors of of each bag by color
+⍉ ≡(≡FilterByColor {"red" "green" "blue"}). SampleBags
 
-≡(≡FilterByColor {"red" "green" "blue"}). SampleBags
+# SampleBags
