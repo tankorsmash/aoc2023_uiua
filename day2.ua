@@ -109,9 +109,10 @@ PartOne ← (
 FilterByColor ← |3 ⍜°□ (▽ ⊙°□ ≡/↥ =□ ⊙°□)
 
 # colors of of each bag by color
-⍉ ≡(≡FilterByColor {"red" "green" "blue"}). SampleBags
-
-# rows (rows select1)
-rows (/max rows (unbox fill 0 pick 0_1  unbox))
-
-# SampleBags
+≡(
+  °□ ⊡1
+  ⍉ ≡(≡FilterByColor {"red" "green" "blue"}).
+  ≡(/↥ ≡(°□ ⬚0 ⊡ 0_1 °□))
+  /*
+) ParsedLines
+/+
