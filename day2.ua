@@ -108,11 +108,19 @@ PartOne ← (
 
 FilterByColor ← |3 ⍜°□ (▽ ⊙°□ ≡/↥ =□ ⊙°□)
 
-# colors of of each bag by color
-≡(
-  °□ ⊡1
-  ⍉ ≡(≡FilterByColor {"red" "green" "blue"}).
-  ≡(/↥ ≡(°□ ⬚0 ⊡ 0_1 °□))
-  /*
-) ParsedLines
-/+
+PartTwo ← (
+  ≡(
+    # take the bags for the row
+    °□ ⊡1
+    # get the colors of each bag
+    ⍉ ≡(≡FilterByColor {"red" "green" "blue"}).
+    # get the minimum of each color
+    ≡(/↥ ≡(°□ ⬚0 ⊡ 0_1 °□))
+    # multiply together
+    /×
+  )
+
+  # sum up all the multiplications
+  /+
+)
+PartTwo ParsedLines
