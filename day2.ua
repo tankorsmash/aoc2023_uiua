@@ -1,6 +1,7 @@
 Utils ← &i "utils.ua"
   ToString ← Utils "ToString"
   Helper ← Utils "Helper"
+  H ← Utils "Helper"
   ReadLines ← Utils "ReadLines"
   ReadActual ← Utils "ReadActual"
   ReadSample ← Utils "ReadSample"
@@ -88,7 +89,8 @@ ParsedLines ← ≡(ParseLine) Lines
 ParsedSamples ← ≡(ParseLine) ReadSample 2
 
 SampleRow ← ⊡ 50 ParsedLines
-SampleBag ← ⊡1 °□ ⊡1 SampleRow
+SampleBags ← °□ ⊡1 SampleRow
+SampleBag ← ⊡1 SampleBags
 SampleColor ← ⊢ ⊢ SampleBag
 
 # # # get the limit of green (13)
@@ -102,4 +104,15 @@ PartOne ← (
   ≡⊢ ▽
   /+
 )
-PartOne ParsedLines
+# PartOne ParsedLines
+FilterByColor ← |3 Helper"done" ▽ ? ≡/↥ =□?
+# ≡(≡⊃(FilterByColor"red"|FilterByColor "green"|FilterByColor"blue")). SampleBags
+# ≡(≡(FilterByColor"red")). SampleBags
+# FilterByColor"red" .SampleBags
+
+≡(□ ≡(▽ ≡/↥ =□"green" . °□).) SampleBags
+# rows(rows(▽ ≡/↥ =□"red")) . SampleBags
+# rows unbox
+
+# . °□ ⊢SampleBags
+# ⊃(▽ ≡/↥ =□"red" |▽ ≡/↥ =□"green" |▽ ≡/↥ =□"blue" )
