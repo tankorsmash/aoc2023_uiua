@@ -105,14 +105,6 @@ PartOne ← (
   /+
 )
 # PartOne ParsedLines
-FilterByColor ← |3  under unbox (▽ dip unbox ≡/↥ =□  dip unbox)
-≡(≡⊃(FilterByColor"red"|FilterByColor "green"|FilterByColor"blue")). SampleBags
-# ≡(≡(FilterByColor"red")). SampleBags
-# FilterByColor"red" .SampleBags
 
-# ≡(□ ≡(▽ ≡/↥ =□"green" . °□).) SampleBags
-# rows(rows(▽ ≡/↥ =□"red")) . SampleBags
-# rows unbox
-
-# . °□ ⊢SampleBags
-# ⊃(▽ ≡/↥ =□"red" |▽ ≡/↥ =□"green" |▽ ≡/↥ =□"blue" )
+FilterByColor ← |3 ⍜°□ (▽ ⊙°□ ≡/↥ =□ ⊙°□ H"stack")
+rows join reshape ¯1_2 trans couple≡(≡⊃(FilterByColor"red"|FilterByColor "green"|FilterByColor"blue")). SampleBags
