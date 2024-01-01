@@ -6,10 +6,6 @@ Utils ← &i "utils.ua"
   ReadActual ← Utils "ReadActual"
   ReadSample ← Utils "ReadSample"
 
-# FileName ← "sample_input_day_1.txt"
-# FileName ← "sample2_input_day_1.txt"
-FileName ← "input_day_2.txt"
-
 # Lines ← ReadLines FileName
 Lines ← ReadActual 2
 

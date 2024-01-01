@@ -15,6 +15,11 @@ Lines ← ReadSample 3
 Letters ← {"a" "b" "1" "2" "y" "9"}
 Digits ← ≡(□$"_") ⇡ 10
 
-rows(=Digits) . Letters
+#which elements of input are digit strings
+IsDigit ← |1 /↥ ⍉ ≡(=Digits)
+
+IsDigit Letters
+
+unpack/join keep : Letters
 
 # fork(=@1|=@2) Letters
