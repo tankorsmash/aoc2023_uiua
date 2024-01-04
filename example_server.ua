@@ -38,6 +38,7 @@ Page ← |1 ⍣(
   Response "200 OK"
 )HandlePageLoadError
 Home ← |0 Page "./index.html"
+About ← |0 Page "./about.html"
 
 Respond ← ;spawn(
   # Extract path from request
@@ -46,7 +47,7 @@ Respond ← ;spawn(
   &p.
 
   # Route to handler
-  (Page|Home;) ≍"/".
+  (Home|About;) ? indexof box : { "/" "/about" }.
 
   &p "Response:"
   &pf⧻.
