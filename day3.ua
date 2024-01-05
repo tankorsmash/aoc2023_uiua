@@ -14,14 +14,21 @@ Lines ← ReadSample 3
 
 Letters ← {"a" "b" "1" "2" "y" "9"}
 Digits ← ≡(□$"_") ⇡ 10
+NonDigits = 123
 
 # which elements of input are digit strings
 IsDigit ← |1 /↥ ⍉ ≡(=Digits)
 
-IsDigit Letters
+# pick1 Lines
 
-# unpack/join keep : Letters
+# rows &p Lines
+# ≡(/⊂ ∵°□ IsDigit °□) Lines
 
-≡(/⊂ ∵°□ ? IsDigit °□) Lines
 
-# fork(=@1|=@2) Letters
+FindSymbols = - rows (fork( /join each unbox /join rows IsDigit unbox | unbox !=@.))
+
+FindSymbols Lines
+
+
+
+
