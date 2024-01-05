@@ -23,11 +23,18 @@ ReadLines ← |1 (
   ⊜□≠@\n .
 )
 
+# ReadActual ← (
+#   °⋕
+#   ⊐/⊂{"inputs/actuals/day_" flip ".txt"}
+#   ReadLines
+# )
+
 ReadActual ← (
   °⋕
-  ⊐/⊂{"inputs/actuals/day_" flip ".txt"}
+  $"inputs/_/actuals/day\__.txt"
   ReadLines
 )
+
 
 ReadSample ← (
   °⋕
