@@ -47,7 +47,8 @@ Respond ← ;spawn(
   &p.
 
   # Route to handler
-  (Home|About;) ? indexof box : { "/" "/about" }.
+  {"/" "/about"}.
+  (Home|About|Page) ⊗ □ :
 
   &p "Response:"
   &pf⧻.
