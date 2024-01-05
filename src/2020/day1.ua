@@ -6,6 +6,8 @@ Utils ← &i "../utils.ua"
   ReadActual ← Utils "ReadActual"
   ReadSample ← Utils "ReadSample"
 
+Lines = ReadActual 2020 1
+
 Sample ← $ 1721
          $ 979
          $ 366
@@ -13,7 +15,8 @@ Sample ← $ 1721
          $ 675
          $ 1456
 
-⊜⋕≠@\n.Sample
+# ⊜⋕≠@\n.Sample
+rows parse Lines
 
 
 cross [fork(+|iddipid)   ] .
@@ -27,6 +30,3 @@ keep rows (=2020 first) .
 /* drop1first
 
 
-1
-2020
-ReadActual
