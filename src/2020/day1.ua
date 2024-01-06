@@ -30,23 +30,32 @@ Sample ← ⊜⋕≠@\n.RawSample
 # PartOne Sample
 
 rows parse Lines
+# take 15
+
+# Sample
 
 &p "starting"
-⊠(box keep  IsUnique . select rise . ⊂⊂) ..
+⊠(box keep  IsUnique .  select rise . ⊂⊂) ..
+
+
+&p "keep non empty boxes"
+keep !=0 rows length . deshape
 
 &p "dedup"
-
-dedup select rise . rows unbox keep !=0 rows length . deshape
+dedup select rise . rows unbox 
 
 &p "logic"
-dip (select rise .) rows ( fork(/+|select rise . )) 
+rows ( fork(/+|select rise . )) 
 &p "done"
 
 
+&p "coupling"
 couple rows box dip (rows box)
 trans
 
+&p "keeping 2020 rows"
 keep rows(=box2020 first)  .
+
 first
 
 pick 1
