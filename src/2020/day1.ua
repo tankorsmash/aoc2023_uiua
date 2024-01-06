@@ -8,7 +8,7 @@ Utils ← &i "../utils.ua"
 
 Lines ← ReadActual 2020 1
 
-IsUnique ← /↧ =⇡ ⧻ .⊗ .
+IsUnique ← /↧ = ⇡⧻ .⊗ .
 
 RawSample ← $ 1721
             $ 979
@@ -30,8 +30,11 @@ Sample ← ⊜⋕≠@\n.RawSample
 # PartOne Sample
 
 rows parse Lines
-take 200
+# take 15
+
 # Sample
+# [ 3 2 4 1 ]
+
 
 
 
@@ -39,57 +42,34 @@ take 200
 &p "starting"
 # rows ( fork(/+|id)) keep where (IsUnique . ) reshape ¯1_3 ⊠( ⊂ ⊂) ..
 # rows ( fork(/+|id)) select where  rows (IsUnique . )  reshape ¯1_3 ⊠( ⊂ ⊂) ..
-⊠( ⊂ ⊂) ..
+⊠(box keep  IsUnique . select rise . ⊂⊂) ..
+
 &p "dedup"
-dedup
-&p "crossed"
-reshape ¯1_3 
-&p "reshaped"
-select where rows (IsUnique  . )
-&p "selected"
+
+dedup select rise . rows unbox keep !=0 rows length . deshape
+
+# ?
+# &p "dedup"
+# dedup
+# &p "crossed"
+# reshape ¯1_3
+# &p "reshaped"
+# # select where rows (IsUnique  ) .
+# &p "selected"
+&p "logic"
 dip (select rise .) rows ( fork(/+|select rise . )) 
 &p "done"
 
-.
-dip (dedup indexof . )
-:
-fork (select| select dip:)
-# ;;;
 
-=2020 .
+couple rows box dip (rows box)
+trans
 
-# indexof 
-
-keep dipgap id
-
-dip ;
-.
-first rows /+
+keep rows(=box2020 first)  .
+first
 
 
-&p "all done"
-
-# dd length
-# dip length
-# length 
-# couple box /+ dipbox
+# eventual answer for part 2
+/* [401 661 958]
+&p
 
 
-
-
-# dip select
-# dip ;
-
-
-
-# rows box
-# dip rows box 
-# trans couple
-# keep rows(=box2020 first)  .
-#
-# /* unbox pick 1 first
-#
-# &p $"part two answer is: _"
-#
-
-#  select rise . [3 2 1]
