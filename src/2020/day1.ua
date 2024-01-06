@@ -29,24 +29,67 @@ Sample ← ⊜⋕≠@\n.RawSample
 # PartOne ≡⋕ Lines
 # PartOne Sample
 
-# rows parse Lines
-# take 5
+rows parse Lines
+take 200
+# Sample
 
-Sample
+
 
 # partition (couple  box /+ dipbox. ) ..
 &p "starting"
 # rows ( fork(/+|id)) keep where (IsUnique . ) reshape ¯1_3 ⊠( ⊂ ⊂) ..
-rows ( fork(/+|id)) select where  rows (IsUnique . )  reshape ¯1_3 ⊠( ⊂ ⊂) ..
+# rows ( fork(/+|id)) select where  rows (IsUnique . )  reshape ¯1_3 ⊠( ⊂ ⊂) ..
+⊠( ⊂ ⊂) ..
+&p "dedup"
+dedup
+&p "crossed"
+reshape ¯1_3 
+&p "reshaped"
+select where rows (IsUnique  . )
+&p "selected"
+dip (select rise .) rows ( fork(/+|select rise . )) 
 &p "done"
 
+.
+dip (dedup indexof . )
+:
+fork (select| select dip:)
+# ;;;
 
-rows box
-dip rows box 
-trans couple
-keep rows(=box2020 first)  .
+=2020 .
 
-/* unbox pick 1 first
+# indexof 
 
-&p $"part two answer is: _"
+keep dipgap id
 
+dip ;
+.
+first rows /+
+
+
+&p "all done"
+
+# dd length
+# dip length
+# length 
+# couple box /+ dipbox
+
+
+
+
+# dip select
+# dip ;
+
+
+
+# rows box
+# dip rows box 
+# trans couple
+# keep rows(=box2020 first)  .
+#
+# /* unbox pick 1 first
+#
+# &p $"part two answer is: _"
+#
+
+#  select rise . [3 2 1]
