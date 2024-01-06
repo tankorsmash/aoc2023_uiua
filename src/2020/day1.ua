@@ -30,32 +30,14 @@ Sample ← ⊜⋕≠@\n.RawSample
 # PartOne Sample
 
 rows parse Lines
-# take 15
 
-# Sample
-# [ 3 2 4 1 ]
-
-
-
-
-# partition (couple  box /+ dipbox. ) ..
 &p "starting"
-# rows ( fork(/+|id)) keep where (IsUnique . ) reshape ¯1_3 ⊠( ⊂ ⊂) ..
-# rows ( fork(/+|id)) select where  rows (IsUnique . )  reshape ¯1_3 ⊠( ⊂ ⊂) ..
 ⊠(box keep  IsUnique . select rise . ⊂⊂) ..
 
 &p "dedup"
 
 dedup select rise . rows unbox keep !=0 rows length . deshape
 
-# ?
-# &p "dedup"
-# dedup
-# &p "crossed"
-# reshape ¯1_3
-# &p "reshaped"
-# # select where rows (IsUnique  ) .
-# &p "selected"
 &p "logic"
 dip (select rise .) rows ( fork(/+|select rise . )) 
 &p "done"
@@ -67,9 +49,12 @@ trans
 keep rows(=box2020 first)  .
 first
 
+pick 1
+unbox
+/*
+
 
 # eventual answer for part 2
-/* [401 661 958]
-&p
+&p $"Part 2: _"
 
 
