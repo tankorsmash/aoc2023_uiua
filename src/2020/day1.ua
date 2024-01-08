@@ -60,13 +60,45 @@ PartTwo = (
 	/*
 )
 
-rows parse Lines
-# take 15
+# rows parse Lines
+# # take 15
+#
+# # Sample
+#
+# under now PartTwo
+# &p $"Seconds taken: _"
+# &p $"Part 2: _"
 
-# Sample
 
-under now PartTwo
-&p $"Seconds taken: _"
-&p $"Part 2: _"
+PartOneEx = (
+	cross join . . 
+	res `1_2
+
+	rows (select rise .)
+	select rise .
+	dedup
+	keep rows (IsUnique .) .
+
+	&p "logic"
+	rows ( fork(/+|select rise . )) 
+	&p "done"
+
+
+	&p "coupling"
+	couple rows box dip (rows box)
+	trans
+
+	&p "keeping 2020 rows"
+	keep rows(=box2020 first)  .
+
+	first
+
+	pick 1
+	unbox
+	/*
+)
+
+PartOneEx Sample
+# PartTwoEx Sample
 
 
