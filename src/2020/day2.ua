@@ -12,7 +12,7 @@ RawSample = $ 1-3 a: abcde
 			$ 1-3 b: cdefg
 			$ 2-9 c: ccccccccc
 
-SplitBy! = (
+SplitBy! = |2.1 (
 	part ^1 != dip.
 )
 
@@ -57,11 +57,39 @@ SampleLine
 &p .
 &p "done"
 
+
+
+# length where =@a "abaa"
+
+fork(
+	# password
+	pick 1
+	unbox
+|
+	pick 0
+	unbox
+	fork(
+		#character
+		pick 1
+	|
+		# range
+		unbox pick 0
+	)
+)
+
+# fork dipdipid  "Asd"
+# fork (ididid|ggi)  id
+# fork (dipdipid)  (.:)
+
+
+# TODO: count the letters in the password
+# TODO: figure out if min and 
+
+
 # Sample
 # &p "--parse entire sample--"
 # &p .
 
-# length where =@a "abaa"
 
 
 # under now PartOne Sample
