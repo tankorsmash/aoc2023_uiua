@@ -32,7 +32,7 @@ Sample ← ⊜⋕≠@\n.RawSample
 
 PartTwo = (
 	&p "starting"
-	⊠(box keep  IsUnique .  select rise . ⊂⊂) ..
+	cross(box keep  IsUnique .  select rise . join join) ..
 
 
 	&p "keep non empty boxes"
