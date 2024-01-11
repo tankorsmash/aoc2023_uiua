@@ -31,8 +31,8 @@ Sample ← ⊜⋕≠@\n.RawSample
 
 
 PartTwo = (
-	&p "starting"
-	cross(select rise . join join) ..
+	&p "crossing input with itself"
+	cross( select rise . join join) ..
 
 	&p "reshaping"
 	res `1_3
@@ -46,21 +46,19 @@ PartTwo = (
 
 
 	&p "coupling"
-	&s take 20 .
-	couple rows box dip (rows box)
 	trans
-	&s take 20 .
+	rows join
 
 	&p "keeping 2020 rows"
-	keep rows(=2020 unbox first)  .
+	keep rows(=2020 first)  .
 
 	first
 
-	pick 1
-	unbox
+	drop 1
 	/*
 )
 under now PartTwo rows parse Lines
+# under now PartTwo Sample
 
 PartTwoOptimized = (
 	&p "crossing"
