@@ -57,17 +57,14 @@ PartTwo = (
 	drop 1
 	/*
 )
-under now PartTwo rows parse Lines
+# under now PartTwo rows parse Lines
 # under now PartTwo Sample
 
 PartTwoOptimized = (
 	&p "crossing"
-	cross join . .
+	cross (select rise . join) . .
 	res `1_2
 
-	&p "sorting"
-	rows (select rise .)
-	select rise .
 	&p "dedup"
 	dedup
 	keep rows (IsUnique .)
@@ -122,6 +119,7 @@ PartTwoOptimized = (
 # &p $"Seconds taken: _"
 # &p $"Part 2 (slow): _"
 
-# under now PartTwoOptimized
-# &p $"Seconds taken: _"
-# &p $"Part 2 (optimzied): _"
+# under now PartTwoOptimized Sample
+under now PartTwoOptimized rows parse Lines
+&p $"Seconds taken: _"
+&p $"Part 2 (optimzied): _"
