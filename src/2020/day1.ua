@@ -32,26 +32,27 @@ Sample ← ⊜⋕≠@\n.RawSample
 
 PartTwo = (
 	&p "starting"
-	cross(box keep  IsUnique .  select rise . join join) ..
+	cross(select rise . join join) ..
 
-
-	&p "keep non empty boxes"
-	keep !=0 rows length . deshape
+	&p "reshaping"
+	res `1_3
 
 	&p "dedup"
-	dedup select rise . rows unbox
+	dedup
 
 	&p "logic"
-	rows ( fork(/+|select rise . ))
+	rows ( fork(/+|id ))
 	&p "done"
 
 
 	&p "coupling"
+	&s take 20 .
 	couple rows box dip (rows box)
 	trans
+	&s take 20 .
 
 	&p "keeping 2020 rows"
-	keep rows(=box2020 first)  .
+	keep rows(=2020 unbox first)  .
 
 	first
 
@@ -59,6 +60,7 @@ PartTwo = (
 	unbox
 	/*
 )
+under now PartTwo rows parse Lines
 
 PartTwoOptimized = (
 	&p "crossing"
@@ -115,12 +117,13 @@ PartTwoOptimized = (
 # &p $"Part 2: _"
 
 # range 200
-rows parse Lines
+
+# rows parse Lines
 
 # under now PartTwo
 # &p $"Seconds taken: _"
 # &p $"Part 2 (slow): _"
 
-under now PartTwoOptimized
-&p $"Seconds taken: _"
-&p $"Part 2 (optimzied): _"
+# under now PartTwoOptimized
+# &p $"Seconds taken: _"
+# &p $"Part 2 (optimzied): _"
