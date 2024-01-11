@@ -62,25 +62,33 @@ SampleLine
 # length where =@a "abaa"
 
 fork(
-	# password
-	pick 1
-	unbox
-|
 	pick 0
 	unbox
 	fork(
 		#character
 		pick 1
+		unbox
 	|
 		# range
 		unbox pick 0
 	)
+|
+	# password
+	pick 1
+	unbox
 )
 
-# fork dipdipid  "Asd"
-# fork (ididid|ggi)  id
-# fork (dipdipid)  (.:)
 
+
+
+
+# fork (dip gap id) (H "fork" H H)
+# fork (dip gap id) (length  where = H"fork") @a 123 "aabcad"
+# forkfork (dip id) (dipid) (length  where = H"fork") @a 123 "aabcad"
+fork (dip id) (&p $"num matches: _" . length where = dgi) #@f 123 "aabcad"
+# {fork (dip gap id) (|2 &p . &p "length:" length  where = )} @a "abcd"
+
+# {fork (dip gap id) join} "ab" "DONT JOIN ME" "cd"
 
 # TODO: count the letters in the password
 # TODO: figure out if min and 
