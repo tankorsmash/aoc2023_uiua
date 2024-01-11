@@ -12,22 +12,26 @@ RawSample = $ 1-3 a: abcde
 			$ 1-3 b: cdefg
 			$ 2-9 c: ccccccccc
 
+SplitBy! = (
+	part ^1 != dip.
+)
 
 ParseLine = (
     unbox
 	# rule and password
-	part box !=@:.
+	# part box !=@:.
+	SplitBy! box @:
 
 	# drop leading space in password
-	under (pick) (under unbox (drop1) ) 1
+	under pick (under unbox (drop1) ) 1
 
 	under pick (
 		# split rule into min-max range, and letter
 		under unbox (
-			part box !=@ .
+			SplitBy! box @ #deliberate space
 			under pick (
 				# split min-max range into min and max
-				under unbox (part parse !=@- .)
+				under unbox (SplitBy! parse @- )
 			) 0
 		)
 	) 0
@@ -35,15 +39,9 @@ ParseLine = (
 
 
 SampleLine = ParseLine "1-3 a: abcde"
-SampleLine
-&p "--parse single sample line--"
-&p .
 
 
 Sample ← rows ParseLine ⊜box≠@\n.RawSample
-Sample
-&p "--parse entire sample--"
-&p .
 
 PartOne ← (
 	id
@@ -53,6 +51,17 @@ PartOne ← (
 PartTwo = (
 	id
 )
+
+SampleLine
+&p "--parse single sample line--"
+&p .
+&p "done"
+
+# Sample
+# &p "--parse entire sample--"
+# &p .
+
+# length where =@a "abaa"
 
 
 # under now PartOne Sample
