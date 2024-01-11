@@ -25,7 +25,7 @@ Sample ← ⊜⋕≠@\n.RawSample
   # ▽ ≡(=2020 ⊢) .
 #   /× ↘1⊢
 # )
-# 
+#
 # PartOne ≡⋕ Lines
 # PartOne Sample
 
@@ -39,10 +39,10 @@ PartTwo = (
 	keep !=0 rows length . deshape
 
 	&p "dedup"
-	dedup select rise . rows unbox 
+	dedup select rise . rows unbox
 
 	&p "logic"
-	rows ( fork(/+|select rise . )) 
+	rows ( fork(/+|select rise . ))
 	&p "done"
 
 
@@ -93,15 +93,26 @@ trans
 :
 
 ?
-# rows (.rows(H"inner")fixH"outer" :gap(fix.) )
 
-;;
-
-
-
-
-rows (rows join [[1 2] [11 22]]) [3 4]
-
-fix [[1 2] [11 22]]
-rows (rows join : ) [3 4]
-
+fix
+rows (rows join )
+# ;;
+#
+# # rows (.rows(H"inner")fixH"outer" :gap(fix.) )
+#
+#
+#
+#
+#
+# # rows (rows join [[1 2] [11 22]]) [3 4]
+#
+# # fix [[1 2] [11 22]]
+# # rows (rows join : ) [3 4]
+#
+#
+# [3 4]
+# [[1 2] [11 22]]
+# ?
+# fix
+# rows (rows join )
+#
