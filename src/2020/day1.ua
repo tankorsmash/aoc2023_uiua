@@ -69,7 +69,9 @@ PartTwo = (
 # &p $"Seconds taken: _"
 # &p $"Part 2: _"
 
-cross join . . [10 11 12 13]
+# range 200
+rows parse Lines
+cross join . .
 res `1_2
 
 rows (select rise .)
@@ -92,27 +94,29 @@ trans
 
 :
 
-?
-
 fix
 rows (rows join )
-# ;;
-#
-# # rows (.rows(H"inner")fixH"outer" :gap(fix.) )
-#
-#
-#
-#
-#
-# # rows (rows join [[1 2] [11 22]]) [3 4]
-#
-# # fix [[1 2] [11 22]]
-# # rows (rows join : ) [3 4]
-#
-#
-# [3 4]
-# [[1 2] [11 22]]
-# ?
-# fix
-# rows (rows join )
-#
+
+/join
+rows (select rise .)
+dedup
+
+&p "logic"
+rows ( fork(/+|select rise . ))
+&p "done"
+
+
+&p "coupling"
+couple rows box dip (rows box)
+trans
+
+&p "keeping 2020 rows"
+keep rows(=2020 unbox first )  .
+
+?
+&p "finding first match"
+first
+
+pick 1
+unbox
+/*

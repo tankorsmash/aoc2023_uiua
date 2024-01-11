@@ -10,7 +10,8 @@ Utils ← &i "../utils.ua"
 Neg = ¯1
 
 Lines ← ReadSample 3
-# Lines ← ReadActual 3
+# Lines ← ReadActual 2023 3
+
 
 # SampleSubset = ⊏ +1⇡3 Lines
 # ≡&p SampleSubset
