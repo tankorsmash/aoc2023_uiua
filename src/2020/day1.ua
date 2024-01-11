@@ -61,23 +61,28 @@ PartTwo = (
 )
 
 PartTwoOptimized = (
+	&p "crossing"
 	cross join . .
 	res `1_2
 
+	&p "sorting"
 	rows (select rise .)
 	select rise .
+	&p "dedup"
 	dedup
 	keep rows (IsUnique .)
 
-	:
-	trans
-	:
+	dip trans
 
 	fix
+	&p "joining third number"
 	rows (rows join )
 
+	&p "going to 2d"
 	/join
+	&p "sorting again"
 	rows (select rise .)
+	&p "dedup again"
 	dedup
 
 	&p "logic"
@@ -92,7 +97,6 @@ PartTwoOptimized = (
 	&p "keeping 2020 rows"
 	keep rows(=2020 unbox first )  .
 
-	?
 	&p "finding first match"
 	first
 
@@ -112,11 +116,10 @@ PartTwoOptimized = (
 
 # range 200
 rows parse Lines
-.
 
-under now PartTwo
-&p $"Seconds taken: _"
-&p $"Part 2 (slow): _"
+# under now PartTwo
+# &p $"Seconds taken: _"
+# &p $"Part 2 (slow): _"
 
 under now PartTwoOptimized
 &p $"Seconds taken: _"
