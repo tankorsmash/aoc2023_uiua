@@ -69,36 +69,39 @@ PartTwo = (
 # &p $"Seconds taken: _"
 # &p $"Part 2: _"
 
+cross join . . [10 11 12 13]
+res `1_2
 
-PartOneEx = (
-	cross join . . 
-	res `1_2
-
-	rows (select rise .)
-	select rise .
-	dedup
-	keep rows (IsUnique .) .
-
-	&p "logic"
-	rows ( fork(/+|select rise . )) 
-	&p "done"
+rows (select rise .)
+select rise .
+dedup
+keep rows (IsUnique .)
 
 
-	&p "coupling"
-	couple rows box dip (rows box)
-	trans
+# dip (length .)
 
-	&p "keeping 2020 rows"
-	keep rows(=box2020 first)  .
 
-	first
+# dip repeat box
+:
 
-	pick 1
-	unbox
-	/*
-)
+trans
+# fix
+# rows (des dip . )
 
-PartOneEx Sample
-# PartTwoEx Sample
+# rows (?:)
 
+:
+
+?
+# rows (.rows(H"inner")fixH"outer" :gap(fix.) )
+
+;;
+
+
+
+
+rows (rows join [[1 2] [11 22]]) [3 4]
+
+fix [[1 2] [11 22]]
+rows (rows join : ) [3 4]
 
