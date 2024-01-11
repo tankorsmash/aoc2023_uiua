@@ -60,6 +60,47 @@ PartTwo = (
 	/*
 )
 
+PartTwoOptimized = (
+	cross join . .
+	res `1_2
+
+	rows (select rise .)
+	select rise .
+	dedup
+	keep rows (IsUnique .)
+
+	:
+	trans
+	:
+
+	fix
+	rows (rows join )
+
+	/join
+	rows (select rise .)
+	dedup
+
+	&p "logic"
+	rows ( fork(/+|select rise . ))
+	&p "done"
+
+
+	&p "coupling"
+	couple rows box dip (rows box)
+	trans
+
+	&p "keeping 2020 rows"
+	keep rows(=2020 unbox first )  .
+
+	?
+	&p "finding first match"
+	first
+
+	pick 1
+	unbox
+	/*
+)
+
 # rows parse Lines
 # # take 15
 #
@@ -71,52 +112,12 @@ PartTwo = (
 
 # range 200
 rows parse Lines
-cross join . .
-res `1_2
+.
 
-rows (select rise .)
-select rise .
-dedup
-keep rows (IsUnique .)
+under now PartTwo
+&p $"Seconds taken: _"
+&p $"Part 2 (slow): _"
 
-
-# dip (length .)
-
-
-# dip repeat box
-:
-
-trans
-# fix
-# rows (des dip . )
-
-# rows (?:)
-
-:
-
-fix
-rows (rows join )
-
-/join
-rows (select rise .)
-dedup
-
-&p "logic"
-rows ( fork(/+|select rise . ))
-&p "done"
-
-
-&p "coupling"
-couple rows box dip (rows box)
-trans
-
-&p "keeping 2020 rows"
-keep rows(=2020 unbox first )  .
-
-?
-&p "finding first match"
-first
-
-pick 1
-unbox
-/*
+under now PartTwoOptimized
+&p $"Seconds taken: _"
+&p $"Part 2 (optimzied): _"
