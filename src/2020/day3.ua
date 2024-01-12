@@ -56,10 +56,10 @@ PartTwo = (
 
 
 
-under now PartOne Sample
+# under now PartOne Sample
 under now PartOne Lines
-# &p $"Seconds taken: _"
-# &p $"Part 1:  _"
+&p $"Seconds taken: _"
+&p $"Part 1:  _"
 
 # under now PartTwo Sample
 # under now PartTwo rows ParseLine Lines
