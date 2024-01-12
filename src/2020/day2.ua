@@ -73,21 +73,19 @@ PartOne ← (
 )
 
 PartTwo = (
-	#first
 
-	unbox pick 0 . unbox  pick 0
+	rows (
+		unbox pick 0 . unbox
 
-	dip (pick 1)
+		dip (pick 1)
 
-	fork (unbox first pick 1 | unbox pic 0)
-	:
+		fork (unbox first pick 1 | unbox pic 0)
+		:
+		rows (= pick  dip unbox dip:  -1 )
+		=1 /+
+	)
+	/+
 
-	rows (= ? pick  dip unbox dip: dipdip.  -1 )
-
-
-
-
-	H "part 2"
 )
 
 
@@ -96,8 +94,8 @@ PartTwo = (
 # &p $"Seconds taken: _"
 # &p $"Part 1:  _"
 
-under now PartTwo Sample
-# under now PartTwo rows parse Lines
+# under now PartTwo Sample
+under now PartTwo rows ParseLine Lines
 &p $"Seconds taken: _"
 &p $"Part 2: _"
 
