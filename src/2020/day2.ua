@@ -38,74 +38,67 @@ ParseLine = (
 )
 
 
-SampleLine = ParseLine "1-3 a: abcde"
+SampleLine = ParseLine "1-3 a: abcde" #actual sample
+# SampleLine = ParseLine "1-3 a: abcdaeaa" #modified  sample
 
 
 Sample ← rows ParseLine ⊜box≠@\n.RawSample
 
-PartOne ← (
-	id
-)
-
-
-PartTwo = (
-	id
-)
-
-SampleLine
-&p "--parse single sample line--"
-&p .
-&p "done"
-
-
-
-# length where =@a "abaa"
-
-fork(
-	pick 0
-	unbox
+# parse a line like "1-3 a: abcde", means there's between 1 and 3 a's in the password
+ValidPassword = (
 	fork(
-		#character
+		pick 0
+		unbox
+		fork(
+			#character
+			pick 1
+			unbox
+		|
+			# range
+			unbox pick 0
+		)
+	|
+		# password
 		pick 1
 		unbox
-	|
-		# range
-		unbox pick 0
 	)
-|
-	# password
-	pick 1
-	unbox
+
+
+	fork (dip id) (length where = dgi)
+	gap (/min join fork (>=pick 0|<=pick 1))
+)
+
+PartOne ← (
+	/+ rows ValidPassword
+)
+
+PartTwo = (
+	#first
+
+	unbox pick 0 . unbox  pick 0
+
+	dip (pick 1)
+
+	fork (unbox first pick 1 | unbox pic 0)
+	:
+
+	rows (= ? pick  dip unbox dip: dipdip.  -1 )
+
+
+
+
+	H "part 2"
 )
 
 
-
-
-
-# fork (dip gap id) (H "fork" H H)
-# fork (dip gap id) (length  where = H"fork") @a 123 "aabcad"
-# forkfork (dip id) (dipid) (length  where = H"fork") @a 123 "aabcad"
-fork (dip id) (&p $"num matches: _" . length where = dgi) #@f 123 "aabcad"
-# {fork (dip gap id) (|2 &p . &p "length:" length  where = )} @a "abcd"
-
-# {fork (dip gap id) join} "ab" "DONT JOIN ME" "cd"
-
-# TODO: count the letters in the password
-# TODO: figure out if min and 
-
-
-# Sample
-# &p "--parse entire sample--"
-# &p .
-
-
-
-# under now PartOne Sample
-# under now PartOne rows parse Lines
+# # under now PartOne Sample
+# under now PartOne rows ParseLine Lines
 # &p $"Seconds taken: _"
 # &p $"Part 1:  _"
 
-# under now PartTwo Sample
+under now PartTwo Sample
 # under now PartTwo rows parse Lines
-# &p $"Seconds taken: _"
-# &p $"Part 2: _"
+&p $"Seconds taken: _"
+&p $"Part 2: _"
+
+&p "---------------stack below --------"
