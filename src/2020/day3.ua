@@ -39,6 +39,22 @@ Lines = rows keep length . rows unbox RawLines
 # TrimDump = |0.0 dump try(rows take 10)(dip;)
 TrimDump = |0.0 dump try(rows take 10)(dip;)
 
+HardCodedPartTwo ← (
+	# dipdip (. drop 1)
+	# * dip(+ )    dd(range length) 
+
+	. drop 1
+	*1 +2 range length
+
+	rows pick
+
+	=@#
+
+	keep =0 mod2 range length .
+
+	/+
+)
+
 PartOne ← (
 	dipdip (. drop 1)
 
@@ -50,15 +66,27 @@ PartOne ← (
 )
 
 PartTwo = (
-	rows (PartOne uncouple) [ 1_1 3_1 5_1 7_1 1_2 ] fix
+	.
+	# rows (PartOne uncouple) [ 1_1 3_1 5_1 7_1 1_2 ] fix
+	rows (PartOne uncouple) [ 1_1 3_1 5_1 7_1 ] fix
 	/*
-	# PartOne 1 2 Sample
-	# assert "`PartOne 1 2 Sample` needs to be 2" =2 .
+
+	# PartOne 1 1
+	HardCodedPartTwo :
+
+	*
+
+	?
+
+	# assert $"`PartOne 1 2 Sample` should be 2" =2 .
 
 	# fork (PartOne 1 1| PartOne 3 1| )
 )
 
-PartTwo Sample  
+# keep (mod1 . range 10
+
+# PartTwo Sample  
+PartTwo Lines
 
 # under now PartOne 3 1 Sample  
 # under now PartOne Sample [1 3]
