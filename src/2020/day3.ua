@@ -41,7 +41,6 @@ TrimDump = |0.0 dump try(rows take 10)(dip;)
 
 PartOne ← (
 	dipdip (. drop 1)
-	TrimDump
 
 	* dip(+ )    dd(range length) 
 
@@ -51,15 +50,17 @@ PartOne ← (
 )
 
 PartTwo = (
-	. drop 1
-	*3 +1 range length
+	rows (PartOne uncouple) [ 1_1 3_1 5_1 7_1 1_2 ] fix
+	/*
+	# PartOne 1 2 Sample
+	# assert "`PartOne 1 2 Sample` needs to be 2" =2 .
 
-	rows pick
-
-	/+ =@#
+	# fork (PartOne 1 1| PartOne 3 1| )
 )
 
-under now PartOne 3 1 Sample  
+PartTwo Sample  
+
+# under now PartOne 3 1 Sample  
 # under now PartOne Sample [1 3]
 # under now PartOne Lines
 
