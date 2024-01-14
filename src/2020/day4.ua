@@ -6,6 +6,7 @@ Utils ← &i "../utils.ua"
   ReadActual ← Utils "ReadActual"
   ReadSample ← Utils "ReadSample"
   SplitBy! ← Utils "SplitBy!"
+  TrimDump ← Utils "TrimDump"
 
 
 RawLines ← ReadActual 2020 4
@@ -82,7 +83,21 @@ part box +1 != @\n Example
 != 1 find box"\n\n" .
 part box
 
-rows &s
+# rows (under unbox (keep != @\n ?).)
+
+first
+unbox
+
+.
+= @\n
+!= 1
+
+H "outer"
+
+# rows (under unbox (keep dipunbox))
+
+# keep [1 1 1 1 1 1 1 1 1 1 1 ] "line1 part1"
+
 
 
 &p "@@@@@@@@@@@@@@@ stack below @@@@@@@@@@@@@@@@\n"
