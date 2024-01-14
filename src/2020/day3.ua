@@ -40,13 +40,8 @@ Lines = rows keep length . rows unbox RawLines
 TrimDump = |0.0 dump try(rows take 10)(dip;)
 
 HardCodedPartTwo ← (
-	# dipdip (. drop 1)
-	# * dip(+ )    dd(range length) 
-
-
-	drop 1
-	TrimDump
-	keep =0 mod2 range length .
+	# drop 1
+	keep =0 mod2 +1 range length .
 	# TrimDump
 
 	+1 range length .
@@ -54,8 +49,6 @@ HardCodedPartTwo ← (
 	rows pick
 
 	=@#
-
-	?
 
 	/+
 )
@@ -82,8 +75,6 @@ PartTwo = (
 
 	/*
 
-	?
-
 	# assert $"`PartOne 1 2 Sample` should be 2" =2 .
 
 	# fork (PartOne 1 1| PartOne 3 1| )
@@ -91,10 +82,13 @@ PartTwo = (
 
 # keep (mod1 . range 10
 
-# PartTwo Sample  
-PartTwo Lines
-$"Wrong answer for: `PartTwo Lines`!\nshould be:\n\t2122848000\nbut was:\n\t_"
-assert : =2122848000 .
+PartTwo Sample  
+$"Wrong answer for: `PartTwo Sample`!\nshould be:\n\t336\nbut was:\n\t_" .
+assert : ? =336 :
+
+# PartTwo Lines
+# $"Wrong answer for: `PartTwo Lines`!\nshould be:\n\t2122848000\nbut was:\n\t_"
+# assert : =2122848000 .
 
 # under now PartOne 3 1 Sample  
 # under now PartOne Sample [1 3]
