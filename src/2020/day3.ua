@@ -93,6 +93,8 @@ PartTwo = (
 
 # PartTwo Sample  
 PartTwo Lines
+$"Wrong answer for: `PartTwo Lines`!\nshould be:\n\t2122848000\nbut was:\n\t_"
+assert : =2122848000 .
 
 # under now PartOne 3 1 Sample  
 # under now PartOne Sample [1 3]
