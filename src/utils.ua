@@ -41,3 +41,8 @@ ReadSample ← (
   ⊐/⊂{"inputs/samples/day_" ⊙⊙;, ".txt"}
   ReadLines
 )
+
+SplitBy! = |2.1 (
+	part ^1 != dip.
+)
+
