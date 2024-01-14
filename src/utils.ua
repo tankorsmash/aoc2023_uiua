@@ -46,3 +46,5 @@ SplitBy! = |2.1 (
 	part ^1 != dip.
 )
 
+# like ? but tries taking only 10 lines of the list if its an array
+TrimDump = |0.0 dump try(rows take 10)(dip;)

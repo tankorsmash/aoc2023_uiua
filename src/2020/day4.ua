@@ -26,31 +26,8 @@ RawSample = $ ecl:gry pid:860033327 eyr:2020 hcl:#fffffd
 
 SampleLines = SplitBy! box @\n RawSample
 
-# ParseLine = |2.1 (
-#     row keep
-# )
-
-
 Sample ← rows keep length . SampleLines
 Lines = rows keep length . RawLines
-
-
-# TrimDump = |0.0 dump try(rows take 10)(dip;)
-TrimDump = |0.0 dump try(rows take 10)(dip;)
-
-HardCodedPartTwo ← (
-	# drop 1
-	keep =0 mod2 range length .
-	# TrimDump
-
-	range length .
-
-	rows pick
-
-	=@#
-
-	/+
-)
 
 PartOne ← (
 	id
@@ -60,7 +37,8 @@ PartTwo = (
 	id
 )
 
-# answer for part 1 is : 233
+# answer for part 1 (sample) is : 2
+# answer for part 1 (actual) is : 233
 
 # PartTwo Sample
 # .
@@ -84,4 +62,19 @@ PartTwo = (
 # &p $"Seconds taken: _"
 # &p $"Part 2: _"
 
-&p "@@@@@@@@@@@@@@@ stack below @@@@@@@@@@@@@@@@"
+Example = $ line1
+		  $ line2
+		  $
+		  $ newgroup1
+		  $ newgroup2
+		  $ newgroup3
+		  $ newgroup4
+		  $
+		  $ third1
+		  $ third2
+		  $ third3
+
+
+
+
+&p "@@@@@@@@@@@@@@@ stack below @@@@@@@@@@@@@@@@\n"
