@@ -35,11 +35,21 @@ ReadActual ← (
   ReadLines
 )
 
+ReadRawActual ← (
+  °⋕
+  $"inputs/_/actuals/day\__.txt"
+)
+
 
 ReadSample ← (
   °⋕
   ⊐/⊂{"inputs/samples/day_" ⊙⊙;, ".txt"}
   ReadLines
+)
+
+ReadRawSample ← (
+  °⋕
+  ⊐/⊂{"inputs/samples/day_" ⊙⊙;, ".txt"}
 )
 
 SplitBy! = |2.1 (

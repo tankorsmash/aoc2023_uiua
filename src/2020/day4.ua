@@ -4,12 +4,15 @@ Utils ← &i "../utils.ua"
   H ← Utils "Helper"
   ReadLines ← Utils "ReadLines"
   ReadActual ← Utils "ReadActual"
+  ReadRawActual ← Utils "ReadRawActual"
   ReadSample ← Utils "ReadSample"
+  ReadRawSample ← Utils "ReadRawSample"
   SplitBy! ← Utils "SplitBy!"
   TrimDump ← Utils "TrimDump"
 
 
 RawLines ← ReadActual 2020 4
+RawActual = ReadRawActual 2020 4
 
 RawSample = $ ecl:gry pid:860033327 eyr:2020 hcl:#fffffd
 			$ byr:1937 iyr:2017 cid:147 hgt:183cm
@@ -46,6 +49,9 @@ ParseInput = (
 		keep !=0 rows length.
 		box
 	)
+
+	# under unbox id
+	H"rows"
 )
 
 PartOne ← (
@@ -82,7 +88,8 @@ PartTwo = (
 # &p $"Part 2: _"
 
 # Example
-RawSample
+# RawSample
+RawActual
 
 
 ParseInput
