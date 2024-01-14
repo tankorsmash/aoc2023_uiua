@@ -44,13 +44,13 @@ ReadRawActual ← (
 
 ReadSample ← (
   °⋕
-  ⊐/⊂{"inputs/samples/day_" ⊙⊙;, ".txt"}
+  $"inputs/_/samples/day\__.txt"
   ReadLines
 )
 
 ReadRawSample ← (
   °⋕
-  ⊐/⊂{"inputs/samples/day_" ⊙⊙;, ".txt"}
+  $"inputs/_/samples/day\__.txt"
   &fras
 )
 
