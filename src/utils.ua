@@ -38,6 +38,7 @@ ReadActual ← (
 ReadRawActual ← (
   °⋕
   $"inputs/_/actuals/day\__.txt"
+  &fras
 )
 
 
@@ -50,6 +51,7 @@ ReadSample ← (
 ReadRawSample ← (
   °⋕
   ⊐/⊂{"inputs/samples/day_" ⊙⊙;, ".txt"}
+  &fras
 )
 
 SplitBy! = |2.1 (
