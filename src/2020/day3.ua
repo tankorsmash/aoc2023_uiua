@@ -43,14 +43,19 @@ HardCodedPartTwo ← (
 	# dipdip (. drop 1)
 	# * dip(+ )    dd(range length) 
 
-	. drop 1
-	*1 +2 range length
+
+	drop 1
+	TrimDump
+	keep =0 mod2 range length .
+	# TrimDump
+
+	+1 range length .
 
 	rows pick
 
 	=@#
 
-	keep =0 mod2 range length .
+	?
 
 	/+
 )
@@ -69,12 +74,13 @@ PartTwo = (
 	.
 	# rows (PartOne uncouple) [ 1_1 3_1 5_1 7_1 1_2 ] fix
 	rows (PartOne uncouple) [ 1_1 3_1 5_1 7_1 ] fix
-	/*
 
 	# PartOne 1 1
 	HardCodedPartTwo :
 
-	*
+	join :
+
+	/*
 
 	?
 
