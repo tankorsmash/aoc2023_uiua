@@ -62,8 +62,8 @@ PartTwo = (
 # &p $"Seconds taken: _"
 # &p $"Part 2: _"
 
-Example = $ line1
-		  $ line2
+Example = $ line1 part1
+		  $ line2 part1
 		  $
 		  $ newgroup1
 		  $ newgroup2
@@ -74,7 +74,15 @@ Example = $ line1
 		  $ third2
 		  $ third3
 
+Example
 
+part box +1 != @\n Example
+
+
+!= 1 find box"\n\n" .
+part box
+
+rows &s
 
 
 &p "@@@@@@@@@@@@@@@ stack below @@@@@@@@@@@@@@@@\n"
