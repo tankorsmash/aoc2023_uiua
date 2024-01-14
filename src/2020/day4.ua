@@ -30,6 +30,24 @@ SampleLines = SplitBy! box @\n RawSample
 Sample ← rows keep length . SampleLines
 Lines = rows keep length . RawLines
 
+
+ParseInput = (
+	part box +1 != @\n .
+	!= 1 find box"\n\n" .
+	part box
+
+	rows (
+		unbox
+
+		.
+		= @\n
+		!= 1
+		rows (under unbox (keep dipunbox))
+		keep !=0 rows length.
+		box
+	)
+)
+
 PartOne ← (
 	id
 )
@@ -63,39 +81,11 @@ PartTwo = (
 # &p $"Seconds taken: _"
 # &p $"Part 2: _"
 
-Example = $ line1 part1
-		  $ line2 part1
-		  $
-		  $ newgroup1
-		  $ newgroup2
-		  $ newgroup3
-		  $ newgroup4
-		  $
-		  $ third1
-		  $ third2
-		  $ third3
-
-Example
-
-part box +1 != @\n Example
+# Example
+RawSample
 
 
-!= 1 find box"\n\n" .
-part box
-
-# rows (under unbox (keep != @\n ?).)
-
-rows (
-		unbox
-
-		.
-		= @\n
-		!= 1
-		rows (under unbox (keep dipunbox))
-		H "ASD"
-		keep !=0 rows length.
-		box
-)
+ParseInput
 
 rows &p .
 
