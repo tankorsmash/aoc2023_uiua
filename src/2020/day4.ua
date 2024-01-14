@@ -10,44 +10,41 @@ Utils ← &i "../utils.ua"
   SplitBy! ← Utils "SplitBy!"
   TrimDump ← Utils "TrimDump"
 
-
 RawLines ← ReadActual 2020 4
-RawActual = ReadRawActual 2020 4
-RawSample = ReadRawSample 2020 4
+RawActual ← ReadRawActual 2020 4
+RawSample ← ReadRawSample 2020 4
 
+SampleLines ← SplitBy!□ @\n RawSample
 
-SampleLines = SplitBy! box @\n RawSample
+Sample ← ≡▽ ⧻ . SampleLines
+Lines ← ≡▽ ⧻ . RawLines
 
-Sample ← rows keep length . SampleLines
-Lines = rows keep length . RawLines
+ParseInput ← (
+  ⊜□ +1 ≠ @\n .
+  ≠ 1 ⌕ □"\n\n" .
+  ⊜□
 
+  ≡(
+    °□
 
-ParseInput = (
-	part box +1 != @\n .
-	!= 1 find box"\n\n" .
-	part box
+    .
+    = @\n
+    ≠ 1
+    ≡(⍜°□ (▽ ⊙°□))
+    ▽ ≠0 ≡⧻.
+    □
+  )
 
-	rows (
-		unbox
-
-		.
-		= @\n
-		!= 1
-		rows (under unbox (keep dipunbox))
-		keep !=0 rows length.
-		box
-	)
-
-	# under unbox id
-	H"rows"
+  # under unbox id
+  H"rows"
 )
 
 PartOne ← (
-	id
+  ∘
 )
 
-PartTwo = (
-	id
+PartTwo ← (
+  ∘
 )
 
 # answer for part 1 (sample) is : 2
@@ -57,7 +54,7 @@ PartTwo = (
 # .
 # $"Wrong answer for: `PartTwo Sample`!\nshould be:\n\t336\nbut was:\n\t_"
 # assert : =336 :
-#
+# 
 # PartTwo Lines
 # .
 # $"Wrong answer for: `PartTwo Lines`!\nshould be:\n\t2122848000\nbut was:\n\t_"
@@ -79,13 +76,6 @@ PartTwo = (
 RawSample
 # RawActual
 
-
 ParseInput
-
-rows &p .
-
-
-
-
 
 &p "@@@@@@@@@@@@@@@ stack below @@@@@@@@@@@@@@@@\n"
