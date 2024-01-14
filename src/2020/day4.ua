@@ -85,18 +85,21 @@ part box
 
 # rows (under unbox (keep != @\n ?).)
 
-first
-unbox
+rows (
+		unbox
 
-.
-= @\n
-!= 1
+		.
+		= @\n
+		!= 1
+		rows (under unbox (keep dipunbox))
+		H "ASD"
+		keep !=0 rows length.
+		box
+)
 
-H "outer"
+rows &p .
 
-# rows (under unbox (keep dipunbox))
 
-# keep [1 1 1 1 1 1 1 1 1 1 1 ] "line1 part1"
 
 
 
