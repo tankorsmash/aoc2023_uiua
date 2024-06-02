@@ -1,11 +1,11 @@
 ~ "../utils.ua" ~ Helper ReadActual ReadLines ReadSample ToString
 
-H = Helper
+H ← Helper
 
 # easier to type than ¯1
 Neg ← ¯1
 
-Lines ← ReadSample 2023 3
+Lines ← rows unbox ReadSample 2023 3
 # Lines ← ReadActual 2023 3
 
 # SampleSubset = ⊏ +1⇡3 Lines
@@ -23,8 +23,20 @@ IsDigit ← |1 /↥ ⍉ ≡(=Digits)
 # rows &p Lines
 # ≡(/⊂ ∵°□ IsDigit °□) Lines
 
-FindSymbols ← - ≡(⊃(/⊂ ∵°□ /⊂ ≡IsDigit °□|°□ ≠@.))
+FindSymbols ← - ≡(/⊂◇⊃(∵°□≡IsDigit)(≠@.))
 
-FindSymbols Lines
+# /content join Lines
 
-≡(↯ 3_1) ◫ 3 Lines
+# FindSymbols Lines
+≡&p Lines
+
+FlatArr ← /◇⊂ Lines
+ColsAcross ← ◇⧻ ⊢ Lines
+
+
+Lines
+pick 0_0 Lines
+
+ColsAcross
+
+# ≡(↯ 3_1) ◫ 3 Lines
