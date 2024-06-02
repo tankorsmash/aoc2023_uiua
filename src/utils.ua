@@ -9,10 +9,10 @@ IsTrue ← °□ ⊏ ⊙{"False" "True"} =1
 ToString ← $"_"
 
 # prints the stack but takes a string too
-Helper ← |1.0 ;?
+Helper ← id?
 
 # Joins strings together
-StringJoin ← ⊐/⊂
+StringJoin ← ◇/⊂
 
 # read lines of a file
 # then split by newlines and box
@@ -41,7 +41,6 @@ ReadRawActual ← (
   &fras
 )
 
-
 ReadSample ← (
   °⋕
   $"inputs/_/samples/day\__.txt"
@@ -54,9 +53,9 @@ ReadRawSample ← (
   &fras
 )
 
-SplitBy! = |2.1 (
-	part ^1 != dip.
+SplitBy! ← |2 (
+  ⊜^!≠ ⊙.
 )
 
 # like ? but tries taking only 10 lines of the list if its an array
-TrimDump = |0.0 dump try(rows take 10)(dip;)
+TrimDump ← |0.0 dump⍣(≡↙ 10)(⊙◌)

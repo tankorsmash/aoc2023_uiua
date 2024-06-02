@@ -1,17 +1,12 @@
-Utils ← &i "../utils.ua"
-  ToString ← Utils "ToString"
-  Helper ← Utils "Helper"
-  H ← Utils "Helper"
-  ReadLines ← Utils "ReadLines"
-  ReadActual ← Utils "ReadActual"
-  ReadSample ← Utils "ReadSample"
+~ "../utils.ua" ~ Helper ReadActual ReadLines ReadSample ToString
+
+H = Helper
 
 # easier to type than ¯1
-Neg = ¯1
+Neg ← ¯1
 
-Lines ← ReadSample 3
+Lines ← ReadSample 2023 3
 # Lines ← ReadActual 2023 3
-
 
 # SampleSubset = ⊏ +1⇡3 Lines
 # ≡&p SampleSubset
@@ -32,5 +27,4 @@ FindSymbols ← - ≡(⊃(/⊂ ∵°□ /⊂ ≡IsDigit °□|°□ ≠@.))
 
 FindSymbols Lines
 
-
-rows (reshape 3_1)  windows 3 Lines
+≡(↯ 3_1) ◫ 3 Lines

@@ -14,15 +14,31 @@ RawLines ← ReadActual 2020 4
 RawActual ← ReadRawActual 2020 4
 RawSample ← ReadRawSample 2020 4
 
+SubSample = $ ecl:gry pid:860033327 eyr:2020 hcl:#fffffd
+			$ byr:1937 iyr:2017 cid:147 hgt:183cm
+			$ 
+
+
+
 SampleLines ← SplitBy!□ @\n RawSample
 
 Sample ← ≡▽ ⧻ . SampleLines
 Lines ← ≡▽ ⧻ . RawLines
 
+ParseEntry = (
+	under unbox (SplitBy! box @: )
+)
+
 ParseInput ← (
-  ⊜□ +1 ≠ @\n .
-  ≠ 1 ⌕ □"\n\n" .
-  ⊜□
+  # ⊜□ +1 ≠ @\n .
+  # ≠ 1 ⌕ □"\n\n" .
+  # ⊜□
+
+	.
+	find "\n\n"
+
+	partition box +1
+	keep !=1 each ( length) .
 
   ≡(
     °□
@@ -32,11 +48,15 @@ ParseInput ← (
     ≠ 1
     ≡(⍜°□ (▽ ⊙°□))
     ▽ ≠0 ≡⧻.
+	unpack /join
+
+	SplitBy! box @ #
     □
   )
 
-  # under unbox id
-  H"rows"
+  rows (under unbox rows ParseEntry)
+  # rows (box partition != 0 length.)
+  
 )
 
 PartOne ← (
@@ -72,10 +92,27 @@ PartTwo ← (
 # &p $"Seconds taken: _"
 # &p $"Part 2: _"
 
-# Example
-RawSample
 # RawActual
+RawSample
+# SubSample
 
-ParseInput
+# ParseInput
+# ⊜□ +1 ≠ @\n .
+
+.
+find "\n\n"
+
+partition box +1
+keep !=1 each ( length) .
+
+
+
+rows (
+keep : range length . find @\n . unbox
+
+under pick (@ ;)
+)
+
+
 
 &p "@@@@@@@@@@@@@@@ stack below @@@@@@@@@@@@@@@@\n"
