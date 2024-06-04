@@ -28,30 +28,49 @@ FindSymbols ← - ≡(/⊂◇⊃(∵°□≡IsDigit)(≠@.))
 # /content join Lines
 
 Symbols ← FindSymbols Lines
-≡&p Lines
+≡&p ≡(⊂ @ /◇⊂ ∵⊂ @ )Lines
 
 FlatLines ← /◇⊂ Lines
 ColsAcross ← ◇⧻ ⊢ Lines
 
 Enumerate ← ∵⇌ ⍉ ⊟ ⊃(⇡⧻)(∵□)
 
-Enumerate FlatLines
-
-# takes x and y, LookupIndex x y
-LookupByIndex ← ⊃(°□ ⊡0|°□ ⊡1) ⊡
+LookupByIndex ← ⊃(°□ ⊡0|°□ ⊡1) ⊡ : (Enumerate FlatLines)
+# takes x and y, LookupIndex x y -> @7, 42 on stack
 LookupByCoord ← LookupByIndex + × ColsAcross
-LookupByCoord 4 2
 
-HasAdjacentSymbolInDir! ← ⊡ : /◇⊂ Symbols ^!
+HasAdjacentSymbolInDir ← fill0⊡ : /◇⊂ Symbols
 HasAdjacentSymbolInAnyDir ← (
-  /↥[
+  [
     ⊃(
-      HasAdjacentSymbolInDir!(+ ColsAcross)
-    | HasAdjacentSymbolInDir!(+ 1)
-    | HasAdjacentSymbolInDir!(- 1)
-    | HasAdjacentSymbolInDir!(- ColsAcross)
+      HasAdjacentSymbolInDir(+ (ColsAcross))
+    | HasAdjacentSymbolInDir(+ 1)
+    | HasAdjacentSymbolInDir(- 1)
+    | HasAdjacentSymbolInDir(- (ColsAcross))
     )  ]
+	/max
 )
+IsNotPeriod ← (≠@.)
+
+# HasAdjacentSymbolInDir 13
+HasAdjacentSymbolInAnyDir 3
+
+HasAdjacentSymbolInAnyDir 99
+
+# fill 999 pick 10 range 10
+
+
+# ↯ (△ Lines) ∵(/max[HasAdjacentSymbolInAnyDir (≠@. ◌ LookupByIndex)]) ⇡ ⧻ FlatLines
+# ↯ (△ Lines) ∵(fork(HasAdjacentSymbolInAnyDir)(IsNotPeriod) ) ⇡ ⧻ FlatLines
+# ↯ (△ Lines) rows(/min[fork (HasAdjacentSymbolInAnyDir unbox pick 0)(unbox IsNotPeriod pick 1) ] ) Enumerate FlatLines
+# ↯ (△ Lines) ∵(Qwe) ⇡ ⧻ FlatLines
+# LookupByCoord 4 2
+
+# digits next to a symbol
+↯ (△ Lines) rows(/min[fork (HasAdjacentSymbolInAnyDir unbox pick 0)(unbox IsNotPeriod pick 1) ] ) Enumerate FlatLines
+
+# all the numbers in the grid
+part box (each (/min [fork IsNotPeriod (unfix unbox IsDigit)]) FlatLines ) FlatLines
 
 # Lines
 # pick 0_0 Lines
