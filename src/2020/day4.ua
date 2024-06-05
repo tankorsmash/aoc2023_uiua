@@ -135,12 +135,12 @@ GetKeys ← (
 
 HasAllKeys ← /↧ ∊ FieldsWithoutCID
 
-ValidateBYR = (
-	 .
-	 /min [fork (unbox /min (each (IsDigit (fill (neg1) parse)))) (/min =4 len) ]
-	 # &p. 
-	 (0 pop | /min [fork (>= 1920 )(<= 2002)] parse )
-	)
+ValidateBYR ← (
+  .
+  /↧ [⊃(°□ /↧ (∵(IsDigit (⬚(¯1) ⋕)))) (/↧ =4 ⧻)]
+  # &p.
+  ⟨0 ◌|/↧ [⊃(≥ 1920)(≤ 2002)] ⋕⟩
+)
 
 # ValidateBYR "2002"
 
