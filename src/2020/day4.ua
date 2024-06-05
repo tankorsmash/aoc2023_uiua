@@ -87,6 +87,11 @@ PartTwo ← (
 # ParseInput
 # ⊜□ +1 ≠ @\n .
 
+# numbers 0-9
+Digits ← ≡(□) ⇡10
+# which elements of input are digit strings
+IsDigit ← |1 /↥ (=Digits)
+
 # birth year
 BYR ← "byr"
 # issue year
@@ -130,6 +135,21 @@ GetKeys ← (
 
 HasAllKeys ← /↧ ∊ FieldsWithoutCID
 
+ValidateBYR = (0 pop | parse ) (/min [fork( unbox /min (each IsDigit)) (/min=4 len) ]) .
+
+ValidateBYR "1919"
+= 0
+ValidateBYR "1920"
+= 1
+ValidateBYR "2002"
+= 1
+ValidateBYR "2003"
+= 0
+ValidateBYR "alll"
+= 0
+ValidateBYR "_"
+= 0
+
 # RawActual
 # RawSample
 # SubSample
@@ -140,7 +160,7 @@ PartOne ← (
   /+
 )
 
-PartOne RawActual
+# PartOne RawActual
 
 # keep !="\n"
 #
