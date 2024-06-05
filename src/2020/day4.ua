@@ -104,20 +104,23 @@ PID ← "pid"
 # country id
 CID ← "cid"
 
-.
-# &s .
-find "\n\n"
-# replace first index with 1, so it is kept
-under pick pop 0 : 1 
-partition box \+
+Fields ← {BYR IYR EYR HGT HCL ECL PID CID}
 
-# each &s .
+ParseGroups ← (
+  .
+  ⌕ "\n\n"
+  # replace first index with 1, so it is kept
+  ⍜⊡ ◌ 0 : 1
+  ⊜□ \+
 
-# replace all newlines with spaces
-each (under unbox( under keep rows gap ∘ =, @\n  : @ ))
-# split on spaces
-each (under unbox (part box !=@  . ))
-each (&s )
+  # replace all newlines with spaces
+  ∵(⍜°□(⍜▽ ≡⋅∘ =, @\n : @ ))
+  # split on spaces
+  ∵(⍜°□ (⊜□ ≠@  .))
+  .
+  ∵(&s)
+)
+ParseGroups
 # keep !="\n"
 #
 #
