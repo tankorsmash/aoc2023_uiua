@@ -39,7 +39,7 @@ LookupByIndex ← ⊃(°□ ⊡0|°□ ⊡1) ⊡ : (Enumerate FlatLines)
 # takes x and y, LookupIndex x y -> @7, 42 on stack
 LookupByCoord ← LookupByIndex + × ColsAcross
 
-HasAdjacentSymbolInDir ← fill0⊡ : /◇⊂ Symbols
+HasAdjacentSymbolInDir ← ⬚0⊡ : /◇⊂ Symbols
 HasAdjacentSymbolInAnyDir ← (
   [
     ⊃(
@@ -47,18 +47,21 @@ HasAdjacentSymbolInAnyDir ← (
     | HasAdjacentSymbolInDir(+ 1)
     | HasAdjacentSymbolInDir(- 1)
     | HasAdjacentSymbolInDir(- (ColsAcross))
+    | HasAdjacentSymbolInDir(- 1 - (ColsAcross))
+    | HasAdjacentSymbolInDir(+ 1 - (ColsAcross))
+    | HasAdjacentSymbolInDir(- 1 + (ColsAcross))
+    | HasAdjacentSymbolInDir(+ 1 + (ColsAcross))
     )  ]
-	/max
+  /↥
 )
 IsNotPeriod ← (≠@.)
 
 # HasAdjacentSymbolInDir 13
-HasAdjacentSymbolInAnyDir 3
+# HasAdjacentSymbolInAnyDir 3
 
-HasAdjacentSymbolInAnyDir 99
+# HasAdjacentSymbolInAnyDir 99
 
 # fill 999 pick 10 range 10
-
 
 # ↯ (△ Lines) ∵(/max[HasAdjacentSymbolInAnyDir (≠@. ◌ LookupByIndex)]) ⇡ ⧻ FlatLines
 # ↯ (△ Lines) ∵(fork(HasAdjacentSymbolInAnyDir)(IsNotPeriod) ) ⇡ ⧻ FlatLines
@@ -67,10 +70,25 @@ HasAdjacentSymbolInAnyDir 99
 # LookupByCoord 4 2
 
 # digits next to a symbol
-↯ (△ Lines) rows(/min[fork (HasAdjacentSymbolInAnyDir unbox pick 0)(unbox IsNotPeriod pick 1) ] ) Enumerate FlatLines
+DigitsNextToASymbol = ↯ (△ Lines) ≡(/↧[⊃(HasAdjacentSymbolInAnyDir °□ ⊡ 0)(°□ IsNotPeriod ⊡ 1)]) Enumerate FlatLines
 
 # all the numbers in the grid
-part box (each (/min [fork IsNotPeriod (unfix unbox IsDigit)]) FlatLines ) FlatLines
+AllNumbersInGrid = ⊜□ (∵(/↧ [⊃IsNotPeriod (°¤ °□ IsDigit)]) FlatLines) FlatLines
+
+# the number in the grid
+DigitsInGrid = ↯ (△ Lines) (∵(/↧ [⊃IsNotPeriod (°¤ °□ IsDigit)]) FlatLines)
+
+AllNumbersInGrid
+
+DigitsInGrid
+DigitsNextToASymbol
+
+# /◇⊂ Lines
+
+# unbox first AllNumbersInGrid
+
+# indexof  range len FlatLines
+# TODO: might be a duplicate number
 
 # Lines
 # pick 0_0 Lines
