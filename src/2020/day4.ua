@@ -104,7 +104,9 @@ PID ← "pid"
 # country id
 CID ← "cid"
 
-Fields ← select rise .{BYR IYR EYR HGT HCL ECL PID CID}
+Fields ← ⊏ ⍏ .{BYR IYR EYR HGT HCL ECL PID CID}
+# Fields without CID
+FieldsWithoutCID ← ⊏ ⍏ .{BYR IYR EYR HGT HCL ECL PID}
 
 ParsePassports ← (
   .
@@ -126,19 +128,19 @@ GetKeys ← (
   ⊏ ⍏ .
 )
 
-HasAllKeys = /min member Fields
+HasAllKeys ← /↧ ∊ FieldsWithoutCID
 
 # RawActual
-RawSample
+# RawSample
 # SubSample
 
-ParsePassports
+PartOne ← (
+  ParsePassports
+  ≡(HasAllKeys GetKeys °□)
+  /+
+)
 
-# pick 0
-# unbox
-# GetKeys
-# HasAllKeys
-rows ( HasAllKeys  GetKeys unbox)
+PartOne RawActual
 
 # keep !="\n"
 #
