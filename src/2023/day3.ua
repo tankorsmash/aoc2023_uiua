@@ -78,12 +78,16 @@ AllNumbersInGrid = ⊜□ (∵(/↧ [⊃IsNotPeriod (°¤ °□ IsDigit)]) FlatL
 # the number in the grid
 DigitsInGrid = ↯ (△ Lines) (∵(/↧ [⊃IsNotPeriod (°¤ °□ IsDigit)]) FlatLines)
 
-AllNumbersInGrid
+# AllNumbersInGrid
+# DigitsInGrid
+# DigitsNextToASymbol
 
-DigitsInGrid
-DigitsNextToASymbol
 
-# /◇⊂ Lines
+
+/◇⊂ Lines
+.
+
+
 
 # unbox first AllNumbersInGrid
 

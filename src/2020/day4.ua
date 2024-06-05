@@ -1,32 +1,21 @@
-Utils ← &i "../utils.ua"
-  ToString ← Utils "ToString"
-  Helper ← Utils "Helper"
-  H ← Utils "Helper"
-  ReadLines ← Utils "ReadLines"
-  ReadActual ← Utils "ReadActual"
-  ReadRawActual ← Utils "ReadRawActual"
-  ReadSample ← Utils "ReadSample"
-  ReadRawSample ← Utils "ReadRawSample"
-  SplitBy! ← Utils "SplitBy!"
-  TrimDump ← Utils "TrimDump"
+Utils ~ "../utils.ua" ~ Helper ReadActual ReadLines ReadRawActual ReadRawSample ReadSample SplitBy! ToString TrimDump
+
+H ← Helper
 
 RawLines ← ReadActual 2020 4
 RawActual ← ReadRawActual 2020 4
 RawSample ← ReadRawSample 2020 4
 
-SubSample = $ ecl:gry pid:860033327 eyr:2020 hcl:#fffffd
-			$ byr:1937 iyr:2017 cid:147 hgt:183cm
-			$ 
-
-
+SubSample ← $ ecl:gry pid:860033327 eyr:2020 hcl:#fffffd
+            $ byr:1937 iyr:2017 cid:147 hgt:183cm
 
 SampleLines ← SplitBy!□ @\n RawSample
 
 Sample ← ≡▽ ⧻ . SampleLines
 Lines ← ≡▽ ⧻ . RawLines
 
-ParseEntry = (
-	under unbox (SplitBy! box @: )
+ParseEntry ← (
+  ⍜°□ (SplitBy!□ @:)
 )
 
 ParseInput ← (
@@ -34,11 +23,11 @@ ParseInput ← (
   # ≠ 1 ⌕ □"\n\n" .
   # ⊜□
 
-	.
-	find "\n\n"
+  .
+  ⌕ "\n\n"
 
-	partition box +1
-	keep !=1 each ( length) .
+  ⊜□ +1
+  ▽ ≠1 ∵(⧻) .
 
   ≡(
     °□
@@ -48,15 +37,14 @@ ParseInput ← (
     ≠ 1
     ≡(⍜°□ (▽ ⊙°□))
     ▽ ≠0 ≡⧻.
-	unpack /join
+    ◇/⊂
 
-	SplitBy! box @ #
+    SplitBy!□ @  # 
     □
   )
 
-  rows (under unbox rows ParseEntry)
+  ≡(⍜°□ ≡ParseEntry)
   # rows (box partition != 0 length.)
-  
 )
 
 PartOne ← (
@@ -74,7 +62,7 @@ PartTwo ← (
 # .
 # $"Wrong answer for: `PartTwo Sample`!\nshould be:\n\t336\nbut was:\n\t_"
 # assert : =336 :
-# 
+#
 # PartTwo Lines
 # .
 # $"Wrong answer for: `PartTwo Lines`!\nshould be:\n\t2122848000\nbut was:\n\t_"
@@ -99,20 +87,42 @@ RawSample
 # ParseInput
 # ⊜□ +1 ≠ @\n .
 
+# birth year
+BYR ← "byr"
+# issue year
+IYR ← "iyr"
+# expiration year
+EYR ← "eyr"
+# height
+HGT ← "hgt"
+# hair color
+HCL ← "hcl"
+# eye color
+ECL ← "ecl"
+# passport id
+PID ← "pid"
+# country id
+CID ← "cid"
+
 .
+# &s .
 find "\n\n"
+# replace first index with 1, so it is kept
+under pick pop 0 : 1 
+partition box \+
 
-partition box +1
-keep !=1 each ( length) .
-
-
-
-rows (
-keep : range length . find @\n . unbox
-
-under pick (@ ;)
-)
-
-
+# each &s .
+each (under unbox (keep !=@\n . ))
+each (under unbox (part box !=@  . ))
+each (&s )
+# keep !="\n"
+#
+#
+#
+# rows (
+# keep : range length . find @\n . unbox
+#
+# under pick (@ pop)
+# )
 
 &p "@@@@@@@@@@@@@@@ stack below @@@@@@@@@@@@@@@@\n"
