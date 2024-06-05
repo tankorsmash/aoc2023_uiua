@@ -81,7 +81,7 @@ PartTwo ← (
 # &p $"Part 2: _"
 
 # RawActual
-RawSample
+# RawSample
 # SubSample
 
 # ParseInput
@@ -104,9 +104,9 @@ PID ← "pid"
 # country id
 CID ← "cid"
 
-Fields ← {BYR IYR EYR HGT HCL ECL PID CID}
+Fields ← select rise .{BYR IYR EYR HGT HCL ECL PID CID}
 
-ParseGroups ← (
+ParsePassports ← (
   .
   ⌕ "\n\n"
   # replace first index with 1, so it is kept
@@ -117,10 +117,29 @@ ParseGroups ← (
   ∵(⍜°□(⍜▽ ≡⋅∘ =, @\n : @ ))
   # split on spaces
   ∵(⍜°□ (⊜□ ≠@  .))
-  .
-  ∵(&s)
+  # ∵(&s).
 )
-ParseGroups
+
+# a sorted list of the keys of the passport
+GetKeys ← (
+  ≡(⊢ ⊜(□) ≠ @: . °□)
+  ⊏ ⍏ .
+)
+
+HasAllKeys = /min member Fields
+
+# RawActual
+RawSample
+# SubSample
+
+ParsePassports
+
+# pick 0
+# unbox
+# GetKeys
+# HasAllKeys
+rows ( HasAllKeys  GetKeys unbox)
+
 # keep !="\n"
 #
 #
