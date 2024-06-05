@@ -142,20 +142,32 @@ ValidateBYR ← (
   ⟨0 ◌|/↧ [⊃(≥ 1920)(≤ 2002)] ⋕⟩
 )
 
+ValidateIYR ← (
+  .
+  /↧ [⊃(°□ /↧ (∵(IsDigit (⬚(¯1) ⋕)))) (/↧ =4 ⧻)]
+  # &p.
+  ⟨0 ◌|/↧ [⊃(≥ 2010)(≤ 2020)] ⋕⟩
+)
+
+ExpectTrue ← ⍤ "Expected true, but got false" =1
+ExpectFalse ← ⍤ "Expected false, but got true" =0
+
 # ValidateBYR "2002"
 
-ValidateBYR "1919"
-= 0
-ValidateBYR "1920"
-= 1
-ValidateBYR "2002"
-= 1
-ValidateBYR "2003"
-= 0
-ValidateBYR "alll"
-= 0
-ValidateBYR "_"
-= 0
+ExpectFalse ValidateBYR "1919"
+ExpectTrue ValidateBYR "1920"
+ExpectTrue ValidateBYR "2002"
+ExpectFalse ValidateBYR "2003"
+ExpectFalse ValidateBYR "alll"
+ExpectFalse ValidateBYR "_"
+
+ExpectFalse ValidateIYR "1919"
+ExpectFalse ValidateIYR "2009"
+ExpectTrue ValidateIYR "2010"
+ExpectTrue ValidateIYR "2020"
+ExpectFalse ValidateIYR "2021"
+ExpectFalse ValidateIYR "alll"
+ExpectFalse ValidateIYR "_"
 
 # RawActual
 # RawSample
