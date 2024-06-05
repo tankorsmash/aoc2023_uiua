@@ -112,7 +112,10 @@ under pick pop 0 : 1
 partition box \+
 
 # each &s .
-each (under unbox (keep !=@\n . ))
+
+# replace all newlines with spaces
+each (under unbox( under keep rows gap ∘ =, @\n  : @ ))
+# split on spaces
 each (under unbox (part box !=@  . ))
 each (&s )
 # keep !="\n"
