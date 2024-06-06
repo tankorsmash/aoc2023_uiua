@@ -135,29 +135,40 @@ GetKeys ← (
 
 HasAllKeys ← /↧ ∊ FieldsWithoutCID
 
+IsFourDigits ← /↧ [⊃(°□ /↧ (∵(IsDigit (⬚(¯1) ⋕)))) (/↧ =4 ⧻)]
+
+# four digits; at least 1920 and at most 2002.
 ValidateBYR ← (
   .
-  /↧ [⊃(°□ /↧ (∵(IsDigit (⬚(¯1) ⋕)))) (/↧ =4 ⧻)]
-  # &p.
+  IsFourDigits
   ⟨0 ◌|/↧ [⊃(≥ 1920)(≤ 2002)] ⋕⟩
 )
 
+# four digits; at least 2010 and at most 2020.
 ValidateIYR ← (
   .
-  /↧ [⊃(°□ /↧ (∵(IsDigit (⬚(¯1) ⋕)))) (/↧ =4 ⧻)]
-  # &p.
+  IsFourDigits
   ⟨0 ◌|/↧ [⊃(≥ 2010)(≤ 2020)] ⋕⟩
+)
+
+# four digits; at least 2020 and at most 2030.
+ValidateEYR ← (
+  .
+  IsFourDigits
+  ⟨0 ◌|/↧ [⊃(≥ 2020)(≤ 2030)] ⋕⟩
 )
 
 ExpectTrue ← ⍤ "Expected true, but got false" =1
 ExpectFalse ← ⍤ "Expected false, but got true" =0
 
-# ValidateBYR "2002"
 ∵(◇(ExpectTrue ValidateBYR)) {"1920" "2002"}
 ∵(◇(ExpectFalse ValidateBYR)) {"1919" "2003" "alll" "_"}
 
 ∵(◇(ExpectTrue ValidateIYR)) {"2010" "2020"}
 ∵(◇(ExpectFalse ValidateIYR)) {"2009" "2021" "alll" "_"}
+
+∵(◇(ExpectTrue ValidateEYR)) {"2020" "2030"}
+∵(◇(ExpectFalse ValidateEYR)) {"2019" "2031" "alll" "_"}
 
 # RawActual
 # RawSample
