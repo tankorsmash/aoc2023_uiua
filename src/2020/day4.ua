@@ -153,21 +153,11 @@ ExpectTrue ← ⍤ "Expected true, but got false" =1
 ExpectFalse ← ⍤ "Expected false, but got true" =0
 
 # ValidateBYR "2002"
+∵(◇(ExpectTrue ValidateBYR)) {"1920" "2002"}
+∵(◇(ExpectFalse ValidateBYR)) {"1919" "2003" "alll" "_"}
 
-ExpectFalse ValidateBYR "1919"
-ExpectTrue ValidateBYR "1920"
-ExpectTrue ValidateBYR "2002"
-ExpectFalse ValidateBYR "2003"
-ExpectFalse ValidateBYR "alll"
-ExpectFalse ValidateBYR "_"
-
-ExpectFalse ValidateIYR "1919"
-ExpectFalse ValidateIYR "2009"
-ExpectTrue ValidateIYR "2010"
-ExpectTrue ValidateIYR "2020"
-ExpectFalse ValidateIYR "2021"
-ExpectFalse ValidateIYR "alll"
-ExpectFalse ValidateIYR "_"
+∵(◇(ExpectTrue ValidateIYR)) {"2010" "2020"}
+∵(◇(ExpectFalse ValidateIYR)) {"2009" "2021" "alll" "_"}
 
 # RawActual
 # RawSample
