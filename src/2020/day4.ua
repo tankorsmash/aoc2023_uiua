@@ -232,8 +232,8 @@ IsValidPassport ← ⊃(
 )
 
 ParsePassports RawSample
-⊢
-unbox
+
+rows (under unbox(select rise (rows first) . ))
 # select rise (first.)
 # ∵&p
 # IsValidPassport "ASD"
@@ -248,6 +248,6 @@ PartOne ← (
   /+
 )
 
-PartOne RawActual
+# PartOne RawActual
 
 &p "@@@@@@@@@@@@@@@ stack below @@@@@@@@@@@@@@@@\n"
