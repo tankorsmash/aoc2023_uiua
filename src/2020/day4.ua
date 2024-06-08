@@ -128,7 +128,7 @@ ParsePassports ← (
   # split on spaces
   ∵(⍜°□ (⊜□ ≠@  .))
   ≡(⍜°□ (≡(⊜□ ≠@: . °□)))
-  rows(⍜°□(⊏ ⍏ (≡⊢) .))
+  ≡(⍜°□(⊏ ⍏ (≡⊢) .))
   # ∵(&s).
 )
 
@@ -206,17 +206,16 @@ ValidatePID ← (
   /↧
 )
 
-
-ValidatePassport = (
- content ValidateBYR
-#  | (1pop) # cid is always valid
- | content ValidateECL
- | content ValidateEYR
- | content ValidateHCL
- | content ValidateHGT
- | content ValidateIYR
- | content ValidatePID
- ) range length .
+ValidatePassport ← ⟨
+  ◇ValidateBYR
+  #  | (1pop) # cid is always valid
+| ◇ValidateECL
+| ◇ValidateEYR
+| ◇ValidateHCL
+| ◇ValidateHGT
+| ◇ValidateIYR
+| ◇ValidatePID
+⟩ ⇡ ⧻ .
 
 ExpectTrue ← ⍤ $"Expected True (1), but got Falsey: _" (: =1 .)
 ExpectFalse ← ⍤ $"Expected False (0), but got Truthy: _" (: =0 .)
@@ -234,57 +233,54 @@ ExpectBoth‼!ValidateECL {"amb" "grn"} {"" "grnn" "22"}
 ExpectBoth‼!ValidatePID {"000000001"} {"0123456789"}
 
 # ParsePassports RawSample
-ValidPassportOne ←$"pid:087499704 hgt:74in ecl:grn iyr:2012 eyr:2030 byr:1980\nhcl:#623a2f" 
-ValidPassportTwo ←$"eyr:2029 ecl:blu cid:129 byr:1989\niyr:2014 pid:896056539 hcl:#a97842 hgt:165cm"
+ValidPassportOne ← $"pid:087499704 hgt:74in ecl:grn iyr:2012 eyr:2030 byr:1980\nhcl:#623a2f"
+ValidPassportTwo ← $"eyr:2029 ecl:blu cid:129 byr:1989\niyr:2014 pid:896056539 hcl:#a97842 hgt:165cm"
 # ParsePassports  ValidPassportOne
 # ParsePassports  ValidPassportTwo
 
-InvalidPassportOne ←$"eyr:1972 cid:100\nhcl:#18171d ecl:amb hgt:170 pid:186cm iyr:2018 byr:1926"
-InvalidPassportTwo ←$"iyr:2019\nhcl:#602927 eyr:1967 hgt:170cm\necl:grn pid:012533040 byr:1946"
+InvalidPassportOne ← $"eyr:1972 cid:100\nhcl:#18171d ecl:amb hgt:170 pid:186cm iyr:2018 byr:1926"
+InvalidPassportTwo ← $"iyr:2019\nhcl:#602927 eyr:1967 hgt:170cm\necl:grn pid:012533040 byr:1946"
 # ParsePassports  InvalidPassportOne
 # ParsePassports  InvalidPassportTwo
 
 # keep only valid passports
-KeepValidPassports = (.
-	≡◇(HasAllKeys GetKeys)
-	keep
+KeepValidPassports ← (
+  .
+  ≡◇(HasAllKeys GetKeys)
+  ▽
 )
 
+PartTwo ← (
+  ParsePassports RawActual
+  KeepValidPassports
 
-PartTwo =(
-	ParsePassports RawActual
-	KeepValidPassports
+  ≡(
+    °□
 
-	rows (
-		unbox
+    # remove cid rows, if present
+    ≡(□ ▽ (≠□"cid" ⊢) .)
+    ▽ ≡(≠ 0 ⧻ °□) .
 
-		# remove cid rows, if present
-		rows (box keep (!=box"cid" first ) . )
-		keep rows (!= 0 len un box ) .
+    # take only values
+    ≡(⊡1 °□)
 
-		# take only values
-		rows (pick1 unbox)
+    # len .
+    # un {dddddddi}
+    # unselect
 
-		# len .
-		# un {dddddddi}
-		# unselect
+    /↧ ValidatePassport
+  )
 
-		/min ValidatePassport
-		)
-
-	/+
-
+  /+
 )
 
 PartTwo
-
 
 # Foo = id
 # Bar = id
 # Baz = id
 # {Foo "1937" Bar "147" Baz "gry" "2020" "#fffffd" "183cm" "2017" "860033327"}
-# uncouple 
-
+# uncouple
 
 # RawActual
 # RawSample
