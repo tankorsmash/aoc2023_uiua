@@ -208,7 +208,7 @@ ValidatePID ← (
 
 ValidatePassport = (
  content ValidateBYR
- | (1pop) # cid is always valid
+#  | (1pop) # cid is always valid
  | content ValidateECL
  | content ValidateEYR
  | content ValidateHCL
@@ -234,21 +234,37 @@ ExpectBoth‼!ValidatePID {"000000001"} {"0123456789"}
 
 # ParsePassports RawSample
 ValidPassportOne ←$"pid:087499704 hgt:74in ecl:grn iyr:2012 eyr:2030 byr:1980\nhcl:#623a2f" 
-ParsePassports  ValidPassportOne
+ValidPassportTwo ←$"eyr:2029 ecl:blu cid:129 byr:1989\niyr:2014 pid:896056539 hcl:#a97842 hgt:165cm"
+# ParsePassports  ValidPassportOne
+# ParsePassports  ValidPassportTwo
+
+InvalidPassportOne ←$"eyr:1972 cid:100\nhcl:#18171d ecl:amb hgt:170 pid:186cm iyr:2018 byr:1926"
+InvalidPassportTwo ←$"iyr:2019\nhcl:#602927 eyr:1967 hgt:170cm\necl:grn pid:012533040 byr:1946"
+# ParsePassports  InvalidPassportOne
+# ParsePassports  InvalidPassportTwo
+
 # keep only valid passports
-(.
-≡◇(HasAllKeys GetKeys)
-keep
+KeepValidPassports = (.
+	≡◇(HasAllKeys GetKeys)
+	keep
 )
+
+ParsePassports RawActual
+KeepValidPassports
+
+
 
 # sort the keys of the passport
 ≡(⍜°□(⊏ ⍏ (≡⊢) .))
 
 (
 	pick0
-	?
 	# get only the values
 	unbox
+	rows (box keep (!=box"cid" first ) . )
+
+	keep rows (!= 0 lenunbox ) .
+	rows unbox
 	rows (pick1)
 	# len .
 	# un {dddddddi}
