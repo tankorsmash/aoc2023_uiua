@@ -185,6 +185,13 @@ ValidateHCL ← (
   /↧
 )
 
+# exactly one of: amb blu brn gry grn hzl oth.
+ValidateECL ← (
+  box
+  ∊ {"amb" "blu" "brn" "gry" "grn" "hzl" "oth"}
+  /max
+)
+
 ExpectTrue ← ⍤ $"Expected True (1), but got Falsey: _" (: =1 .)
 ExpectFalse ← ⍤ $"Expected False (0), but got Truthy: _" (: =0 .)
 
@@ -197,6 +204,7 @@ ExpectBoth‼!ValidateIYR {"2010" "2020"} {"2009" "2021" "alll" "_"}
 ExpectBoth‼!ValidateEYR {"2020" "2030"} {"2019" "2031" "alll" "_"}
 ExpectBoth‼!ValidateHGT {"150cm" "193cm" "59in"} {"149cm" "194cm" "in" "76" "76in"}
 ExpectBoth‼!ValidateHCL {"#123abc" "#aaabbb"} {"#z23abc" "3abc" "z23abc#"}
+ExpectBoth‼!ValidateECL { "amb" "grn"} {"" "grnn" "22"}
 
 # max(bracket≥≤)@0,@9 "123abcz"
 
