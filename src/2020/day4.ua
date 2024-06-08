@@ -192,6 +192,12 @@ ValidateECL ← (
   /max
 )
 
+# a nine-digit number, including leading zeroes.
+ValidatePID ← (
+  [fork(=9 len )(try parse 0)]
+  /min
+)
+
 ExpectTrue ← ⍤ $"Expected True (1), but got Falsey: _" (: =1 .)
 ExpectFalse ← ⍤ $"Expected False (0), but got Truthy: _" (: =0 .)
 
@@ -205,6 +211,7 @@ ExpectBoth‼!ValidateEYR {"2020" "2030"} {"2019" "2031" "alll" "_"}
 ExpectBoth‼!ValidateHGT {"150cm" "193cm" "59in"} {"149cm" "194cm" "in" "76" "76in"}
 ExpectBoth‼!ValidateHCL {"#123abc" "#aaabbb"} {"#z23abc" "3abc" "z23abc#"}
 ExpectBoth‼!ValidateECL { "amb" "grn"} {"" "grnn" "22"}
+ExpectBoth‼!ValidatePID { "000000001" } {"0123456789" }
 
 # max(bracket≥≤)@0,@9 "123abcz"
 
