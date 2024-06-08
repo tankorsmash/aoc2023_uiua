@@ -177,6 +177,12 @@ ValidateHGT ← (
   °□
 )
 
+# a # followed by exactly six characters 0-9 or a-f.
+ValidateHCL ← (
+  [ fork (=@# ⊡  0| =7 length | /min max both*both(bracket≥≤)@a,@f,@0,@9 drop 1) ]
+
+)
+
 ExpectTrue ← ⍤ $"Expected True (1), but got Falsey: _" (: =1 .)
 ExpectFalse ← ⍤ $"Expected False (0), but got Truthy: _" (: =0 .)
 
@@ -189,6 +195,13 @@ ExpectBoth‼!ValidateIYR {"2010" "2020"} {"2009" "2021" "alll" "_"}
 ExpectBoth‼!ValidateEYR {"2020" "2030"} {"2019" "2031" "alll" "_"}
 
 ExpectBoth‼!ValidateHGT {"150cm" "193cm" "59in"} {"149cm" "194cm" "76in"}
+
+ValidateHCL "#123abc"
+ValidateHCL "#z23abc"
+ValidateHCL "z23abc#"
+
+
+# max(bracket≥≤)@0,@9 "123abcz"
 
 # RawActual
 # RawSample
