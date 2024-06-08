@@ -260,8 +260,7 @@ PartTwo ← (
 
   ≡◇(
     # remove cid rows, if present
-    ≡(□ ▽(≠□"cid" ⊢) .)
-    ▽ ≡◇(≠ 0 ⧻) .
+    ▽≡◇(≠□"cid" ⊢) .
 
     # take only values from kv pairs
     ≡◇(⊡1)
