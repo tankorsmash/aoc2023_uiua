@@ -89,8 +89,10 @@ PartTwo ← (
 
 # numbers 0-9
 Digits ← ≡(□) ⇡10
+StrDigits ← ≡(□unparse) ⇡10
 # which elements of input are digit strings
 IsDigit ← |1 /↥ (=Digits)
+IsStrDigit ← |1 /↥ (=StrDigits)
 
 # birth year
 BYR ← "byr"
@@ -158,6 +160,13 @@ ValidateEYR ← (
   ⟨0 ◌|/↧ [⊃(≥ 2020)(≤ 2030)] ⋕⟩
 )
 
+# number, followed by cm or in; cm: 150-193, in: 59-76
+ValidateHGT = (
+
+	partition box (/(content join) +1 each IsStrDigit ?) .
+
+)
+
 ExpectTrue ← ⍤ $"Expected True (1), but got Falsey: _" (: =1 .)
 ExpectFalse ← ⍤ $"Expected False (0), but got Truthy: _" (: =0 .)
 
@@ -168,6 +177,8 @@ ExpectBoth‼! ← (
 ExpectBoth‼!ValidateBYR {"1920" "2002"} {"1919" "2003" "alll" "_"}
 ExpectBoth‼!ValidateIYR {"2010" "2020"} {"2009" "2021" "alll" "_"}
 ExpectBoth‼!ValidateEYR {"2020" "2030"} {"2019" "2031" "alll" "_"}
+
+ValidateHGT "123cm"
 
 # RawActual
 # RawSample
