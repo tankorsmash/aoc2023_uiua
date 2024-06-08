@@ -256,19 +256,21 @@ PartTwo =(
 	KeepValidPassports
 
 	rows (
-	unbox
-	rows (box keep (!=box"cid" first ) . )
+		unbox
 
-	keep rows (!= 0 lenunbox ) .
-	rows unbox
-	rows (pick1)
-	# len .
-	# un {dddddddi}
-	# unselect
+		# remove cid rows, if present
+		rows (box keep (!=box"cid" first ) . )
+		keep rows (!= 0 len un box ) .
 
-	ValidatePassport
-	/min
-	)
+		# take only values
+		rows (pick1 unbox)
+
+		# len .
+		# un {dddddddi}
+		# unselect
+
+		/min ValidatePassport
+		)
 
 	/+
 
