@@ -228,20 +228,25 @@ ExpectBoth‼!ValidateBYR {"1920" "2002"} {"1919" "2003" "alll" "_"}
 ExpectBoth‼!ValidateIYR {"2010" "2020"} {"2009" "2021" "alll" "_"}
 ExpectBoth‼!ValidateEYR {"2020" "2030"} {"2019" "2031" "alll" "_"}
 ExpectBoth‼!ValidateHGT {"150cm" "193cm" "59in"} {"149cm" "194cm" "in" "76" "76in"}
-# ExpectBoth‼!ValidateHCL {"#123abc" "#aaabbb"} {"#z23abc" "3abc" "z23abc#"}
+ExpectBoth‼!ValidateHCL {"#123abc" "#aaabbb"} {"#z23abc" "3abc" "z23abc#"}
 ExpectBoth‼!ValidateECL {"amb" "grn"} {"" "grnn" "22"}
 ExpectBoth‼!ValidatePID {"000000001"} {"0123456789"}
 
 # ParsePassports RawSample
+
 ValidPassportOne ← $"pid:087499704 hgt:74in ecl:grn iyr:2012 eyr:2030 byr:1980\nhcl:#623a2f"
 ValidPassportTwo ← $"eyr:2029 ecl:blu cid:129 byr:1989\niyr:2014 pid:896056539 hcl:#a97842 hgt:165cm"
+ValidPassportThree ← $"hcl:#888785\nhgt:164cm byr:2001 iyr:2015 cid:88\npid:545766238 ecl:hzl\neyr:2022"
 # ParsePassports  ValidPassportOne
 # ParsePassports  ValidPassportTwo
+# ParsePassports  ValidPassportThree
 
 InvalidPassportOne ← $"eyr:1972 cid:100\nhcl:#18171d ecl:amb hgt:170 pid:186cm iyr:2018 byr:1926"
 InvalidPassportTwo ← $"iyr:2019\nhcl:#602927 eyr:1967 hgt:170cm\necl:grn pid:012533040 byr:1946"
+InvalidPassportThree ← $"hcl:dab227 iyr:2012\necl:brn hgt:182cm pid:021572410 eyr:2020 byr:1992 cid:277"
 # ParsePassports  InvalidPassportOne
 # ParsePassports  InvalidPassportTwo
+# ParsePassports  InvalidPassportThree
 
 # keep only valid passports
 KeepValidPassports ← (
@@ -251,18 +256,15 @@ KeepValidPassports ← (
 )
 
 PartTwo ← (
-  ParsePassports RawActual
   KeepValidPassports
 
-  ≡(
-    °□
-
+  ≡◇(
     # remove cid rows, if present
-    ≡(□ ▽ (≠□"cid" ⊢) .)
-    ▽ ≡(≠ 0 ⧻ °□) .
+    ≡(□ ▽(≠□"cid" ⊢) .)
+    ▽ ≡◇(≠ 0 ⧻) .
 
-    # take only values
-    ≡(⊡1 °□)
+    # take only values from kv pairs
+    ≡◇(⊡1)
 
     # len .
     # un {dddddddi}
@@ -274,6 +276,7 @@ PartTwo ← (
   /+
 )
 
+ParsePassports RawActual
 PartTwo
 
 # Foo = id
