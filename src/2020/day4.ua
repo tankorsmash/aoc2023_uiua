@@ -128,6 +128,7 @@ ParsePassports ← (
   # split on spaces
   ∵(⍜°□ (⊜□ ≠@  .))
   ≡(⍜°□ (≡(⊜□ ≠@: . °□)))
+  rows(⍜°□(⊏ ⍏ (≡⊢) .))
   # ∵(&s).
 )
 
@@ -249,17 +250,12 @@ KeepValidPassports = (.
 	keep
 )
 
-ParsePassports RawActual
-KeepValidPassports
 
+PartTwo =(
+	ParsePassports RawActual
+	KeepValidPassports
 
-
-# sort the keys of the passport
-≡(⍜°□(⊏ ⍏ (≡⊢) .))
-
-(
-	pick0
-	# get only the values
+	rows (
 	unbox
 	rows (box keep (!=box"cid" first ) . )
 
@@ -270,8 +266,15 @@ KeepValidPassports
 	# un {dddddddi}
 	# unselect
 
-	ValidatePassport 
+	ValidatePassport
+	/min
+	)
+
+	/+
+
 )
+
+PartTwo
 
 
 # Foo = id
