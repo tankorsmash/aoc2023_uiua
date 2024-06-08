@@ -161,41 +161,13 @@ ValidateEYR ← (
 ExpectTrue ← ⍤ $"Expected True (1), but got Falsey: _" (: =1 .)
 ExpectFalse ← ⍤ $"Expected False (0), but got Truthy: _" (: =0 .)
 
-# F! ← ^!
-# F!⊂1 []
-
-# Qwe! =^ $"ExpectTrue _"
-#
-# Qwe!id
-
-
-
-ExpectBoth!!! ← (
-  # ?^!^!{"1920" "2002"}
-  # fork ((ExpectTrue )) ((ExpectFalse ))  both (each (^! unbox)) (^! ) (^!)
-((ExpectTrue /min )) ((ExpectFalse /min ))  : both (each (^! unbox)) (^!) (^!)
-
-  # ∵(◇(ExpectTrue ^!)) ^!
-  # ∵(◇(ExpectFalse ^!)) ^!
+ExpectBoth‼! ← (
+  (ExpectTrue /↧) (ExpectFalse /↧) : ∩(∵(^! °□)) ^! ^!
 )
 
-# { 1 2 3 }
-# (=1 unbox)
-# each =1
-# each =1 ∵((ValidateBYR unbox)) {"1920" "2002"}
-((ExpectFalse ? /min ? )) ((ExpectTrue /min  ))    ? both (each (ValidateBYR unbox)) ({"1920" "2002"}) ({"1919" "2003" "alll" "_"})
-
-# fork (+1)(+1000) 5
-# ExpectBoth!‼ValidateBYR {"1920" "2002"} {"1919" "2003" "alll" "_"}
-# (each (ValidateBYR unbox)) {"1920" "2002" }
-∵(◇(ExpectTrue ValidateBYR)) {"1920" "2002"}
-∵(◇(ExpectFalse ValidateBYR)) {"1919" "2003" "alll" "_"}
-
-∵(◇(ExpectTrue ValidateIYR)) {"2010" "2020"}
-∵(◇(ExpectFalse ValidateIYR)) {"2009" "2021" "alll" "_"}
-
-∵(◇(ExpectTrue ValidateEYR)) {"2020" "2030"}
-∵(◇(ExpectFalse ValidateEYR)) {"2019" "2031" "alll" "_"}
+ExpectBoth‼!ValidateBYR {"1920" "2002"} {"1919" "2003" "alll" "_"}
+ExpectBoth‼!ValidateIYR {"2010" "2020"} {"2009" "2021" "alll" "_"}
+ExpectBoth‼!ValidateEYR {"2020" "2030"} {"2019" "2031" "alll" "_"}
 
 # RawActual
 # RawSample
