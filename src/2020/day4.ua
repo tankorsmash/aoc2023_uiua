@@ -115,6 +115,7 @@ Fields ← ⊏ ⍏ .{BYR IYR EYR HGT HCL ECL PID CID}
 # Fields without CID
 FieldsWithoutCID ← ⊏ ⍏ .{BYR IYR EYR HGT HCL ECL PID}
 
+# takes a string and returns all the pairs of boxes values
 ParsePassports ← (
   .
   ⌕ "\n\n"
@@ -126,12 +127,19 @@ ParsePassports ← (
   ∵(⍜°□(⍜▽ ≡⋅∘ =, @\n : @ ))
   # split on spaces
   ∵(⍜°□ (⊜□ ≠@  .))
+  rows(⍜°□ (rows (⊜□ ≠@: . unbox)  ))
   # ∵(&s).
+
 )
 
 # a sorted list of the keys of the passport
 GetKeys ← (
-  ≡(⊢ ⊜(□) ≠ @: . °□)
+  # ≡(pick0 ⊜(□) ≠ @: . °□)
+  ≡(pick0 )
+  ⊏ ⍏ .
+)
+GetValues ← (
+  ≡(pick1)
   ⊏ ⍏ .
 )
 
@@ -187,15 +195,15 @@ ValidateHCL ← (
 
 # exactly one of: amb blu brn gry grn hzl oth.
 ValidateECL ← (
-  box
+  □
   ∊ {"amb" "blu" "brn" "gry" "grn" "hzl" "oth"}
-  /max
+  /↥
 )
 
 # a nine-digit number, including leading zeroes.
 ValidatePID ← (
-  [fork(=9 len )(try parse 0)]
-  /min
+  [⊃(=9 ⧻)(⍣⋕ 0)]
+  /↧
 )
 
 ExpectTrue ← ⍤ $"Expected True (1), but got Falsey: _" (: =1 .)
@@ -210,10 +218,25 @@ ExpectBoth‼!ValidateIYR {"2010" "2020"} {"2009" "2021" "alll" "_"}
 ExpectBoth‼!ValidateEYR {"2020" "2030"} {"2019" "2031" "alll" "_"}
 ExpectBoth‼!ValidateHGT {"150cm" "193cm" "59in"} {"149cm" "194cm" "in" "76" "76in"}
 ExpectBoth‼!ValidateHCL {"#123abc" "#aaabbb"} {"#z23abc" "3abc" "z23abc#"}
-ExpectBoth‼!ValidateECL { "amb" "grn"} {"" "grnn" "22"}
-ExpectBoth‼!ValidatePID { "000000001" } {"0123456789" }
+ExpectBoth‼!ValidateECL {"amb" "grn"} {"" "grnn" "22"}
+ExpectBoth‼!ValidatePID {"000000001"} {"0123456789"}
 
-# max(bracket≥≤)@0,@9 "123abcz"
+IsValidPassport ← ⊃(
+  ValidateBYR
+| ValidateIYR
+| ValidateEYR
+| ValidateHGT
+| ValidateHCL
+| ValidateECL
+| ValidatePID
+)
+
+ParsePassports RawSample
+⊢
+unbox
+# select rise (first.)
+# ∵&p
+# IsValidPassport "ASD"
 
 # RawActual
 # RawSample
@@ -221,10 +244,10 @@ ExpectBoth‼!ValidatePID { "000000001" } {"0123456789" }
 
 PartOne ← (
   ParsePassports
-  ≡(HasAllKeys GetKeys °□)
+  ≡◇(HasAllKeys GetKeys)
   /+
 )
 
-# PartOne RawActual
+PartOne RawActual
 
 &p "@@@@@@@@@@@@@@@ stack below @@@@@@@@@@@@@@@@\n"
