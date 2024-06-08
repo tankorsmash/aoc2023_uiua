@@ -89,7 +89,7 @@ PartTwo ← (
 
 # numbers 0-9
 Digits ← ≡(□) ⇡10
-StrDigits ← ≡(□unparse) ⇡10
+StrDigits ← ≡(□°⋕) ⇡10
 # which elements of input are digit strings
 IsDigit ← |1 /↥ (=Digits)
 IsStrDigit ← |1 /↥ (=StrDigits)
@@ -161,22 +161,20 @@ ValidateEYR ← (
 )
 
 # number, followed by cm or in; cm: 150-193, in: 59-76
-ValidateHGT = (
+ValidateHGT ← (
+  ⊜□ (/(◇⊂) +1 ∵IsStrDigit) .
+  # {"123" "cm"}
 
-	partition box (/(content join) +1 each IsStrDigit) .
-	# {"123" "cm"}
-
-	# parse number
-	under pick parse 0
-	.
-	rev
-	(under pick (= box"cm") 0)
-	unbox first
-	⟨/↧ [⊃(≥ 59)(≤ 75)]|/↧ [⊃(≥ 150)(≤ 193)] ⟩
-	# fork (=box"cm" pick 1) id
-	first
-	unbox
-
+  # parse number
+  ⍜⊡ ⋕ 0
+  .
+  ⇌
+  (⍜⊡ (= □"cm") 0)
+  °□ ⊢
+  ⟨/↧ [⊃(≥ 59)(≤ 75)]|/↧ [⊃(≥ 150)(≤ 193)]⟩
+  # fork (=box"cm" pick 1) id
+  ⊢
+  °□
 )
 
 ExpectTrue ← ⍤ $"Expected True (1), but got Falsey: _" (: =1 .)
