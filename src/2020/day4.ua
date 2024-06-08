@@ -207,14 +207,14 @@ ValidatePID ← (
 
 
 ValidatePassport = (
- ValidateBYR
- | (1pop)
- | ValidateECL
- | ValidateEYR
- | inventory ValidateHCL
- | ValidateHGT
- | ValidateIYR
- | ValidatePID
+ content ValidateBYR
+ | (1pop) # cid is always valid
+ | content ValidateECL
+ | content ValidateEYR
+ | content ValidateHCL
+ | content ValidateHGT
+ | content ValidateIYR
+ | content ValidatePID
  ) range length .
 
 ExpectTrue ← ⍤ $"Expected True (1), but got Falsey: _" (: =1 .)
@@ -232,20 +232,30 @@ ExpectBoth‼!ValidateHGT {"150cm" "193cm" "59in"} {"149cm" "194cm" "in" "76" "7
 ExpectBoth‼!ValidateECL {"amb" "grn"} {"" "grnn" "22"}
 ExpectBoth‼!ValidatePID {"000000001"} {"0123456789"}
 
-ParsePassports RawSample
+# ParsePassports RawSample
+ValidPassportOne ←$"pid:087499704 hgt:74in ecl:grn iyr:2012 eyr:2030 byr:1980\nhcl:#623a2f" 
+ParsePassports  ValidPassportOne
+# keep only valid passports
+(.
+≡◇(HasAllKeys GetKeys)
+keep
+)
 
 # sort the keys of the passport
 ≡(⍜°□(⊏ ⍏ (≡⊢) .))
 
-first
-# get only the values
-unbox
-rows (pick1)
-# len .
-# un {dddddddi}
-# unselect
+(
+	pick0
+	?
+	# get only the values
+	unbox
+	rows (pick1)
+	# len .
+	# un {dddddddi}
+	# unselect
 
-ValidatePassport 
+	ValidatePassport 
+)
 
 
 # Foo = id
@@ -254,16 +264,6 @@ ValidatePassport
 # {Foo "1937" Bar "147" Baz "gry" "2020" "#fffffd" "183cm" "2017" "860033327"}
 # uncouple 
 
-# ?
-# repeat (unjoin) 8
-
-# rerank 0
-
-# partition id len .
-# rows (unfix partition box len .)
-
-# select rise (first.)
-# IsValidPassport "ASD"
 
 # RawActual
 # RawSample
