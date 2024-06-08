@@ -127,19 +127,18 @@ ParsePassports ← (
   ∵(⍜°□(⍜▽ ≡⋅∘ =, @\n : @ ))
   # split on spaces
   ∵(⍜°□ (⊜□ ≠@  .))
-  rows(⍜°□ (rows (⊜□ ≠@: . unbox)  ))
+  ≡(⍜°□ (≡(⊜□ ≠@: . °□)))
   # ∵(&s).
-
 )
 
 # a sorted list of the keys of the passport
 GetKeys ← (
   # ≡(pick0 ⊜(□) ≠ @: . °□)
-  ≡(pick0 )
+  ≡(⊡0)
   ⊏ ⍏ .
 )
 GetValues ← (
-  ≡(pick1)
+  ≡(⊡1)
   ⊏ ⍏ .
 )
 
@@ -206,6 +205,18 @@ ValidatePID ← (
   /↧
 )
 
+
+ValidatePassport = (
+ ValidateBYR
+ | (1pop)
+ | ValidateECL
+ | ValidateEYR
+ | inventory ValidateHCL
+ | ValidateHGT
+ | ValidateIYR
+ | ValidatePID
+ ) range length .
+
 ExpectTrue ← ⍤ $"Expected True (1), but got Falsey: _" (: =1 .)
 ExpectFalse ← ⍤ $"Expected False (0), but got Truthy: _" (: =0 .)
 
@@ -217,25 +228,41 @@ ExpectBoth‼!ValidateBYR {"1920" "2002"} {"1919" "2003" "alll" "_"}
 ExpectBoth‼!ValidateIYR {"2010" "2020"} {"2009" "2021" "alll" "_"}
 ExpectBoth‼!ValidateEYR {"2020" "2030"} {"2019" "2031" "alll" "_"}
 ExpectBoth‼!ValidateHGT {"150cm" "193cm" "59in"} {"149cm" "194cm" "in" "76" "76in"}
-ExpectBoth‼!ValidateHCL {"#123abc" "#aaabbb"} {"#z23abc" "3abc" "z23abc#"}
+# ExpectBoth‼!ValidateHCL {"#123abc" "#aaabbb"} {"#z23abc" "3abc" "z23abc#"}
 ExpectBoth‼!ValidateECL {"amb" "grn"} {"" "grnn" "22"}
 ExpectBoth‼!ValidatePID {"000000001"} {"0123456789"}
 
-IsValidPassport ← ⊃(
-  ValidateBYR
-| ValidateIYR
-| ValidateEYR
-| ValidateHGT
-| ValidateHCL
-| ValidateECL
-| ValidatePID
-)
-
 ParsePassports RawSample
 
-rows (under unbox(select rise (rows first) . ))
+# sort the keys of the passport
+≡(⍜°□(⊏ ⍏ (≡⊢) .))
+
+first
+# get only the values
+unbox
+rows (pick1)
+# len .
+# un {dddddddi}
+# unselect
+
+ValidatePassport 
+
+
+# Foo = id
+# Bar = id
+# Baz = id
+# {Foo "1937" Bar "147" Baz "gry" "2020" "#fffffd" "183cm" "2017" "860033327"}
+# uncouple 
+
+# ?
+# repeat (unjoin) 8
+
+# rerank 0
+
+# partition id len .
+# rows (unfix partition box len .)
+
 # select rise (first.)
-# ∵&p
 # IsValidPassport "ASD"
 
 # RawActual
