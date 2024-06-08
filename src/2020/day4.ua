@@ -166,21 +166,23 @@ ValidateHGT ← (
   # {"123" "cm"}
 
   # parse number
-  ⍜⊡ ⋕ 0
+  ⍜⊡ (⍣⋕(¯9999)) 0
   .
   ⇌
   (⍜⊡ (= □"cm") 0)
   °□ ⊢
-  ⟨/↧ [⊃(≥ 59)(≤ 75)]|/↧ [⊃(≥ 150)(≤ 193)]⟩
-  # fork (=box"cm" pick 1) id
-  ⊢
-  °□
+  ⟨
+    /↧ [⊃(≥ 59)(≤ 75)]
+  | /↧ [⊃(≥ 150)(≤ 193)]
+  ⟩
+  °□⊢
 )
 
 # a # followed by exactly six characters 0-9 or a-f.
 ValidateHCL ← (
-  [ fork (=@# ⊡  0| =7 length | /min max both*both(bracket≥≤)@a,@f,@0,@9 drop 1) ]
+  [⊃(=@# ⊡ 0|=7 ⧻|/↧ ↥ ∩×∩(⊓≥≤)@a,@f,@0,@9 ↘ 1)]
 
+  /↧
 )
 
 ExpectTrue ← ⍤ $"Expected True (1), but got Falsey: _" (: =1 .)
@@ -193,13 +195,8 @@ ExpectBoth‼! ← (
 ExpectBoth‼!ValidateBYR {"1920" "2002"} {"1919" "2003" "alll" "_"}
 ExpectBoth‼!ValidateIYR {"2010" "2020"} {"2009" "2021" "alll" "_"}
 ExpectBoth‼!ValidateEYR {"2020" "2030"} {"2019" "2031" "alll" "_"}
-
-ExpectBoth‼!ValidateHGT {"150cm" "193cm" "59in"} {"149cm" "194cm" "76in"}
-
-ValidateHCL "#123abc"
-ValidateHCL "#z23abc"
-ValidateHCL "z23abc#"
-
+ExpectBoth‼!ValidateHGT {"150cm" "193cm" "59in"} {"149cm" "194cm" "in" "76" "76in"}
+ExpectBoth‼!ValidateHCL {"#123abc" "#aaabbb"} {"#z23abc" "3abc" "z23abc#"}
 
 # max(bracket≥≤)@0,@9 "123abcz"
 
@@ -214,15 +211,5 @@ PartOne ← (
 )
 
 # PartOne RawActual
-
-# keep !="\n"
-#
-#
-#
-# rows (
-# keep : range length . find @\n . unbox
-#
-# under pick (@ pop)
-# )
 
 &p "@@@@@@@@@@@@@@@ stack below @@@@@@@@@@@@@@@@\n"
