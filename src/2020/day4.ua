@@ -163,7 +163,19 @@ ValidateEYR ← (
 # number, followed by cm or in; cm: 150-193, in: 59-76
 ValidateHGT = (
 
-	partition box (/(content join) +1 each IsStrDigit ?) .
+	partition box (/(content join) +1 each IsStrDigit) .
+	# {"123" "cm"}
+
+	# parse number
+	under pick parse 0
+	.
+	rev
+	(under pick (= box"cm") 0)
+	unbox first
+	⟨/↧ [⊃(≥ 59)(≤ 75)]|/↧ [⊃(≥ 150)(≤ 193)] ⟩
+	# fork (=box"cm" pick 1) id
+	first
+	unbox
 
 )
 
@@ -178,7 +190,7 @@ ExpectBoth‼!ValidateBYR {"1920" "2002"} {"1919" "2003" "alll" "_"}
 ExpectBoth‼!ValidateIYR {"2010" "2020"} {"2009" "2021" "alll" "_"}
 ExpectBoth‼!ValidateEYR {"2020" "2030"} {"2019" "2031" "alll" "_"}
 
-ValidateHGT "123cm"
+ExpectBoth‼!ValidateHGT {"150cm" "193cm" "59in"} {"149cm" "194cm" "76in"}
 
 # RawActual
 # RawSample
