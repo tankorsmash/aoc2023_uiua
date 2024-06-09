@@ -38,7 +38,6 @@ CalcSeatId ← (
 
 
 
-PartOne RawSample
-⊢
-
-CalcSeatId
+# actual part one
+PartOne RawActual
+/max rows CalcSeatId
