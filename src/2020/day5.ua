@@ -10,7 +10,6 @@ MaxSeats ← 128
 
 PartOne ← (
   ⊜□ ≠@\n .
-
   ≡(⊜□ +1 ∵(/↥ ∊ "FB") . °□)
 )
 
@@ -36,8 +35,14 @@ CalcSeatId ← (
   + * 8
 )
 
-
-
 # actual part one
+# PartOne RawActual
+# /max rows CalcSeatId
+
+# part2
 PartOne RawActual
-/max rows CalcSeatId
+select rise .rows CalcSeatId
+fork (len|/min) .
+fork (indexof 0 member+range ddi|gdi)
++
+
