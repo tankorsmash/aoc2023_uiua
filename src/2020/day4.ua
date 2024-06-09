@@ -143,6 +143,16 @@ CID ← "cid"
 Fields ← ⊏ ⍏ .{BYR IYR EYR HGT HCL ECL PID CID}
 # Fields without CID
 FieldsWithoutCID ← ⊏ ⍏ .{BYR IYR EYR HGT HCL ECL PID}
+FieldReason = {
+	#validation reasons
+	"byr: 4x 1920-2002"
+	"ecl: 4x amb/blu/brn/gry/grn/hzl/oth" 
+	"eyr: 4x 2020-2030"
+	"hcl: # then 0-9 or a-f"
+	"hgt: 150-193cm 59-76in"
+	"iyr: 4x 2010-2020"
+	"pid: 9digits, w/ leading 0s"
+	}
 
 # takes a string and returns all the pairs of boxes values
 ParsePassports ← (
@@ -303,12 +313,18 @@ PartTwo ← (
     # un {dddddddi}
     # unselect
 
-    /↧ ValidatePassport
+    [ ValidatePassport .]
   )
 
-  /+
-)
+  keep rows content (=0 unbox /max first ) .
+  # rows (rows join  (select rise . FieldsWithoutCID) trans reverse)
+  rows (rows join  (FieldReason) trans reverse)
 
+  rows &s .
+
+
+  # /+
+)
 # PartOne RawActual
 ParsePassports RawActual
 PartTwo
