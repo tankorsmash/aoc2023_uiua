@@ -20,7 +20,7 @@ SplitInput ← (
 )
 PartOne = (
 
-	rows inv(/contentjoin rows (/contentjoin ))
+	rows inv( /contentjoin rows (/contentjoin ))
 
 	rows inv dedup
 	/+ rows contentleng
@@ -28,8 +28,24 @@ PartOne = (
 	# dedup
 )
 
+Alphabet = +@a range 26
+
+PartTwo = (
+	rows content(
+		# calc which letters are in each group
+		rows /* trans rows content ( (member Alphabet))
+	) 
+	/+
+	/+
+
+)
+
 # SplitInput RawSample
 SplitInput RawActual
+# PartOne
+PartTwo
 
-PartOne
 
+# rows /* trans rows content ( (member Alphabet)) {"abc" "defa" "ad"}
+
+&p "@@@@@@@@@@@@@@@ stack below @@@@@@@@@@@@@@@@\n"
