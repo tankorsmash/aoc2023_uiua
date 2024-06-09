@@ -5,3 +5,13 @@ H ← Helper
 RawLines ← ReadActual 2020 5
 RawActual ← ReadRawActual 2020 5
 RawSample ← ReadRawSample 2020 5
+
+MaxSeats ← 128
+
+PartOne ← (
+  ⊜□ ≠@\n .
+
+  ≡(⊜□ +1 ∵(/↥ ∊ "FB") . °□)
+)
+
+PartOne RawSample
