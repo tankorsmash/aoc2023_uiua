@@ -32,7 +32,7 @@ CalcSeatId ← (
     ParseFB °□ ⊡ 0
   | ParseLR °□ ⊡ 1
   )
-  + * 8
+  + × 8
 )
 
 # actual part one
@@ -41,8 +41,7 @@ CalcSeatId ← (
 
 # part2
 PartOne RawActual
-select rise .rows CalcSeatId
-fork (len|/min) .
-fork (indexof 0 member+range ddi|gdi)
+⊏ ⍏ .≡CalcSeatId
+⊃(⧻|/↧) .
+⊃(⊗ 0 ∊+⇡ ⊙⊙∘|⋅⊙)
 +
-
