@@ -14,9 +14,31 @@ PartOne ← (
   ≡(⊜□ +1 ∵(/↥ ∊ "FB") . °□)
 )
 
-# PartOne RawSample
+ParseFB ← (
+  # unbox
+  # # "FBFBBFF"
+  =@B             # [0 1 0 1 1 0 0]
+  ⇌ ∵((ⁿ) : 2) ⇡7 # [64 32 16 8 4 2 1 ]
+  /+ ≡(⟨0|∘⟩) :   # 44
+)
 
-"FBFBBFF"
-=@B             # [0 1 0 1 1 0 0]
-⇌ ∵((ⁿ) : 2) ⇡7 # [64 32 16 8 4 2 1 ]
-/+ ≡(⟨0|∘⟩) :   # 44
+ParseLR ← (
+  =@R
+  ⇌ ∵((ⁿ) : 2) ⇡3
+  /+ ≡(⟨0|∘⟩) :
+)
+
+CalcSeatId ← (
+  ⊃(
+    ParseFB °□ ⊡ 0
+  | ParseLR °□ ⊡ 1
+  )
+  + * 8
+)
+
+
+
+PartOne RawSample
+⊢
+
+CalcSeatId
