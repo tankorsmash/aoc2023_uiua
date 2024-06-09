@@ -40,8 +40,12 @@ CalcSeatId ← (
 # /max rows CalcSeatId
 
 # part2
-PartOne RawActual
-⊏ ⍏ .≡CalcSeatId
-⊃(⧻|/↧) .
-⊃(⊗ 0 ∊+⇡ ⊙⊙∘|⋅⊙)
-+
+PartOne RawActual # all the seats, split into FB and LR pairs
+⊏ ⍏ .≡CalcSeatId # calc the seat ids (rows * 8 + cols), then sort them
+⊃(⧻|/↧) . # calc the number of seat ids and find the lowest seat id
+⊃(⊗ 0 ∊+⇡ ⊙⊙∘|⋅⊙) # build the range of seat ids starting at the lowest seat id
+                  # then find the first seat id that is not in the list of seat ids
+				  # (which is what  `member 0` does)
+				  # also pull the length out of the stack in the second fork there
++ # add the lowest seat id to get the missing seat id to the missing index to
+  # get the result
