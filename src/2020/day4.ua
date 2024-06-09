@@ -178,7 +178,7 @@ IsFourDigits ← /↧ [⊃(/↧ (≡(⍣(IsNumDigit ⋕)0))|=4 ⧻)]
 ValidateBYR ← (
   .
   IsFourDigits
-  ⟨0 ◌|/↧ [⊃(≥ 1920)(≤ 2002)] ⋕⟩
+  ⟨0 pop|/↧ [⊃(≥ 1920)(≤ 2002)] ⋕⟩
 )
 
 # four digits; at least 2010 and at most 2020.
@@ -207,7 +207,7 @@ ValidateHGT ← (
   (⍜⊡ (= □"cm") 0)
   °□ ⊢
   ⟨
-    /↧ [⊃(≥ 59)(≤ 75)]
+    /↧ [⊃(≥ 59)(≤ 76)]
   | /↧ [⊃(≥ 150)(≤ 193)]
   ⟩
   °□⊢
@@ -278,7 +278,7 @@ InvalidPassportThree ← $"hcl:dab227 iyr:2012\necl:brn hgt:182cm pid:021572410 
 # keep only valid passports
 KeepValidPassports ← (
   .
-  ≡◇(HasAllKeys ≡⊡0)
+  ≡◇(HasAllKeys ≡⊡0 )
   ▽
 )
 
@@ -312,12 +312,12 @@ PartTwo ← (
     # un {dddddddi}
     # unselect
 
-    [ValidatePassport .]
+    /↧ ValidatePassport
   )
 
   # keep rows content (=0 unbox /max first ) .
   # rows (rows join  (select rise . FieldsWithoutCID) trans reverse)
-  ≡(≡⊂ (FieldReason) ⍉ ⇌)
+  # ≡(≡⊂ (FieldReason) ⍉ ⇌)
 
   # partition id  len.
   # rows (repeat (id.) 10 ) [1 2 3]
@@ -327,7 +327,7 @@ PartTwo ← (
   # &p "waiting"
   # rows parse [ &sc &sc &sc ]
 
-  # /+
+  /+
 )
 
 GroupByFour ← (
@@ -341,10 +341,13 @@ GroupByFour ← (
 )
 
 # PartOne RawActual
-# ParsePassports RawActual
-# PartTwo
+ParsePassports RawActual
+PartTwo
 
-+@a ⇡25
-GroupByFour
+# GroupByFour
+
+# rows &p 
+# rows (&p pop &sc &p "waiting")
+&p "done"
 
 &p "@@@@@@@@@@@@@@@ stack below @@@@@@@@@@@@@@@@\n"
