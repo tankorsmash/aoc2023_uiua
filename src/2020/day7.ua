@@ -12,7 +12,7 @@ SplitInput ← (
   # rows inv(SplitBy!box "contains")
 )
 
-PartOne ← (
+ParseBags ← (
   ≡◇(
     ▽=0 (/↥ [⊃(⦷" bags"|⦷ " bag"|⦷ ".")]) . # strip " bags" and " bag"
     ⊜□=0 ⦷" contain ".                      # split into bag name and contents
@@ -26,25 +26,30 @@ PartTwo ← (
 
 [
 box "light red bags contain 1 bright white bag, 2 muted yellow bags." 
-□ "light red bags contain 1 bright white bag."
-box "light red bags contain no other"
+□ "shaded blue bags contain 1 bright white bag."
+box "muted yellow bags contain no other"
 ]
 
 # SplitInput RawSample
 # # SplitInput RawActual
 # PartOne
 # # PartTwo
-PartOne
+ParseBags
 
 
 ParseContents = (
-	⊡ 1
 	◇≡(
 	  ≠□"no other"□.°□
 	  ⍥(⍜⊡ (⋕) 0 (SplitBy!□ °□@\s))
 	)
 )
 
-rows (boxParseContents)
+rows (couple fork  (pick 0 | boxParseContents pick 1))
+
+first
+pick 1
+unbox
+rows (drop1 /content join des rows join @\s ? drop 1)
+
 
 &p "@@@@@@@@@@@@@@@ stack below @@@@@@@@@@@@@@@@\n"
