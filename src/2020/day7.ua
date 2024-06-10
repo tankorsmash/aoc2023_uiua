@@ -40,16 +40,43 @@ ParseBags
 ParseContents = (
 	◇≡(
 	  ≠□"no other"□.°□
-	  ⍥(⍜⊡ (⋕) 0 (SplitBy!□ °□@\s))
+	  ([] |(⍜⊡ (⋕) 0 (SplitBy!□ °□@\s)))
 	)
 )
 
-rows (couple fork  (pick 0 | boxParseContents pick 1))
+JoinString =drop1  /content join  des rows join @\s
 
-first
-pick 1
-unbox
-rows (drop1 /content join des rows join @\s ? drop 1)
+# rows (fork  (pick 0 | box pop?shape. ParseContents pick 1))
+couple rows (fork  (pick 0 | box pop shape. ParseContents pick 1))
+trans
+
+?
+rows (underpick inv(join "KEY " ) 0 )
+PerSingle = {fork (unbox pick0| (JoinString  drop1))}
+PerContent = ([]|rows PerSingle) !=0 pick neg1 shape .
+rows (underpick inv(PerContent) 1 )
+# rows &p
+
+
+# rows (keep (!= 0 pick neg1 shape unbox ).unbox  drop 1)
+#
+# rows (shape rows unbox drop 1)
+# ?
+# pick 1
+# ?
+# pick 1
+
+
+
+# rows JoinString
+# fork (take 1 | rows (box JoinString ?drop 1 ) unbox ) 
+
+
+# rows (JoinString drop1)
+
+
+
+# rows &p
 
 
 &p "@@@@@@@@@@@@@@@ stack below @@@@@@@@@@@@@@@@\n"
