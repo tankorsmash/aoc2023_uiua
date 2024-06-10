@@ -8,17 +8,20 @@ RawSample ← ReadRawSample 2020 7
 
 # breaks lines into groups of \n\n
 SplitInput ← (
-  part box !=@\n .
+  ⊜□ ≠@\n .
   # rows inv(SplitBy!box "contains")
 )
-PartOne = (
-id
+
+PartOne ← (
+  ≡◇(
+    ▽=0 (/↥ [⊃(⦷" bags"|⦷ " bag"|⦷ ".")]) . # strip " bags" and " bag"
+    ⊜□=0 ⦷" contain ".                      # split into bag name and contents
+    ⍜⊡ ⍚(⊜□ =0 ⦷ ", " .) 1                  # break contents into individual bags
+  )
 )
 
-
-PartTwo = (
-	id
-
+PartTwo ← (
+  ∘
 )
 
 SplitInput RawSample
@@ -27,17 +30,13 @@ SplitInput RawSample
 # # PartTwo
 # "light red bags contain 1 bright white bag, 2 muted yellow bags."
 
-rows (
-	unbox
-	keep =0 mask " bags" .
-	keep =0 mask " bag" .
-	part box not mask " contain ".
-	?
-	# under pick(inv part box un box!=@, .) 1
-	under pick (box part box not (max fork (mask ", "| mask ".").) unbox) 1
-)
-# under pick inv (part box not mask ".".) 1
+PartOne
 
-# rows /* trans rows content ( (member Alphabet)) {"abc" "defa" "ad"}
+# pick 4
+# pick 1
+# unbox
+# first
+# unbox
+# under pick inv (part box not mask ".".) 1
 
 &p "@@@@@@@@@@@@@@@ stack below @@@@@@@@@@@@@@@@\n"
