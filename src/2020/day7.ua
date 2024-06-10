@@ -24,19 +24,20 @@ PartTwo ← (
   ∘
 )
 
-SplitInput RawSample
+# box "light red bags contain 1 bright white bag, 2 muted yellow bags."
+box "light red bags contain 1 bright white bag."
+# box "light red bags contain no other"
+# SplitInput RawSample
 # # SplitInput RawActual
 # PartOne
 # # PartTwo
-# "light red bags contain 1 bright white bag, 2 muted yellow bags."
-
 PartOne
 
-# pick 4
-# pick 1
-# unbox
+
 # first
-# unbox
-# under pick inv (part box not mask ".".) 1
+pick 1
+content rows (
+	repeat(underpick parse 0 (SplitBy!box unbox@\s )) !=box"no other"box.unbox
+)
 
 &p "@@@@@@@@@@@@@@@ stack below @@@@@@@@@@@@@@@@\n"
