@@ -51,11 +51,11 @@ couple rows (fork  (pick 0 | box pop shape. ParseContents pick 1))
 trans
 
 ?
-rows (underpick inv(join "KEY " ) 0 )
+rows (underpick inv(abs) 0 )
 PerSingle = {fork (unbox pick0| (JoinString  drop1))}
-PerContent = ([]|rows PerSingle) !=0 pick neg1 shape .
+PerContent = ([[]]|rows PerSingle) !=0 pick neg1 shape .
 rows (underpick inv(PerContent) 1 )
-# rows &p
+rows &p
 
 
 # rows (keep (!= 0 pick neg1 shape unbox ).unbox  drop 1)
