@@ -81,6 +81,14 @@ SwapMap
 # remove counts from the swapped map
 ≡(▽ ⍜⊡◌1 =. :0 .)
 
+BagName ← "SHINY GOLD"
+keep ≡(=□BagName ⊢) .
+
+rows (abspic1)
+#TODO replace BagName with 'DARK OLIVE' and 'VIBRANT PLUM' here
+?
+keep ≡(=□BagName ⊢) .
+
 # underpickpop 1 [1 2 3] Sent
 
 &p "@@@@@@@@@@@@@@@ stack below @@@@@@@@@@@@@@@@\n"
