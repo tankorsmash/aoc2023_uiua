@@ -39,7 +39,7 @@ ConvertToMap ← (
   ⊟ ≡(⊃(⊡ 0|□ ◌ △. ParseContents ⊡ 1))
   ⍉
 
-  ≡(⍜⊡ ⍚(abs) 0)
+  ≡(⍜⊡ ⍚(⌵) 0)
   ≡(⍜⊡ ⍚(PerContent) 1)
   # rows &p
   ⍉
@@ -47,21 +47,20 @@ ConvertToMap ← (
   map
 )
 
-Sent = neg 1
+Sent ← ¯ 1
 
 # returns the contents and its count to its holder.
-SwapMap = (
-	unmap
-	couple
-	trans
-	fill Sent rows (
-		fork (unbox pick 1| pick 0)
-		rows (dippop join ,)
-	)
-	/join
+SwapMap ← (
+  °map
+  ⊟
+  ⍉
+  ⬚Sent ≡(
+    ⊃(°□ ⊡1|⊡0)
+    ≡(⊙◌ ⊂ ,)
+  )
+  /⊂
 
-	keep rows (!=boxSent first) .
-	keep rows (!=boxSent pic1) .
+  ▽ ≡(/↧≠ □Sent).
 )
 
 # [□ "light red bags contain 1 bright white bag, 2 muted yellow bags."
@@ -78,27 +77,5 @@ ParseBags
 ConvertToMap
 
 SwapMap
-
-# rows (&ppick1unbox)
-# rows (&s rows (first ) unbox)
-
-
-
-
-
-# rows (keep (!= 0 pick neg1 shape unbox ).unbox  drop 1)
-#
-# rows (shape rows unbox drop 1)
-# ?
-# pick 1
-# ?
-# pick 1
-
-# rows JoinString
-# fork (take 1 | rows (box JoinString ?drop 1 ) unbox )
-
-# rows (JoinString drop1)
-
-# rows &p
 
 &p "@@@@@@@@@@@@@@@ stack below @@@@@@@@@@@@@@@@\n"
