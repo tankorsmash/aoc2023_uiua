@@ -59,3 +59,4 @@ SplitBy! ← |2 (
 
 # like ? but tries taking only 10 lines of the list if its an array
 TrimDump ← |0.0 dump⍣(≡↙ 10)(⊙◌)
+TrimDumpShort ← |0.0 dump⍣(≡↙ 5)(⊙◌)

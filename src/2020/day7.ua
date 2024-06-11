@@ -63,6 +63,11 @@ SwapMap ← (
   ▽ ≡(/↧≠ □Sent).
 )
 
+# remove counts from the swapped map
+WithoutCounts = ≡(▽ ⍜⊡◌1 =. :0 .)
+
+BagName ← "SHINY GOLD"
+
 # [□ "light red bags contain 1 bright white bag, 2 muted yellow bags."
 #  □ "shaded blue bags contain 1 bright white bag."
 #  □ "muted yellow bags contain no other"]
@@ -78,17 +83,40 @@ ConvertToMap
 
 SwapMap
 
-# remove counts from the swapped map
-≡(▽ ⍜⊡◌1 =. :0 .)
 
-BagName ← "SHINY GOLD"
+WithoutCounts
+
+drop 4
+take 5 #temp
+
+.
+
+
 keep ≡(=□BagName ⊢) .
+
 
 rows (abspic1)
 #TODO replace BagName with 'DARK OLIVE' and 'VIBRANT PLUM' here
-?
-keep ≡(=□BagName ⊢) .
 
+
+F = (
+	id
+	# dipfix
+	?
+	rows(member negabs)
+	?
+)
+rows F ? dipfix
+
+
+# [{@a 1} { "hello" 99} { @c 123}]
+#
+# { "hello" "world" }
+#
+#
+# trans rows (member ) dipfix
+#
+#
 # underpickpop 1 [1 2 3] Sent
 
 &p "@@@@@@@@@@@@@@@ stack below @@@@@@@@@@@@@@@@\n"
