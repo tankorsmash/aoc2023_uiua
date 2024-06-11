@@ -24,38 +24,51 @@ PartTwo ← (
   ∘
 )
 
+ParseContents ← (
+  ◇≡(
+    ≠□"no other"□.°□
+    ⟨[]|(⍜⊡ (⋕) 0 (SplitBy!□ °□@\s))⟩
+  )
+)
 
+JoinString ← ↘1 /◇⊂ ♭ ≡⊂ @\s
 
-ParseContents = (
-	◇≡(
-	  ≠□"no other"□.°□
-	  ([] |(⍜⊡ (⋕) 0 (SplitBy!□ °□@\s)))
+PerSingle ← {⊃(°□ ⊡0|(JoinString ↘1))}
+PerContent ← ⟨[[]]|≡PerSingle⟩ ≠0 ⊡ ¯1 △ .
+ConvertToMap ← (
+  ⊟ ≡(⊃(⊡ 0|□ ◌ △. ParseContents ⊡ 1))
+  ⍉
+
+  ≡(⍜⊡ ⍚(abs) 0)
+  ≡(⍜⊡ ⍚(PerContent) 1)
+  # rows &p
+  ⍉
+  °⊟
+  map
+)
+
+Sent = neg 1
+
+# returns the contents and its count to its holder.
+SwapMap = (
+	unmap
+	couple
+	trans
+	fill Sent rows (
+		fork (unbox pick 1| pick 0)
+		rows (dippop join ,)
 	)
+	/join
+
+	keep rows (!=boxSent first) .
+	keep rows (!=boxSent pic1) .
 )
 
-JoinString =drop1  /content join  des rows join @\s
+# [□ "light red bags contain 1 bright white bag, 2 muted yellow bags."
+#  □ "shaded blue bags contain 1 bright white bag."
+#  □ "muted yellow bags contain no other"]
 
-PerSingle = {fork (unbox pick0| (JoinString  drop1))}
-PerContent = ([[]]|rows PerSingle) !=0 pick neg1 shape .
-ConvertToMap = (
-	couple rows (fork  (pick 0 | box pop shape. ParseContents pick 1))
-	trans
-
-	rows (underpick inv(id) 0 )
-	rows (underpick inv(PerContent) 1 )
-	# rows &p
-	trans
-	uncouple
-	map
-)
-
-[
-box "light red bags contain 1 bright white bag, 2 muted yellow bags." 
-□ "shaded blue bags contain 1 bright white bag."
-box "muted yellow bags contain no other"
-]
-
-# SplitInput RawSample
+SplitInput RawSample
 # SplitInput RawActual
 
 # PartOne
@@ -63,6 +76,12 @@ box "muted yellow bags contain no other"
 
 ParseBags
 ConvertToMap
+
+SwapMap
+
+# rows (&ppick1unbox)
+# rows (&s rows (first ) unbox)
+
 
 
 
@@ -75,17 +94,11 @@ ConvertToMap
 # ?
 # pick 1
 
-
-
 # rows JoinString
-# fork (take 1 | rows (box JoinString ?drop 1 ) unbox ) 
-
+# fork (take 1 | rows (box JoinString ?drop 1 ) unbox )
 
 # rows (JoinString drop1)
 
-
-
 # rows &p
-
 
 &p "@@@@@@@@@@@@@@@ stack below @@@@@@@@@@@@@@@@\n"
