@@ -9,7 +9,7 @@ IsTrue ← °□ ⊏ ⊙{"False" "True"} =1
 ToString ← $"_"
 
 # prints the stack but takes a string too
-Helper ← id?
+Helper ← pop?
 
 # Joins strings together
 StringJoin ← ◇/⊂
@@ -18,7 +18,7 @@ StringJoin ← ◇/⊂
 # then split by newlines and box
 ReadLines ← |1 (
   # read file
-  ⍣&fras (Helper)
+  ⍣&fras (Helper$"cant read file: _" .)
 
   ⊜□≠@\n .
 )
