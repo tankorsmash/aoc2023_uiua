@@ -24,17 +24,6 @@ PartTwo ← (
   ∘
 )
 
-[
-box "light red bags contain 1 bright white bag, 2 muted yellow bags." 
-□ "shaded blue bags contain 1 bright white bag."
-box "muted yellow bags contain no other"
-]
-
-# SplitInput RawSample
-# # SplitInput RawActual
-# PartOne
-# # PartTwo
-ParseBags
 
 
 ParseContents = (
@@ -46,16 +35,36 @@ ParseContents = (
 
 JoinString =drop1  /content join  des rows join @\s
 
-# rows (fork  (pick 0 | box pop?shape. ParseContents pick 1))
-couple rows (fork  (pick 0 | box pop shape. ParseContents pick 1))
-trans
-
-?
-rows (underpick inv(abs) 0 )
 PerSingle = {fork (unbox pick0| (JoinString  drop1))}
 PerContent = ([[]]|rows PerSingle) !=0 pick neg1 shape .
-rows (underpick inv(PerContent) 1 )
-rows &p
+ConvertToMap = (
+	couple rows (fork  (pick 0 | box pop shape. ParseContents pick 1))
+	trans
+
+	rows (underpick inv(id) 0 )
+	rows (underpick inv(PerContent) 1 )
+	# rows &p
+	trans
+	uncouple
+	map
+)
+
+[
+box "light red bags contain 1 bright white bag, 2 muted yellow bags." 
+□ "shaded blue bags contain 1 bright white bag."
+box "muted yellow bags contain no other"
+]
+
+# SplitInput RawSample
+# SplitInput RawActual
+
+# PartOne
+# # PartTwo
+
+ParseBags
+ConvertToMap
+
+
 
 
 # rows (keep (!= 0 pick neg1 shape unbox ).unbox  drop 1)
