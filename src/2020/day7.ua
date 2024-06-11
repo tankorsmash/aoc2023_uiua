@@ -78,4 +78,9 @@ ConvertToMap
 
 SwapMap
 
+# remove counts from the swapped map
+≡(▽ ⍜⊡◌1 =. :0 .)
+
+# underpickpop 1 [1 2 3] Sent
+
 &p "@@@@@@@@@@@@@@@ stack below @@@@@@@@@@@@@@@@\n"
