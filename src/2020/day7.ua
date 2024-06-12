@@ -64,7 +64,7 @@ SwapMap ← (
 )
 
 # remove counts from the swapped map
-RemoveCounts = ≡(▽ ⍜⊡◌1 =. :0 .)
+RemoveCounts ← ≡(▽ ⍜⊡◌1 =. :0 .)
 
 ShinyGoldBag ← "shiny gold"
 
@@ -83,7 +83,6 @@ ConvertToMap
 
 SwapMap
 
-
 RemoveCounts
 
 # drop 4
@@ -92,18 +91,18 @@ RemoveCounts
 ?
 .
 
+▽ ≡(=□ShinyGoldBag ⊡1) .
+≡(⌵ ⊡1)
 
-keep ≡(=□ShinyGoldBag pick1) .
+FindContainingBags ← (
+  # dipfix
+  ≡(≠0 ⧻ °□ . □ ▽ ∊ ⊙. ¯ ⌵)
 
-rows (abs pic1)
-
-FindContainingBags = (
-	# dipfix
-	rows(!=0 length unbox . box keep member dip. neg abs  )
-
-	keep
-	# rows (box keep !=0 contentlength .)
+  ▽
+  # rows (box keep !=0 contentlength .)
 )
-dedup des rows (rows content(negabs first) FindContainingBags )  dipfix
+
+⊙¤
+◴ ♭ ≡(≡◇(¯⌵ ⊢) FindContainingBags)
 
 &p "@@@@@@@@@@@@@@@ stack below @@@@@@@@@@@@@@@@\n"
