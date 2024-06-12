@@ -64,9 +64,9 @@ SwapMap ← (
 )
 
 # remove counts from the swapped map
-WithoutCounts = ≡(▽ ⍜⊡◌1 =. :0 .)
+RemoveCounts = ≡(▽ ⍜⊡◌1 =. :0 .)
 
-BagName ← "SHINY GOLD"
+ShinyGoldBag ← "shiny gold"
 
 # [□ "light red bags contain 1 bright white bag, 2 muted yellow bags."
 #  □ "shaded blue bags contain 1 bright white bag."
@@ -84,41 +84,26 @@ ConvertToMap
 SwapMap
 
 
-WithoutCounts
+RemoveCounts
 
-drop 4
-take 5 #temp
+# drop 4
+# take 5 #temp
 
+?
 .
 
 
-keep ≡(=□BagName ⊢) .
-
+keep ≡(=□ShinyGoldBag pick1) .
 
 rows (abs pic1)
-#TODO replace BagName with 'DARK OLIVE' and 'VIBRANT PLUM' here
 
-
-Func = (
-	id
+FindContainingBags = (
 	# dipfix
-	rows(box keep member dip. neg abs  )
+	rows(!=0 length unbox . box keep member dip. neg abs  )
 
-	rows (!=0 contentlength . )
 	keep
 	# rows (box keep !=0 contentlength .)
 )
-rows Func  ? dipfix
-
-
-# [{@a 1} { "hello" 99} { @c 123}]
-#
-# { "hello" "world" }
-#
-#
-# trans rows (member ) dipfix
-#
-#
-# underpickpop 1 [1 2 3] Sent
+dedup des rows (rows content(negabs first) FindContainingBags )  dipfix
 
 &p "@@@@@@@@@@@@@@@ stack below @@@@@@@@@@@@@@@@\n"
