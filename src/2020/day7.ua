@@ -95,18 +95,20 @@ take 5 #temp
 keep ≡(=□BagName ⊢) .
 
 
-rows (abspic1)
+rows (abs pic1)
 #TODO replace BagName with 'DARK OLIVE' and 'VIBRANT PLUM' here
 
 
-F = (
+Func = (
 	id
 	# dipfix
-	?
-	rows(member negabs)
-	?
+	rows(box keep member dip. neg abs  )
+
+	rows (!=0 contentlength . )
+	keep
+	# rows (box keep !=0 contentlength .)
 )
-rows F ? dipfix
+rows Func  ? dipfix
 
 
 # [{@a 1} { "hello" 99} { @c 123}]
