@@ -95,14 +95,11 @@ RemoveCounts
 ≡(⌵ ⊡1)
 
 FindContainingBags ← (
-  # dipfix
-  ≡(≠0 ⧻ °□ . □ ▽ ∊ ⊙. ¯ ⌵)
-
+  ≡(≠0 ⧻ ⟜□ ▽ ∊ ⊙. ¯ ⌵)
   ▽
-  # rows (box keep !=0 contentlength .)
 )
 
-⊙¤
-◴ ♭ ≡(≡◇(¯⌵ ⊢) FindContainingBags)
+◴♭ ≡(≡◇(¯⌵ ⊢) FindContainingBags) ⊙¤
+# ◴♭ ≡(≡◇(¯⌵ ⊢) FindContainingBags) ⊙¤
 
 &p "@@@@@@@@@@@@@@@ stack below @@@@@@@@@@@@@@@@\n"
