@@ -1,5 +1,7 @@
 Utils ~ "../utils.ua" ~ Helper ReadActual ReadLines ReadRawActual ReadRawSample ReadSample SplitBy! ToString TrimDump
 
+Utils~Separator
+
 H ← Helper
 
 RawLines ← ReadActual 2020 7
@@ -66,11 +68,6 @@ SwapMap ← (
 # remove counts from the swapped map
 RemoveCounts ← ≡(▽ ⍜⊡◌1 =. :0 .)
 
-FindContainingBags ← (
-  ≡(≠0 ⧻ ⟜□ ▽∊ ⊙. ¯⌵)
-  ▽
-)
-
 ShinyGoldBag ← "shiny gold"
 
 # [□ "light red bags contain 1 bright white bag, 2 muted yellow bags."
@@ -91,27 +88,37 @@ RemoveCounts
 # drop 4
 # take 5 #temp
 
-# starting value
+
+FindContainingBags ←|2 (
+  # for each row in the bags, check if its in the keys we're looking for
+  ▽≡(≠0 ⧻ ⟜□ ▽∊  ⊙. ¯⌵)
+)
 
 # by(◴♭ ≡(≡◇(¯⌵ ⊢) FindContainingBags) ⊙¤)
 # ◴♭ ≡(≡◇(¯⌵ ⊢) FindContainingBags) ⊙¤
 
-# abs { ShinyGoldBag}
-# by(◴♭ ≡(≡◇(¯⌵ ⊢) FindContainingBags) ⊙¤ )
-# by(◴♭ ≡(≡◇(¯⌵ ⊢) FindContainingBags) ⊙¤ )
-# by(◴♭ ≡(≡◇(¯⌵ ⊢) FindContainingBags) ⊙¤ )
+# starting value
+abs { ShinyGoldBag }
+by(◴♭ ≡(≡◇(¯⌵ ⊢) FindContainingBags ) dip¤ )
+&p .
+by(◴♭ ≡(≡◇(¯⌵ ⊢) FindContainingBags ) dip¤ )
+&p .
+by(◴♭ ≡(≡◇(¯⌵ ⊢) FindContainingBags ) dip¤ )
+&p .
+# by(◴♭ ≡(≡◇(¯⌵ ⊢) FindContainingBags ) dip¤ )
 
-&p "starting"
-⌵ {ShinyGoldBag}
-
-Iter =(
-  by(◴♭ ≡(≡◇(¯⌵ ⊢) FindContainingBags) ?⊙¤)
-  # ⊃(join box"ASD"| ⊂ | id)
-  &sl 0.5
-)
-
-Cond = (>0 ⧻ )
-⍢Iter Cond : []
-&p "end"
+# &p "starting"
+# ⌵ {ShinyGoldBag}
+#
+# Inner = ◴♭ ≡(≡◇(¯⌵ ⊢) FindContainingBags) ⊙¤
+# Iter =(
+#   by( Inner) 
+#   # ⊃(join box"ASD"| ⊂ | id)
+#   &sl 0.5
+# )
+#
+# Cond = (>0 ⧻ )
+# ⍢Iter Cond ? : []
+# &p "end"
 
 &p "@@@@@@@@@@@@@@@ stack below @@@@@@@@@@@@@@@@\n"
