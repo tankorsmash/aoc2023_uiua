@@ -1,5 +1,5 @@
 # a separator for printing
-Separator ← ▽ 60 "-"
+Separator ← &p "]" &pf ▽ 30 "-" &pf "SEP" &pf ▽ 30 "-" &pf "[" 
 
 # turns 0 or 1 into "True" or "False"
 # &p IsTrue 1
