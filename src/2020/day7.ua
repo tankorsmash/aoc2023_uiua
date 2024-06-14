@@ -66,6 +66,12 @@ SwapMap ← (
 # remove counts from the swapped map
 RemoveCounts ← ≡(▽ ⍜⊡◌1 =. :0 .)
 
+FindContainingBags ← (
+  ≡(≠0 ⧻ ⟜□ ▽∊ ⊙. ¯⌵)
+  ▽
+)
+
+
 ShinyGoldBag ← "shiny gold"
 
 # [□ "light red bags contain 1 bright white bag, 2 muted yellow bags."
@@ -87,19 +93,10 @@ RemoveCounts
 
 # drop 4
 # take 5 #temp
-
-?
 .
 
-▽ ≡(=□ShinyGoldBag ⊡1) .
-≡(⌵ ⊡1)
-
-FindContainingBags ← (
-  ≡(≠0 ⧻ ⟜□ ▽ ∊ ⊙. ¯ ⌵)
-  ▽
-)
-
+abs box ShinyGoldBag
+?
 ◴♭ ≡(≡◇(¯⌵ ⊢) FindContainingBags) ⊙¤
-# ◴♭ ≡(≡◇(¯⌵ ⊢) FindContainingBags) ⊙¤
 
 &p "@@@@@@@@@@@@@@@ stack below @@@@@@@@@@@@@@@@\n"
