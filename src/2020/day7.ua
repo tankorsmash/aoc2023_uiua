@@ -71,7 +71,6 @@ FindContainingBags ← (
   ▽
 )
 
-
 ShinyGoldBag ← "shiny gold"
 
 # [□ "light red bags contain 1 bright white bag, 2 muted yellow bags."
@@ -86,17 +85,33 @@ SplitInput RawSample
 
 ParseBags
 ConvertToMap
-
 SwapMap
-
 RemoveCounts
 
 # drop 4
 # take 5 #temp
-.
 
-abs box ShinyGoldBag
-?
-◴♭ ≡(≡◇(¯⌵ ⊢) FindContainingBags) ⊙¤
+# starting value
+
+# by(◴♭ ≡(≡◇(¯⌵ ⊢) FindContainingBags) ⊙¤)
+# ◴♭ ≡(≡◇(¯⌵ ⊢) FindContainingBags) ⊙¤
+
+# abs { ShinyGoldBag}
+# by(◴♭ ≡(≡◇(¯⌵ ⊢) FindContainingBags) ⊙¤ )
+# by(◴♭ ≡(≡◇(¯⌵ ⊢) FindContainingBags) ⊙¤ )
+# by(◴♭ ≡(≡◇(¯⌵ ⊢) FindContainingBags) ⊙¤ )
+
+&p "starting"
+⌵ {ShinyGoldBag}
+
+Iter =(
+  by(◴♭ ≡(≡◇(¯⌵ ⊢) FindContainingBags) ?⊙¤)
+  # ⊃(join box"ASD"| ⊂ | id)
+  &sl 0.5
+)
+
+Cond = (>0 ⧻ )
+⍢Iter Cond : []
+&p "end"
 
 &p "@@@@@@@@@@@@@@@ stack below @@@@@@@@@@@@@@@@\n"
