@@ -107,7 +107,7 @@ FindContainingBags ← |2 (
   ▽ ≡(≠0 ⧻ ⟜□ ▽∊ ⊙. ¯⌵)
 )
 
-IterateOnce = ⊸(◴♭ ≡(≡◇(¯⌵ ⊢) FindContainingBags) ⊙¤)
+IterateOnce ← (◴♭ ≡(≡◇(¯⌵ ⊢) FindContainingBags) ⊙¤)
 
 # by(◴♭ ≡(≡◇(¯⌵ ⊢) FindContainingBags) ⊙¤)
 # ◴♭ ≡(≡◇(¯⌵ ⊢) FindContainingBags) ⊙¤
@@ -122,18 +122,37 @@ IterateOnce = ⊸(◴♭ ≡(≡◇(¯⌵ ⊢) FindContainingBags) ⊙¤)
 # &p .
 
 &p "starting"
-⌵ {ShinyGoldBag}
 
-Iter =(
-  IterateOnce
-  &p. 
-  # H"ITER"
-  # ⊃(join box"ASD"| ⊂ | id)
-  # &sl 2.5
+Iter ← (
+  # H"iter"
+  
+  # IterateOnce
+
+  fork(box IterateOnce dip.|box)
+  # IterateOnce
+
+	# ?
+	dip des
+	dip :
+	join
+
+  &pf "found keys: "
+  &p.
+
+  &sl 1
+
+  H "end iter"
+
+
 )
 
-Cond = (>0 ⧻ )
-⍢Iter Cond 
+Cond ← (!=0 &p.&pf "length:" leng pick1)
+
+#  {[]{⌵ ShinyGoldBag}}
+ ?
+
+⍢ Iter Cond H"going in"
+
 &p "end"
 
 &p "@@@@@@@@@@@@@@@ stack below @@@@@@@@@@@@@@@@\n"
