@@ -107,34 +107,33 @@ FindContainingBags ← |2 (
   ▽ ≡(≠0 ⧻ ⟜□ ▽∊ ⊙. ¯⌵)
 )
 
+IterateOnce = ⊸(◴♭ ≡(≡◇(¯⌵ ⊢) FindContainingBags) ⊙¤)
+
 # by(◴♭ ≡(≡◇(¯⌵ ⊢) FindContainingBags) ⊙¤)
 # ◴♭ ≡(≡◇(¯⌵ ⊢) FindContainingBags) ⊙¤
 
-# starting value
+# # starting value
+# ⌵ {ShinyGoldBag}
+# IterateOnce
+# &p .
+# IterateOnce
+# &p .
+# IterateOnce
+# &p .
+
+&p "starting"
 ⌵ {ShinyGoldBag}
 
-IterateOnce = ⊸(◴♭ ≡(≡◇(¯⌵ ⊢) FindContainingBags) ⊙¤)
+Iter =(
+  IterateOnce
+  &p. 
+  # H"ITER"
+  # ⊃(join box"ASD"| ⊂ | id)
+  # &sl 2.5
+)
 
-IterateOnce
-&p .
-IterateOnce
-&p .
-IterateOnce
-&p .
-
-# &p "starting"
-# ⌵ {ShinyGoldBag}
-#
-# Inner = ◴♭ ≡(≡◇(¯⌵ ⊢) FindContainingBags) ⊙¤
-# Iter =(
-#   by( Inner)
-#   H"ITER"
-#   # ⊃(join box"ASD"| ⊂ | id)
-#   &sl 2.5
-# )
-#
-# Cond = (>0 ⧻ )
-# ⍢Iter Cond ? : []
-# &p "end"
+Cond = (>0 ⧻ )
+⍢Iter Cond 
+&p "end"
 
 &p "@@@@@@@@@@@@@@@ stack below @@@@@@@@@@@@@@@@\n"
