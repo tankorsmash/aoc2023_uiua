@@ -17,8 +17,9 @@ SplitInput ← (
 ParseBags ← (
   ≡◇(
     ▽=0 (/↥ [⊃(⦷" bags"|⦷ " bag"|⦷ ".")]) . # strip " bags" and " bag"
-    ⊜□=0 ⦷" contain ".                      # split into bag name and contents
-    ⍜⊡ ⍚(⊜□ =0 ⦷ ", " .) 1                  # break contents into individual bags
+
+    ⊜□=0 ⦷" contain ".     # split into bag name and contents
+    ⍜⊡ ⍚(⊜□ =0 ⦷ ", " .) 1 # break contents into individual bags
   )
 )
 
@@ -28,17 +29,27 @@ PartTwo ← (
 
 ParseContents ← (
   ◇≡(
-    ≠□"no other"□.°□
-    ⟨[]|(⍜⊡ (⋕) 0 (SplitBy!□ °□@\s))⟩
+    ≠□"no other" □ . °□
+    ⟨
+      []
+    | (⍜⊡ (⋕) 0 (SplitBy!□ @\s))
+    ⟩
   )
 )
 
 JoinString ← ↘1 /◇⊂ ♭ ≡⊂ @\s
 
-PerSingle ← {⊃(°□ ⊡0|(JoinString ↘1))}
+PerSingle ← [⊃(⊡0|□(JoinString ↘1))]
 PerContent ← ⟨[[]]|≡PerSingle⟩ ≠0 ⊡ ¯1 △ .
 ConvertToMap ← (
-  ⊟ ≡(⊃(⊡ 0|□ ◌ △. ParseContents ⊡ 1))
+  ≡(
+    ⊃(
+      ⊡ 0
+    | □ ParseContents ⊡1
+    )
+  )
+
+  ⊟
   ⍉
 
   ≡(⍜⊡ ⍚(⌵) 0)
@@ -52,7 +63,7 @@ ConvertToMap ← (
 Sent ← ¯ 1
 
 # returns the contents and its count to its holder.
-SwapMap ← (
+UnjoinMap ← (
   °map
   ⊟
   ⍉
@@ -61,7 +72,6 @@ SwapMap ← (
     ≡(⊙◌ ⊂ ,)
   )
   /⊂
-
   ▽ ≡(/↧≠ □Sent).
 )
 
@@ -77,44 +87,50 @@ ShinyGoldBag ← "shiny gold"
 SplitInput RawSample
 # SplitInput RawActual
 
+# drop 1
+# ↙ 3
+
 # PartOne
 # # PartTwo
 
 ParseBags
 ConvertToMap
-SwapMap
-RemoveCounts
+UnjoinMap
+# RemoveCounts
 
 # drop 4
 # take 5 #temp
 
-
-FindContainingBags ←|2 (
-  # for each row in the bags, check if its in the keys we're looking for
-  ▽≡(≠0 ⧻ ⟜□ ▽∊  ⊙. ¯⌵)
+FindContainingBags ← |2 (
+  # for each row in the bags,
+  # check if its in the keys we're looking for
+  ▽ ≡(≠0 ⧻ ⟜□ ▽∊ ⊙. ¯⌵)
 )
 
 # by(◴♭ ≡(≡◇(¯⌵ ⊢) FindContainingBags) ⊙¤)
 # ◴♭ ≡(≡◇(¯⌵ ⊢) FindContainingBags) ⊙¤
 
 # starting value
-abs { ShinyGoldBag }
-by(◴♭ ≡(≡◇(¯⌵ ⊢) FindContainingBags ) dip¤ )
+⌵ {ShinyGoldBag}
+
+IterateOnce = ⊸(◴♭ ≡(≡◇(¯⌵ ⊢) FindContainingBags) ⊙¤)
+
+IterateOnce
 &p .
-by(◴♭ ≡(≡◇(¯⌵ ⊢) FindContainingBags ) dip¤ )
+IterateOnce
 &p .
-by(◴♭ ≡(≡◇(¯⌵ ⊢) FindContainingBags ) dip¤ )
+IterateOnce
 &p .
-# by(◴♭ ≡(≡◇(¯⌵ ⊢) FindContainingBags ) dip¤ )
 
 # &p "starting"
 # ⌵ {ShinyGoldBag}
 #
 # Inner = ◴♭ ≡(≡◇(¯⌵ ⊢) FindContainingBags) ⊙¤
 # Iter =(
-#   by( Inner) 
+#   by( Inner)
+#   H"ITER"
 #   # ⊃(join box"ASD"| ⊂ | id)
-#   &sl 0.5
+#   &sl 2.5
 # )
 #
 # Cond = (>0 ⧻ )
