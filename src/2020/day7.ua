@@ -1,4 +1,4 @@
-Utils ~ "../utils.ua" ~ Helper ReadActual ReadLines ReadRawActual ReadRawSample ReadSample SplitBy! ToString TrimDump
+Utils ~ "../utils.ua" ~ Helper ReadActual ReadLines ReadRawActual ReadRawSample ReadSample SplitBy! ToString TrimDump 
 
 Utils~Separator
 
@@ -107,7 +107,7 @@ FindContainingBags ← |2 (
   ▽ ≡(≠0 ⧻ ⟜□ ▽∊ ⊙. ¯⌵)
 )
 
-IterateOnce ← (◴♭ ≡(≡◇(¯⌵ ⊢) FindContainingBags) ⊙¤)
+IterateOnce ← by(◴♭ ≡(≡◇(¯⌵ ⊢) FindContainingBags) ⊙¤)
 
 # by(◴♭ ≡(≡◇(¯⌵ ⊢) FindContainingBags) ⊙¤)
 # ◴♭ ≡(≡◇(¯⌵ ⊢) FindContainingBags) ⊙¤
@@ -125,33 +125,58 @@ IterateOnce ← (◴♭ ≡(≡◇(¯⌵ ⊢) FindContainingBags) ⊙¤)
 
 Iter ← (
   # H"iter"
-  
   # IterateOnce
 
-  fork(box IterateOnce dip.|box)
+  IterateOnce
   # IterateOnce
 
-	# ?
-	dip des
-	dip :
-	join
+  H "iter"
 
   &pf "found keys: "
   &p.
 
-  &sl 1
-
+  H "pre fork iter"
+  fork(di|join dgi)
   H "end iter"
+  &p "end iter, waiting for input"
+
 
 
 )
 
-Cond ← (!=0 &p.&pf "length:" leng pick1)
+# Cond ← (!=0 leng pick1)
+Cond ← (!=0 len)
 
-#  {[]{⌵ ShinyGoldBag}}
- ?
+{}
+:
+{⌵ ShinyGoldBag}
+⍢ Iter Cond H"going in" 
 
-⍢ Iter Cond H"going in"
+
+
+# pop
+#
+# Iter = (
+# 		&p "iter start"
+# 		dip dip id
+# 		dip id
+# 		id
+# 		?
+# 		+1
+#
+# 		dip (join 999)
+#
+# 		&p "iter end"
+# 		&sl 1
+# )
+# Cond = (
+# 	# length id
+# 	?
+# 	fork(gggi, ddi)
+# 	H"A"
+# )
+#
+# do Iter Cond 123 [123 ] 0
 
 &p "end"
 
