@@ -84,8 +84,8 @@ ShinyGoldBag ← "shiny gold"
 #  □ "shaded blue bags contain 1 bright white bag."
 #  □ "muted yellow bags contain no other"]
 
-SplitInput RawSample
-# SplitInput RawActual
+# SplitInput RawSample
+SplitInput RawActual
 
 # drop 1
 # ↙ 3
@@ -107,7 +107,7 @@ FindContainingBags ← |2 (
   ▽ ≡(≠0 ⧻ ⟜□ ▽∊ ⊙. ¯⌵)
 )
 
-IterateOnce ← by(◴♭ ≡(≡◇(¯⌵ ⊢) FindContainingBags) ⊙¤)
+IterateOnce ← by(◴♭ /content(join des) ≡(≡◇(¯⌵ ⊢) FindContainingBags) ⊙¤)
 
 # by(◴♭ ≡(≡◇(¯⌵ ⊢) FindContainingBags) ⊙¤)
 # ◴♭ ≡(≡◇(¯⌵ ⊢) FindContainingBags) ⊙¤
@@ -124,33 +124,39 @@ IterateOnce ← by(◴♭ ≡(≡◇(¯⌵ ⊢) FindContainingBags) ⊙¤)
 &p "starting"
 
 Iter ← (
-  # H"iter"
+  H"iter"
   # IterateOnce
 
   IterateOnce
   # IterateOnce
 
-  H "iter"
+  # H "iter"
 
   &pf "found keys: "
   &p.
 
-  H "pre fork iter"
+  # H "pre fork iter"
   fork(di|join dgi)
-  H "end iter"
-  &p "end iter, waiting for input"
+  # H "end iter"
+
+  # &p "end iter, waiting for input"
+  # pop&sc
 
 
 
 )
 
 # Cond ← (!=0 leng pick1)
-Cond ← (!=0 len)
+Cond ← (!=0 length unbox)
 
 {}
 :
 {⌵ ShinyGoldBag}
 ⍢ Iter Cond H"going in" 
+
+gg len
+
+
 
 
 
