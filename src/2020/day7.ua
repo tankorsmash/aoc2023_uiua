@@ -80,26 +80,6 @@ RemoveCounts ← ≡(▽ ⍜⊡◌1 =. :0 .)
 
 ShinyGoldBag ← "shiny gold"
 
-# [□ "light red bags contain 1 bright white bag, 2 muted yellow bags."
-#  □ "shaded blue bags contain 1 bright white bag."
-#  □ "muted yellow bags contain no other"]
-
-# SplitInput RawSample
-SplitInput RawActual
-
-# drop 1
-# ↙ 3
-
-# PartOne
-# # PartTwo
-
-ParseBags
-ConvertToMap
-UnjoinMap
-# RemoveCounts
-
-# drop 4
-# take 5 #temp
 
 FindContainingBags ← |2 (
   # for each row in the bags,
@@ -107,7 +87,7 @@ FindContainingBags ← |2 (
   ▽ ≡(≠0 ⧻ ⟜□ ▽∊ ⊙. ¯⌵)
 )
 
-IterateOnce ← by(◴♭ /content(join des) ≡(≡◇(¯⌵ ⊢) FindContainingBags) ⊙¤)
+IterateOnce ← by(◴♭ rows(≡◇(¯⌵ ⊢) FindContainingBags) ⊙¤)
 
 # by(◴♭ ≡(≡◇(¯⌵ ⊢) FindContainingBags) ⊙¤)
 # ◴♭ ≡(≡◇(¯⌵ ⊢) FindContainingBags) ⊙¤
@@ -124,7 +104,7 @@ IterateOnce ← by(◴♭ /content(join des) ≡(≡◇(¯⌵ ⊢) FindContainin
 &p "starting"
 
 Iter ← (
-  H"iter"
+  # H"iter"
   # IterateOnce
 
   IterateOnce
@@ -149,40 +129,32 @@ Iter ← (
 # Cond ← (!=0 leng pick1)
 Cond ← (!=0 length unbox)
 
+# [□ "light red bags contain 1 bright white bag, 2 muted yellow bags."
+#  □ "shaded blue bags contain 1 bright white bag."
+#  □ "muted yellow bags contain no other"]
+
+SplitInput RawSample
+# SplitInput RawActual
+
+# drop 1
+# ↙ 3
+
+# PartOne
+# # PartTwo
+
+ParseBags
+ConvertToMap
+UnjoinMap
+# RemoveCounts
+
+# drop 4
+# take 5 #temp
+
 {}
 :
 {⌵ ShinyGoldBag}
 ⍢ Iter Cond H"going in" 
 
-gg len
-
-
-
-
-
-# pop
-#
-# Iter = (
-# 		&p "iter start"
-# 		dip dip id
-# 		dip id
-# 		id
-# 		?
-# 		+1
-#
-# 		dip (join 999)
-#
-# 		&p "iter end"
-# 		&sl 1
-# )
-# Cond = (
-# 	# length id
-# 	?
-# 	fork(gggi, ddi)
-# 	H"A"
-# )
-#
-# do Iter Cond 123 [123 ] 0
 
 &p "end"
 
