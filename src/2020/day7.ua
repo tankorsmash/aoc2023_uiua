@@ -87,7 +87,8 @@ FindContainingBags ← |2 (
   ▽ ≡(≠0 ⧻ ⟜□ ▽∊ ⊙. ¯⌵)
 )
 
-IterateOnce ← by(◴♭ rows(≡◇(¯⌵ ⊢) FindContainingBags) ⊙¤)
+S = pop &sc
+IterateOnce ← by(◴♭ /contentjoin  (keep !=0  rows contentlength). rows(box ≡◇(¯⌵ ⊢) FindContainingBags) ⊙¤)
 
 # by(◴♭ ≡(≡◇(¯⌵ ⊢) FindContainingBags) ⊙¤)
 # ◴♭ ≡(≡◇(¯⌵ ⊢) FindContainingBags) ⊙¤
@@ -133,8 +134,8 @@ Cond ← (!=0 length unbox)
 #  □ "shaded blue bags contain 1 bright white bag."
 #  □ "muted yellow bags contain no other"]
 
-SplitInput RawSample
-# SplitInput RawActual
+# SplitInput RawSample
+SplitInput RawActual
 
 # drop 1
 # ↙ 3
@@ -154,6 +155,12 @@ UnjoinMap
 :
 {⌵ ShinyGoldBag}
 ⍢ Iter Cond H"going in" 
+
+pop
+pop
+
+dedup
+len
 
 
 &p "end"
