@@ -3,7 +3,7 @@ Utils ~ "../utils.ua" ~ Helper ReadActual ReadLines ReadRawActual ReadRawSample 
 Utils~Separator
 
 H ← Helper
-S ← ◌ &sc
+S ← ◌ &sc &p "\n~~~ Waiting for input! ~~~"
 
 RawLines ← ReadActual 2020 7
 RawActual ← ReadRawActual 2020 7
@@ -23,10 +23,6 @@ ParseBags ← (
     ⊜□=0 ⦷" contain ".     # split into bag name and contents
     ⍜⊡ ⍚(⊜□ =0 ⦷ ", " .) 1 # break contents into individual bags
   )
-)
-
-PartTwo ← (
-  ∘
 )
 
 ParseContents ← (
@@ -88,7 +84,7 @@ FindContainingBags ← |2 (
   ▽ ≡(≠0 ⧻ ⟜□ ▽∊ ⊙. ¯⌵)
 )
 
-IterateOnce ← ⊸(
+PartOneIterateOnce ← ⊸(
   ⊙¤
   ≡(□ ≡◇(¯⌵ ⊢) FindContainingBags)
   ▽ ≠0 ≡◇⧻. # remove empty boxes
@@ -97,8 +93,8 @@ IterateOnce ← ⊸(
 
 &p "starting"
 
-Iter ← (
-  IterateOnce
+PartOneIter ← (
+  PartOneIterateOnce
 
   # &pf "found keys: "
   # &p.
@@ -120,16 +116,28 @@ PartOne ← (
   {} # accumulator
   :
   {⌵ ShinyGoldBag} # value to find
-  ⍢Iter (≠0 ⧻)
+  ⍢PartOneIter (≠0 ⧻)
 
   ◴◌◌
   ⧻
+)
+
+PartTwoIter ← (
+  ◌       # standin for taking the last iteration's keys and replacing it with our own
+  [1 2 3] # TODO: find all the keys that are inside of last iterations keyvalue pairs
+  #         and then add them to the list to check next time. duplicate thekeys if the counts are >1
+
+  ⊃(⊙∘|⊂ ⊙⋅∘) # join the iteration result with the accumulator
+  #             and return the top two elements on the stack
+
+  S?
 )
 
 PartTwo ← (
   ParseBags
   ConvertToMap
   UnjoinMap
+  ?
   # RemoveCounts
 
   # drop 4
@@ -138,20 +146,29 @@ PartTwo ← (
   {} # accumulator
   :
   {⌵ ShinyGoldBag} # value to find
-  ⍢Iter ◇(≠0 ⧻)
+  ⍢PartTwoIter ◇(≠0 ⧻)
 
-  ◴◌◌
-  ⧻
+  # ◴◌◌
+  # ⧻
 )
 
 # [□ "light red bags contain 1 bright white bag, 2 muted yellow bags."
 #  □ "shaded blue bags contain 1 bright white bag."
 #  □ "muted yellow bags contain no other"]
 
-# SplitInput RawSample
-SplitInput RawActual
+RawSampleTwo ← $ shiny gold bags contain 2 dark red bags.
+               $ dark red bags contain 2 dark orange bags.
+               $ dark orange bags contain 2 dark yellow bags.
+               $ dark yellow bags contain 2 dark green bags.
+               $ dark green bags contain 2 dark blue bags.
+               $ dark blue bags contain 2 dark violet bags.
+               $ dark violet bags contain no other bags.
 
-PartOne
+# SplitInput RawSample
+SplitInput RawSampleTwo
+# SplitInput RawActual
+
+PartTwo
 
 # °□ ◇⊢
 
