@@ -1,8 +1,9 @@
-Utils ~ "../utils.ua" ~ Helper ReadActual ReadLines ReadRawActual ReadRawSample ReadSample SplitBy! ToString TrimDump 
+Utils ~ "../utils.ua" ~ Helper ReadActual ReadLines ReadRawActual ReadRawSample ReadSample SplitBy! ToString TrimDump
 
 Utils~Separator
 
 H ← Helper
+S ← ◌ &sc
 
 RawLines ← ReadActual 2020 7
 RawActual ← ReadRawActual 2020 7
@@ -80,55 +81,43 @@ RemoveCounts ← ≡(▽ ⍜⊡◌1 =. :0 .)
 
 ShinyGoldBag ← "shiny gold"
 
-
 FindContainingBags ← |2 (
   # for each row in the bags,
   # check if its in the keys we're looking for
   ▽ ≡(≠0 ⧻ ⟜□ ▽∊ ⊙. ¯⌵)
 )
 
-S = pop &sc
-IterateOnce ← by(◴♭ /contentjoin  (keep !=0  rows contentlength). rows(box ≡◇(¯⌵ ⊢) FindContainingBags) ⊙¤)
-
-# by(◴♭ ≡(≡◇(¯⌵ ⊢) FindContainingBags) ⊙¤)
-# ◴♭ ≡(≡◇(¯⌵ ⊢) FindContainingBags) ⊙¤
-
-# # starting value
-# ⌵ {ShinyGoldBag}
-# IterateOnce
-# &p .
-# IterateOnce
-# &p .
-# IterateOnce
-# &p .
+IterateOnce ← ⊸(◴♭ /◇⊂ (▽ ≠0 ≡◇⧻). ≡(□ ≡◇(¯⌵ ⊢) FindContainingBags) ⊙¤)
 
 &p "starting"
 
 Iter ← (
-  # H"iter"
-  # IterateOnce
-
   IterateOnce
-  # IterateOnce
 
-  # H "iter"
+  # &pf "found keys: "
+  # &p.
 
-  &pf "found keys: "
-  &p.
-
-  # H "pre fork iter"
-  fork(di|join dgi)
-  # H "end iter"
-
-  # &p "end iter, waiting for input"
-  # pop&sc
-
-
-
+  ⊃(⊙∘|⊂ ⊙⋅∘)
 )
 
-# Cond ← (!=0 leng pick1)
-Cond ← (!=0 length unbox)
+Cond ← (≠0 ⧻ °□)
+PartOne ← (
+  ParseBags
+  ConvertToMap
+  UnjoinMap
+  # RemoveCounts
+
+  # drop 4
+  # take 5 #temp
+
+  {} # accumulator
+  :
+  {⌵ ShinyGoldBag} # value to find
+  ⍢Iter ◇(≠0 ⧻)
+
+  ◴◌◌
+  ⧻
+)
 
 # [□ "light red bags contain 1 bright white bag, 2 muted yellow bags."
 #  □ "shaded blue bags contain 1 bright white bag."
@@ -137,31 +126,7 @@ Cond ← (!=0 length unbox)
 # SplitInput RawSample
 SplitInput RawActual
 
-# drop 1
-# ↙ 3
-
-# PartOne
-# # PartTwo
-
-ParseBags
-ConvertToMap
-UnjoinMap
-# RemoveCounts
-
-# drop 4
-# take 5 #temp
-
-{}
-:
-{⌵ ShinyGoldBag}
-⍢ Iter Cond H"going in" 
-
-pop
-pop
-
-dedup
-len
-
+PartOne
 
 &p "end"
 
