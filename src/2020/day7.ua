@@ -17,8 +17,8 @@ SplitInput ← (
 
 ParseBags ← (
   ≡◇(
-    ▽=0 (/↥ [⊃(⦷" bags"|⦷ " bag"|⦷ ".")]) . # strip " bags" and " bag"
-
+    {" bags" " bag" "."} # strip out these three strings
+    ▽ ⍜(⊙¤) (=0 (/↥ ≡(⦷ °□)) ⊙.)
     ⊜□=0 ⦷" contain ".     # split into bag name and contents
     ⍜⊡ ⍚(⊜□ =0 ⦷ ", " .) 1 # break contents into individual bags
   )
@@ -148,10 +148,15 @@ PartTwo ← (
 #  □ "muted yellow bags contain no other"]
 
 # SplitInput RawSample
-
 SplitInput RawActual
 
 PartOne
+
+# °□ ◇⊢
+
+# mask " bags"
+
+# {" bags" " bag" "."}
 
 &p "end"
 
