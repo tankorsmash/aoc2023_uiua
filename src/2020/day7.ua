@@ -87,7 +87,12 @@ FindContainingBags ← |2 (
   ▽ ≡(≠0 ⧻ ⟜□ ▽∊ ⊙. ¯⌵)
 )
 
-IterateOnce ← ⊸(◴♭ /◇⊂ (▽ ≠0 ≡◇⧻). ≡(□ ≡◇(¯⌵ ⊢) FindContainingBags) ⊙¤)
+IterateOnce ← ⊸(
+  ⊙¤
+  ≡(□ ≡◇(¯⌵ ⊢) FindContainingBags)
+  ▽ ≠0 ≡◇⧻. # remove empty boxes
+  ◴♭/◇⊂     # join all the matched keys together
+)
 
 &p "starting"
 
@@ -97,11 +102,30 @@ Iter ← (
   # &pf "found keys: "
   # &p.
 
-  ⊃(⊙∘|⊂ ⊙⋅∘)
+  ⊃(⊙∘|⊂ ⊙⋅∘) # join the iteration result with the accumulator
+  #             and return the top two elements on the stack
 )
 
 Cond ← (≠0 ⧻ °□)
 PartOne ← (
+  ParseBags
+  ConvertToMap
+  UnjoinMap
+  # RemoveCounts
+
+  # drop 4
+  # take 5 #temp
+
+  {} # accumulator
+  :
+  {⌵ ShinyGoldBag} # value to find
+  ⍢Iter (≠0 ⧻)
+
+  ◴◌◌
+  ⧻
+)
+
+PartTwo ← (
   ParseBags
   ConvertToMap
   UnjoinMap
@@ -124,6 +148,7 @@ PartOne ← (
 #  □ "muted yellow bags contain no other"]
 
 # SplitInput RawSample
+
 SplitInput RawActual
 
 PartOne
