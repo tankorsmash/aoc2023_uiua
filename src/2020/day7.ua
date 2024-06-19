@@ -17,8 +17,9 @@ SplitInput ← (
 
 ParseBags ← (
   ≡◇(
+    .
     {" bags" " bag" "."} # strip out these three strings
-    ▽ ⍜(⊙¤) (=0 (/↥ ≡(⦷ °□)) ⊙.)
+    ▽ ⍜(⊙¤)(=0 (/↥ ≡◇⦷))
     ⊜□=0 ⦷" contain ".     # split into bag name and contents
     ⍜⊡ ⍚(⊜□ =0 ⦷ ", " .) 1 # break contents into individual bags
   )
