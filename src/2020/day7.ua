@@ -127,25 +127,25 @@ PartTwoIter ← (
   # [1 2 3] # TODO: find all the keys that are inside of last iterations keyvalue pairs
   # #         and then add them to the list to check next time. duplicate thekeys if the counts are >1
 
-  dip fix #fix the map so we can get the whole thing in the rows
   ≡(
 	dip . #idk
-	H"inside"
     content get
 	rows (
     	unbox
-		rows (
-			box[ repeat. ] S? -1 unbox dip unbox un couple
+		unbox rows (
+			box[ repeat. ] -1 unbox dip unbox un couple
 			)
 # [repeat. ]unfix dip (unfix.) 
 	 )
-	&p . &pf "result:\n"
   )
+
+	
+	reshape neg1 ?unbox unfix /join
+	&p . &pf "result:\n"
 
   ⊃(⊙∘|⊂ ⊙⋅∘) # join the iteration result with the accumulator
   #             and return the top two elements on the stack
 
-  S
 )
 
 PartTwo ← (
@@ -163,6 +163,7 @@ PartTwo ← (
   {} # accumulator
   :
   {ShinyGoldBag} # value to find
+  dip fix #fix the map so we can get the whole thing in the rows
   ⍢PartTwoIter ◇(≠0 ⧻)
 
   # ◴◌◌
