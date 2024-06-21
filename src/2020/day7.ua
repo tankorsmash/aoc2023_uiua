@@ -122,30 +122,66 @@ PartOne ← (
   ⧻
 )
 
+# AOne = ( [ repeat . ] )
+# AZero =|1.1 ({} pop )
+# F = ( box(AZero | dip pop AOne ) .  -1  unbox uncouple  )
+# # F =|2 (box gap id )
+# Z = (rows F  unbox get  )
+# B =|3.1 rows content Z
+
+DuplicateValues ← (
+  . -1 °□ °⊟
+  ⟨
+    {} ◌
+  | ⊙◌ [⍥.]
+  ⟩
+)
+
 PartTwoIter ← (
-  # ◌       # standin for taking the last iteration's keys and replacing it with our own
-  # [1 2 3] # TODO: find all the keys that are inside of last iterations keyvalue pairs
-  # #         and then add them to the list to check next time. duplicate thekeys if the counts are >1
+  H"iter start"
 
-  ≡(
-	dip . #idk
-    content get
-	rows (
-    	unbox
-		unbox rows (
-			box[ repeat. ] -1 unbox dip unbox un couple
-			)
-# [repeat. ]unfix dip (unfix.) 
-	 )
+  ⍜(⊙¤)(
+    #
+
+    ⬚Sent ≡(
+      ⊃(
+        °□ get °□
+        H"before DuplicateValues"
+
+        ≡(□ DuplicateValues)
+        /◇⊂
+        # H"after"
+        # | H"pos right" ⊙id H"pre right"
+        | ⊙∘
+      )
+
+      ⊙⊙(□)
+      H"post fork"
+      # ?
+    )
+    # H "post rows"
   )
+  H"end"
+  S
 
-	
-	reshape neg1 ?unbox unfix /join
-	&p . &pf "result:\n"
+  #   ≡(
+  # 	dip . #idk
+  #     content get
+  # 	rows (
+  #     	unbox
+  # 		unbox rows (
+  # 			box[ repeat. ] -1 unbox dip unbox un couple
+  # 			)
+  # # [repeat. ]unfix dip (unfix.)
+  # 	 )
+  #   )
 
-  ⊃(⊙∘|⊂ ⊙⋅∘) # join the iteration result with the accumulator
+  # reshape neg1 ?unbox unfix /join
+  &p . &pf "result:\n"
+
+  H"result"
+  ⊃(⊙∘|(⊂) ⊙⋅∘) # join the iteration result with the accumulator
   #             and return the top two elements on the stack
-
 )
 
 PartTwo ← (
@@ -154,7 +190,6 @@ PartTwo ← (
 
   ⍜°map ≡(¯ ⌵) # lowercase the keys
   # UnjoinMap
-  ?
   # RemoveCounts
 
   # drop 4
@@ -163,7 +198,6 @@ PartTwo ← (
   {} # accumulator
   :
   {ShinyGoldBag} # value to find
-  dip fix #fix the map so we can get the whole thing in the rows
   ⍢PartTwoIter ◇(≠0 ⧻)
 
   # ◴◌◌
@@ -182,13 +216,19 @@ RawSampleTwo ← $ shiny gold bags contain 2 dark red bags.
                $ dark blue bags contain 2 dark violet bags.
                $ dark violet bags contain no other bags.
 
-# SplitInput RawSample
-SplitInput RawSampleTwo
+SplitInput RawSample
+# SplitInput RawSampleTwo
 # SplitInput RawActual
-
 PartTwo
 
-# [repeat  .]10 2
+# [repeat .] 0 2
+# ?
+
+# {10 "dark plum"}
+# un couple
+# unbox
+# ?
+# [repeat  .]
 
 # °□ ◇⊢
 
