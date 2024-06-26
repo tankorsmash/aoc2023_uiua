@@ -1,8 +1,9 @@
-Utils ~ "../utils.ua" ~ Helper ReadActual ReadLines ReadRawActual ReadRawSample ReadSample SplitBy! ToString TrimDump
+Utils ~ "../utils.ua" ~ Helper ReadActual ReadLines ReadRawActual ReadRawSample ReadSample SplitBy! ToString Trace TrimDump
 
 Utils~Separator
 
 H ← Helper
+T ← Trace
 S ← ◌ &sc &p "\n~~~ Waiting for input! ~~~"
 
 RawLines ← ReadActual 2020 7
@@ -141,12 +142,10 @@ PartTwoIter ← (
   H"iter start"
 
   ⍜(⊙¤)(
-    #
-
     ⬚Sent ≡(
       ⊃(
-        °□ get °□
-        H"before DuplicateValues"
+        °□ get °□ H"HGER"
+        # H"before DuplicateValues"
 
         ≡(□ DuplicateValues)
         /◇⊂
@@ -156,32 +155,24 @@ PartTwoIter ← (
       )
 
       ⊙⊙(□)
-      H"post fork"
+      # H"post fork"
       # ?
     )
     # H "post rows"
   )
-  H"end"
-  S
+  # H"end (pre join)"
+  # S
 
-  #   ≡(
-  # 	dip . #idk
-  #     content get
-  # 	rows (
-  #     	unbox
-  # 		unbox rows (
-  # 			box[ repeat. ] -1 unbox dip unbox un couple
-  # 			)
-  # # [repeat. ]unfix dip (unfix.)
-  # 	 )
-  #   )
+  # &p . &pf "result:\n"
 
-  # reshape neg1 ?unbox unfix /join
-  &p . &pf "result:\n"
-
-  H"result"
-  ⊃(⊙∘|(⊂) ⊙⋅∘) # join the iteration result with the accumulator
+  ⊃(
+    ⋅⊙∘
+  | (⊂ ♭)
+  ) # join the iteration result with the accumulator
   #             and return the top two elements on the stack
+
+  H"EEENNNNDD (post join)"
+  # S
 )
 
 PartTwo ← (
@@ -220,21 +211,6 @@ SplitInput RawSample
 # SplitInput RawSampleTwo
 # SplitInput RawActual
 PartTwo
-
-# [repeat .] 0 2
-# ?
-
-# {10 "dark plum"}
-# un couple
-# unbox
-# ?
-# [repeat  .]
-
-# °□ ◇⊢
-
-# mask " bags"
-
-# {" bags" " bag" "."}
 
 &p "end"
 

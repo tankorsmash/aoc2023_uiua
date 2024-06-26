@@ -11,6 +11,9 @@ ToString ← $"_"
 # prints the stack but takes a string too
 Helper ← pop?
 
+# prints the top value and a value to print
+Trace = trace pop trace
+
 # Joins strings together
 StringJoin ← ◇/⊂
 
