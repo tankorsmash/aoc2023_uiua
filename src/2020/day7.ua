@@ -59,6 +59,7 @@ ConvertToMap ← (
   map
 )
 
+# Sentinal value
 Sent ← ¯ 1
 
 # returns the contents and its count to its holder.
@@ -140,21 +141,24 @@ DuplicateValues ← (
 
 PartTwoIter ← (
   H"iter start"
+  # S
 
-  ⍜(⊙¤)(
+  (⊙(¤))
+  (
+   # H"before DuplicateValues"
+   dipfix
     ⬚Sent ≡(
       ⊃(
-        °□ get °□ H"HGER"
+        °□ get   H"map" dip(unfix)
         # H"before DuplicateValues"
 
-        ≡(□ DuplicateValues)
+        ≡(□  DuplicateValues)
         /◇⊂
-        # H"after"
-        # | H"pos right" ⊙id H"pre right"
-        | ⊙∘
+        # | dip id
+		| dip (box unfix)
       )
 
-      ⊙⊙(□)
+      # ⊙⊙(□)
       # H"post fork"
       # ?
     )
@@ -166,13 +170,20 @@ PartTwoIter ← (
   # &p . &pf "result:\n"
 
   ⊃(
-    ⋅⊙∘
-  | (⊂ ♭)
+    des
+  | (⊂ ♭ )
   ) # join the iteration result with the accumulator
   #             and return the top two elements on the stack
 
+  # move accumulator to bottom of stack
+  fork(dgi| gap (  unbox))
+
+  dip (unbox unfix)
+
   H"EEENNNNDD (post join)"
-  # S
+  S
+
+  Utils~Separator
 )
 
 PartTwo ← (
@@ -211,6 +222,14 @@ SplitInput RawSample
 # SplitInput RawSampleTwo
 # SplitInput RawActual
 PartTwo
+
+# SplitInput RawSample
+# ParseBags
+# ConvertToMap
+
+# fix
+# unfix
+
 
 &p "end"
 
