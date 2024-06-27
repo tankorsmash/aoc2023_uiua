@@ -1,5 +1,13 @@
 # a separator for printing
-Separator ← &p "]" &pf ▽ 30 "-" &pf "SEP" &pf ▽ 30 "-" &pf "[" 
+Separator ← (
+  "SEP"
+
+  ÷2 ⊡1 &ts                                         # half terminal width
+  : - : (⊙(⧻.))                                     # substract the width of 'SEP' from the width
+  &p "}" &pf ▽ : "|" &pf &pf ▽ : ⊙: ⊙⊙. "|" &pf "{" # print it out
+)
+
+Separator
 
 # turns 0 or 1 into "True" or "False"
 # &p IsTrue 1
@@ -9,10 +17,10 @@ IsTrue ← °□ ⊏ ⊙{"False" "True"} =1
 ToString ← $"_"
 
 # prints the stack but takes a string too
-Helper ← pop?
+Helper ← ◌?
 
 # prints the top value and a value to print
-Trace = trace pop trace
+Trace ← ⸮ ◌ ⸮
 
 # Joins strings together
 StringJoin ← ◇/⊂
