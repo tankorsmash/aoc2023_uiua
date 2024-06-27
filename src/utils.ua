@@ -3,7 +3,7 @@ Separator ← (
   "SEP"
 
   ÷2 ⊡1 &ts                                         # half terminal width
-  : - : (⊙(⧻.))                                     # substract the width of 'SEP' from the width
+  : floor - : (⊙(⧻.))                                     # substract the width of 'SEP' from the width
   &p "}" &pf ▽ : "|" &pf &pf ▽ : ⊙: ⊙⊙. "|" &pf "{" # print it out
 )
 
