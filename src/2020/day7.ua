@@ -60,7 +60,7 @@ ConvertToMap ← (
 )
 
 # Sentinal value
-Sent ← ¯ 1
+Sent ← ¯ 123456789
 
 # returns the contents and its count to its holder.
 UnjoinMap ← (
@@ -139,15 +139,7 @@ DuplicateValues ← (
   ⟩
 )
 
-PartTwoIter ← (
-  H"iter start"
-  # S
-
-  (⊙(¤))
-  (
-   # H"before DuplicateValues"
-   dipfix
-    ⬚Sent ≡(
+Func = (
       ⊃(
         °□ get   H"map" dip(unfix)
         # H"before DuplicateValues"
@@ -162,6 +154,16 @@ PartTwoIter ← (
       # H"post fork"
       # ?
     )
+
+PartTwoIter ← (
+  H"iter start"
+  # S
+
+  (⊙(¤))
+  (
+   # H"before DuplicateValues"
+   dipfix
+    ≡Func
     # H "post rows"
   )
   # H"end (pre join)"
@@ -178,7 +180,7 @@ PartTwoIter ← (
   # move accumulator to bottom of stack
   fork(dgi| gap (  unbox))
 
-  dip (unbox unfix)
+  # dip (unbox unfix )
 
   H"EEENNNNDD (post join)"
   S
