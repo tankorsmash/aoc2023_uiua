@@ -124,65 +124,37 @@ PartOne ← (
   ⧻
 )
 
-# AOne = ( [ repeat . ] )
-# AZero =|1.1 ({} pop )
-# F = ( box(AZero | dip pop AOne ) .  -1  unbox uncouple  )
-# # F =|2 (box gap id )
-# Z = (rows F  unbox get  )
-# B =|3.1 rows content Z
-
-DuplicateValues ← (
-  . -1 °□ °⊟
-  ⟨
-    {} ◌
-  | ⊙◌ [⍥.]
-  ⟩
-)
-
-Func = (
-      ⊃(
-        °□ get   H"map" dip(unfix)
-        # H"before DuplicateValues"
-
-        ≡(□  DuplicateValues)
-        /◇⊂
-        # | dip id
-		| dip (box unfix)
-      )
-
-      # ⊙⊙(□)
-      # H"post fork"
-      # ?
-    )
-
 PartTwoIter ← (
   H"iter start"
   # S
 
-  (⊙(¤))
+  # (⊙(¤))
   (
-   # H"before DuplicateValues"
-   dipfix
-    ≡Func
-    # H "post rows"
+    # ⊙⊙¤
+
+    ⊙(¤.) # fix the map
+    # H"DDD"
+    ⊃(
+      ≡(
+        °□ get # get the values and unbox
+
+        ≡(□ (⟨[]|[⍥.]⟩ . °□ -1 °⊟)) # duplicate the values
+        /◇⊂
+      )
+    | ∘
+    )
   )
-  # H"end (pre join)"
+  ♭ # since we get a 2d vec of boxed values, flatten it
+
+  # H "mid"
   # S
 
-  # &p . &pf "result:\n"
-
-  ⊃(
-    des
-  | (⊂ ♭ )
-  ) # join the iteration result with the accumulator
-  #             and return the top two elements on the stack
-
   # move accumulator to bottom of stack
-  fork(dgi| gap (  unbox))
+  ⊃(⊙⋅∘|⊂ ⋅⊙⋅(°□))
 
   # dip (unbox unfix )
 
-  H"EEENNNNDD (post join)"
+  H"end (post join)"
   S
 
   Utils~Separator
@@ -191,6 +163,9 @@ PartTwoIter ← (
 PartTwo ← (
   ParseBags
   ConvertToMap
+
+  # drop 4
+  # take 5 #temp
 
   ⍜°map ≡(¯ ⌵) # lowercase the keys
   # UnjoinMap
@@ -231,7 +206,6 @@ PartTwo
 
 # fix
 # unfix
-
 
 &p "end"
 

@@ -7,8 +7,6 @@ Separator ← (
   &p "}" &pf ▽ : "|" &pf &pf ▽ : ⊙: ⊙⊙. "|" &pf "{" # print it out
 )
 
-Separator
-
 # turns 0 or 1 into "True" or "False"
 # &p IsTrue 1
 IsTrue ← °□ ⊏ ⊙{"False" "True"} =1
