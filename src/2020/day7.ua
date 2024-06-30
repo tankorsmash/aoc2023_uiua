@@ -124,38 +124,40 @@ PartOne ← (
   ⧻
 )
 
-PartTwoIter ← (
+PartTwoIter ← |3.3 (
   H"iter start"
   # S
 
   # (⊙(¤))
-  (
-    # ⊙⊙¤
 
-    ⊙(¤.) # fix the map
-    # H"DDD"
-    ⊃(
-      ≡(
-        °□ get # get the values and unbox
+  # ⊙⊙¤
 
-        ≡(□ (⟨[]|[⍥.]⟩ . °□ -1 °⊟)) # duplicate the values
-        /◇⊂
-      )
-    | ∘
+  ⊙(¤.) # fix the map
+  ⊃(
+    ≡(
+      # H"SS"
+      °□ get                     # get the values and unbox
+      # ≡(□ H"dup"[⍥.] . °□ -1 °⊟) # duplicate the values
+	  ≡([□ ⍥(⊂⊢.) -1 °□ °⊟])
+	  # H"jon"
+      /◇⊂
     )
+  | ∘
   )
   ♭ # since we get a 2d vec of boxed values, flatten it
 
   # H "mid"
-  # S
 
   # move accumulator to bottom of stack
   ⊃(⊙⋅∘|⊂ ⋅⊙⋅(°□))
 
+  # unnest all the new keys
+  /contentjoin
+
   # dip (unbox unfix )
 
   H"end (post join)"
-  S
+  # S
 
   Utils~Separator
 )
@@ -199,6 +201,22 @@ SplitInput RawSample
 # SplitInput RawSampleTwo
 # SplitInput RawActual
 PartTwo
+
+# □[[2 □"matt is a short name"]
+#   [5 □"josh is a VERY long one!!!!"]]
+#
+# Func =|1.1 (join first . )
+# content rows ( H"done " repeat Func   -1 . unbox uncouple)
+
+# [2 □"josh is a VERY long one!!!!"]
+
+# [[2 □"matt is a short name"]
+#  [5 □"josh is a VERY long one!!!!"]]
+#
+# ≡([□ ⍥(⊂⊢.) -1 °□ °⊟])
+
+# { { 1 "lbll floue" }{ 2 "shiny red" } }
+# box res [neg1  2 ]
 
 # SplitInput RawSample
 # ParseBags
