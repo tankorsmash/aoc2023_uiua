@@ -15,15 +15,29 @@ Patterns ← (
   # flatten 'tuples' of same length pairs
   ≡(⍥⍚(≡□)=2 ⧻ △ °□ .)
 
-  #reshape into pairs
+  # reshape into pairs
   ↯ [∞ 1]
   ⊃(♭ ≡⍚(⊢ ⊢)|♭ ≡⍚⊡1)
   map
 )
 
-Patterns
+# returns a pattern from the pattern map
+GetPattern ← |1 (
+  Patterns
+  :
+  get □
+  &p $"pattern: _" .
+)
 
-# get box"season"
+GetPattern "season"
+
+⊢ Input
+¯ ⌵
+&p $"input: _ " .
+
+regex :
+
+# &s
 
 # rota 1
 # pick neg2
@@ -36,3 +50,5 @@ Patterns
 # des
 
 # rows (conte first)
+
+&p "------ RESULT ------------"
