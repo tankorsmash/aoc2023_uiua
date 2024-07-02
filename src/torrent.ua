@@ -74,12 +74,15 @@ MatchingPatterns ← |2 (
   ≠0 ≡◇⧻ .
   ⊃(▽⊙⋅∘)(▽)
   ⊙≡(⍣⋕∘ ⊡¯1 °□)
-  des
+  ♭
   map
 
+  #convert the 'boolean' types to 'true', since they exist
+  # TODO: loop through all the boolean types
+  "extended"
+  ⊃(has|⊙∘)
 
-
-  ⍥(insert □"extended" True) (has H"has" "extended") .
+  ⟨◌∘|insert : True⟩
 )
 
 # &p "possible keys:"
@@ -100,7 +103,7 @@ MatchingPatterns ← |2 (
 
 ≡(¯ ⌵) Input
 
-▽ ≡(/↥ ⌕ "hercules.2014" ⸮ ¯ ⌵ °□) .
+# ▽ ≡(/↥ ⌕ "hercules.2014" ⸮ ¯ ⌵ °□) .
 # take 5
 
 ≡(
