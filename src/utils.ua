@@ -4,11 +4,12 @@ SeparatorFmt ← (
   -2 ⌈ ÷2 ⊡1 &ts # half terminal width
   : ⌈ - :
 
-  &pf "{" # print it out
-  ⊙: ⊙⊙. "|"
-  &pf ▽ :
-  "|" &pf
-  &pf ▽ :
+  # print it out
+  &pf "{"
+  ⊙(&pf ▽ : "|" .)
+  &pf
+
+  &pf ▽ : "|"
   &p "}"
 )
 
