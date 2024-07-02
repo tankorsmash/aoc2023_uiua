@@ -2,9 +2,12 @@
 Separator ← (
   "SEP"
 
-  ÷2 ⊡1 &ts                                         # half terminal width
-  : floor - : (⊙(⧻.))                                     # substract the width of 'SEP' from the width
-  &p "}" &pf ▽ : "|" &pf &pf ▽ : ⊙: ⊙⊙. "|" &pf "{" # print it out
+  ÷2 ⊡1 &ts       # half terminal width
+  : ⌊ - : (⊙(⧻.)) # substract the width of 'SEP' from the width
+
+  ⊙⊙. "|" &pf "{" # print it out
+  "|" &pf &pf ▽ : ⊙:
+  &p "}" &pf ▽ :
 )
 
 # turns 0 or 1 into "True" or "False"
