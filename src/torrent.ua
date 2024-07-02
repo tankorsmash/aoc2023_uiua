@@ -114,7 +114,7 @@ MatchingPatterns ← |2 (
 
 ≡(¯ ⌵) Input
 
-▽ ≡(/↥ ⌕ "hercules.2014" ¯ ⌵ °□) .
+# ▽ ≡(/↥ ⌕ "hercules.2014" ¯ ⌵ °□) .
 # take 5
 
 ≡(
