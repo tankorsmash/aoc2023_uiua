@@ -48,7 +48,7 @@ IsComplex ← |1 (= 2 ⧻ ↘1)
   ⊙≡°□
 | ≡(□ /⊂ regex (GetPattern °□ :))
 )
-pop # remove the input string
+◌ # remove the input string
 
 # GetPattern "episode"
 
@@ -58,14 +58,18 @@ pop # remove the input string
 
 # regex :
 
-# res [inf 1]
-# keep !=0 contentleng .
-# pop
 .
 ≡(◇⧻ ♭)
 ▽ ≠0
 
 ↯ [∞ 1]
+# map
+
+# keep !=0 contentleng .
+
+:
+≠0 ≡◇⧻ .
+⊃(▽⊙⋅∘)(▽)
 map
 
 &p "------ STACK ------------"
