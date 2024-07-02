@@ -1,6 +1,6 @@
 Utils ~ "./utils.ua" ~ Helper ReadActual ReadLines ReadRawActual ReadRawSample ReadSample SplitBy! ToString Trace TrimDump
 
-Utils~SeparatorFmt "ASDSasdadadsadsad"
+Utils~SeparatorFmt "START"
 
 H ← Helper
 T ← Trace
@@ -9,8 +9,10 @@ S ← ◌ &sc &p "\n~~~ Waiting for input! ~~~"
 Input ← °json &fras "files/input.json"
 Output ← °json &fras "files/output.json"
 
+LoadedPatterns ← °json &fras "./files/ptn_torrent_patterns.json"
+
 Patterns ← (
-  °json $ [["season", "(s?([0-9]{1,2}))[ex]"], ["episode", "([ex]([0-9]{2})(?:[^0-9]|$))"], ["year", "([\\[\\(]?((?:19[0-9]|20[01])[0-9])[\\]\\)]?)"], ["resolution", "([0-9]{3,4}p)"], ["quality", "((?:PPV\\\\.)?[HP]DTV|(?:HD)?CAM|B[DR]Rip|(?:HD-?)?TS|(?:PPV )?WEB-?DL(?: DVDRip)?|HDRip|DVDRip|DVDRIP|CamRip|W[EB]BRip|BluRay|DvDScr|hdtv|telesync)"], ["codec", "(xvid|[hx]\\\\.?26[45])"], ["audio", "(MP3|DD5\\\\.?1|Dual[\\- ]Audio|LiNE|DTS|AAC[.-]LC|AAC(?:\\\\.?2\\\\.0)?|AC3(?:\\\\.5\\\\.1)?)"], ["group", "(- ?([^-]+(?:-=\\{[^-]+-?$)?))$"], ["region", "R[0-9]"], ["extended", "(EXTENDED(:?.CUT)?)"], ["hardcoded", "HC"], ["proper", "PROPER"], ["repack", "REPACK"], ["container", "(MKV|AVI|MP4)"], ["widescreen", "WS"], ["website", "^(\\[ ?([^\\\\]]+?) ?\\])"], ["language", "(rus\\\\.eng|ita\\\\.eng)"], ["sbs", "(?:Half-)?SBS"], ["unrated", "UNRATED"], ["size", "(\\\\d+(?:\\\\.\\\\d+)?(?:GB|MB))"], ["3d", "3D"]]
+  LoadedPatterns
 
   # flatten 'tuples' of same length pairs
   ≡(⍥⍚(≡□)=2 ⧻ △ °□ .)
@@ -60,18 +62,13 @@ MatchingPatterns ← (
 (≡(¯ ⌵) Input)
 
 ≡(
-  °map Patterns
-  ⊙◌
+  ⊙◌ °map Patterns
   :
   # &p $"input: _ " .
-  fork (dippop|□ MatchingPatterns)
-  couple
+  ⊃(⊙◌|□ MatchingPatterns)
+  ⊟
 )
 
+≡(&p$"'_':\n_"°⊟)
 
-
-≡(&p$"'_':\n_"uncouple)
-
-# {"season" "episode" "resolution" "quality"}
-
-&p "------ STACK ------------"
+Utils~SeparatorFmt "STACK"
