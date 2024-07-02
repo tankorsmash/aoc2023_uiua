@@ -58,10 +58,10 @@ GetPattern ← |1 (
 # tuple
 IsComplex ← |1 (= 2 ⧻ ↘1)
 
-MatchingPatterns ← (
+MatchingPatterns ← |2 (
   ⊃(
     ⊙≡°□
-  | ≡(□ /⊂ fill[]regex (¯ ⌵ GetPattern °□ :)) # temp 'try' hack because apparent bug in 0.12 of uiua for https://github.com/uiua-lang/uiua/issues/521
+  | ≡(□ /⊂ ⬚[]regex (¯ ⌵ GetPattern °□ :)) # temp 'try' hack because apparent bug in 0.12 of uiua for https://github.com/uiua-lang/uiua/issues/521
   )
   ◌ # remove the input string
 
@@ -73,19 +73,34 @@ MatchingPatterns ← (
   :
   ≠0 ≡◇⧻ .
   ⊃(▽⊙⋅∘)(▽)
-  :
-  ≡(⍣⋕ ∘ ⊡ ¯1 °□)
-  :
+  ⊙≡(⍣⋕∘ ⊡¯1 °□)
+  des
   map
+
+
+
+  ⍥(insert □"extended" True) (has H"has" "extended") .
 )
 
 # &p "possible keys:"
 # # rows &p .
 # &p ""
 
+# {"aaa" "bbb" "ccc"}
+# {"extended" 2 3}
+# map
+# #
+# # repeat (insert 1 @z) (has (box1)) .
+# # ?
+# # S
+#
+# # has box1
+#
+# S?
+
 ≡(¯ ⌵) Input
 
-▽ ≡(/↥ ⌕ "hercules" ⸮ ¯ ⌵ °□) .
+▽ ≡(/↥ ⌕ "hercules.2014" ⸮ ¯ ⌵ °□) .
 # take 5
 
 ≡(
