@@ -52,6 +52,9 @@ MatchingPatterns ← (
   :
   ≠0 ≡◇⧻ .
   ⊃(▽⊙⋅∘)(▽)
+  :
+  rows (pick neg1 unbox)
+  :
   map
 )
 
@@ -59,7 +62,7 @@ MatchingPatterns ← (
 # # rows &p .
 # &p ""
 
-(≡(¯ ⌵) Input)
+≡(¯ ⌵) Input
 
 ≡(
   ⊙◌ °map Patterns
