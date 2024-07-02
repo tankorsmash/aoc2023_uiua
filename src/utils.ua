@@ -2,14 +2,14 @@
 SeparatorFmt ← (
   ⟜(
     ÷ 2 ⧻          # half width of separator string
-    -2 ⌈ ÷2 ⊡1 &ts # half terminal width
+    -4 ⌈ ÷2 ⊡1 &ts # half terminal width
     ⌈-:
   )
 
   # print it out
   &pf "{"
   ⊙⟜(&pf ▽: "|")
-  &pf
+  &pf $" _ "
   (&pf ▽ : "|")
   &p "}"
 )
