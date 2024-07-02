@@ -1,17 +1,26 @@
 # a separator for printing, taking in a string to print
 SeparatorFmt ← (
-  ÷2 ⊡1 &ts       # half terminal width
-  : ⌊ - : (⊙(⧻.)) # substract the width of 'SEP' from the width
+  ÷ 2 ⧻.         # half width of separator string
+  -2 ⌈ ÷2 ⊡1 &ts # half terminal width
+  : ⌈ - :
 
-  ⊙⊙. "|" &pf "{" # print it out
-  "|" &pf &pf ▽ : ⊙:
-  &p "}" &pf ▽ :
+  &pf "{" # print it out
+  ⊙: ⊙⊙. "|"
+  &pf ▽ :
+  "|" &pf
+  &pf ▽ :
+  &p "}"
 )
 
 # a separator for printing
 Separator ← (
   SeparatorFmt "SEP"
 )
+
+Separator
+SeparatorFmt ⍥(⊂ @a) 10 ""
+SeparatorFmt ⍥(⊂ @b) 20 ""
+SeparatorFmt ⍥(⊂ @c) 30 ""
 
 # turns 0 or 1 into "True" or "False"
 # &p IsTrue 1
