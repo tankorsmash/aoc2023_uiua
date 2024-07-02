@@ -1,15 +1,16 @@
 # a separator for printing, taking in a string to print
 SeparatorFmt ← (
-  ÷ 2 ⧻.         # half width of separator string
-  -2 ⌈ ÷2 ⊡1 &ts # half terminal width
-  : ⌈ - :
+  ⟜(
+    ÷ 2 ⧻          # half width of separator string
+    -2 ⌈ ÷2 ⊡1 &ts # half terminal width
+    ⌈-:
+  )
 
   # print it out
   &pf "{"
-  ⊙(&pf ▽ : "|" .)
+  ⊙⟜(&pf ▽: "|")
   &pf
-
-  &pf ▽ : "|"
+  (&pf ▽ : "|")
   &p "}"
 )
 
