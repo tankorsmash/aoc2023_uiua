@@ -35,41 +35,43 @@ GetPattern ← |1 (
 # tuple
 IsComplex ← |1 (= 2 ⧻ ↘1)
 
-°map Patterns
-⊙◌
+MatchingPatterns ← (
+  ⊃(
+    ⊙≡°□
+  | ≡(□ /⊂ regex (GetPattern °□ :))
+  )
+  ◌ # remove the input string
+
+  .
+  ≡(◇⧻ ♭)
+  ▽ ≠0
+
+  ↯ [∞ 1]
+  :
+  ≠0 ≡◇⧻ .
+  ⊃(▽⊙⋅∘)(▽)
+  map
+)
+
 # &p "possible keys:"
-# rows &p .
-&p ""
+# # rows &p .
+# &p ""
+
+(≡(¯ ⌵) Input)
+
+≡(
+  °map Patterns
+  ⊙◌
+  :
+  # &p $"input: _ " .
+  fork (dippop|□ MatchingPatterns)
+  couple
+)
+
+
+
+≡(&p$"'_':\n_"uncouple)
 
 # {"season" "episode" "resolution" "quality"}
-
-¤ (⊢ ≡(¯ ⌵) Input)
-⊃(
-  ⊙≡°□
-| ≡(□ /⊂ regex (GetPattern °□ :))
-)
-◌ # remove the input string
-
-# GetPattern "episode"
-
-# ⊢ Input
-# ¯ ⌵ # lowercase the input to simulate case insensitive matching
-# &p $"input: _ " .
-
-# regex :
-
-.
-≡(◇⧻ ♭)
-▽ ≠0
-
-↯ [∞ 1]
-# map
-
-# keep !=0 contentleng .
-
-:
-≠0 ≡◇⧻ .
-⊃(▽⊙⋅∘)(▽)
-map
 
 &p "------ STACK ------------"

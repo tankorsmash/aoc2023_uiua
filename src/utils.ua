@@ -19,10 +19,10 @@ Separator ← (
   SeparatorFmt "SEP"
 )
 
-Separator
-SeparatorFmt ⍥(⊂ @a) 10 ""
-SeparatorFmt ⍥(⊂ @b) 20 ""
-SeparatorFmt ⍥(⊂ @c) 30 ""
+# Separator
+# SeparatorFmt ⍥(⊂ @a) 10 ""
+# SeparatorFmt ⍥(⊂ @b) 20 ""
+# SeparatorFmt ⍥(⊂ @c) 30 ""
 
 # turns 0 or 1 into "True" or "False"
 # &p IsTrue 1
