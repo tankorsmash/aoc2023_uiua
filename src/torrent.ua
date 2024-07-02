@@ -43,7 +43,12 @@ IsComplex ← |1 (= 2 ⧻ ↘1)
 
 # {"season" "episode" "resolution" "quality"}
 
-⊃(≡°□|≡(□ /⊂ regex : (¯ ⌵ ⊢ Input) GetPattern))
+¤ (⊢ ≡(¯ ⌵) Input)
+⊃(
+  ⊙≡°□
+| ≡(□ /⊂ regex (GetPattern °□ :))
+)
+pop # remove the input string
 
 # GetPattern "episode"
 
