@@ -1,6 +1,6 @@
 Utils ~ "./utils.ua" ~ Helper ReadActual ReadLines ReadRawActual ReadRawSample ReadSample SplitBy! ToString Trace TrimDump
 
-Utils~Separator
+Utils~SeparatorFmt "ASDSasdadadsadsad"
 
 H ← Helper
 T ← Trace
@@ -35,16 +35,15 @@ GetPattern ← |1 (
 # tuple
 IsComplex ← |1 (= 2 ⧻ ↘1)
 
-
-unmap Patterns
-dip pop
-&p "possible keys:"
-rows &p .
+°map Patterns
+⊙◌
+# &p "possible keys:"
+# rows &p .
 &p ""
 
 # {"season" "episode" "resolution" "quality"}
 
-≡(□ /⊂ regex : (¯ ⌵ ⊢ Input) GetPattern)
+⊃(≡°□|≡(□ /⊂ regex : (¯ ⌵ ⊢ Input) GetPattern))
 
 # GetPattern "episode"
 
@@ -54,21 +53,14 @@ rows &p .
 
 # regex :
 
-?
-≡◇IsComplex
+# res [inf 1]
+# keep !=0 contentleng .
+# pop
+.
+≡(◇⧻ ♭)
+▽ ≠0
 
-# &s
+↯ [∞ 1]
+map
 
-# rota 1
-# pick neg2
-# unbox
-# rows box
-
-# {"3d" "3D"}
-
-# unbox
-# des
-
-# rows (conte first)
-
-&p "------ RESULT ------------"
+&p "------ STACK ------------"
