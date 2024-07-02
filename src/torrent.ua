@@ -32,6 +32,17 @@ Types ← (
   map
 )
 
+BooleanTypes ← (
+  °map Types
+  ⊙(= □"boolean".)
+  ⊃(▽ (:⊙∘))(▽ ⋅∘)
+)
+IntegerTypes ← (
+  °map Types
+  ⊙(= □"integer".)
+  ⊃(▽ (:⊙∘))(▽ ⋅∘)
+)
+
 Patterns ← (
   LoadedPatterns
 
@@ -73,16 +84,16 @@ MatchingPatterns ← |2 (
   :
   ≠0 ≡◇⧻ .
   ⊃(▽⊙⋅∘)(▽)
-  ⊙≡(⍣⋕∘ ⊡¯1 °□)
-  ♭
+
+  ♭ ⊙≡(⍣⋕∘ ⊡¯1 °□)
   map
 
-  #convert the 'boolean' types to 'true', since they exist
-  # TODO: loop through all the boolean types
-  "extended"
-  ⊃(has|⊙∘)
-
-  ⟨◌∘|insert : True⟩
+  ⊙◌ BooleanTypes
+  ∧(
+    # convert the 'boolean' types to 'true', since they exist
+    ⊃(has|⊙∘)
+    ⟨◌∘|insert : True⟩
+  )
 )
 
 # &p "possible keys:"
@@ -103,7 +114,7 @@ MatchingPatterns ← |2 (
 
 ≡(¯ ⌵) Input
 
-# ▽ ≡(/↥ ⌕ "hercules.2014" ⸮ ¯ ⌵ °□) .
+▽ ≡(/↥ ⌕ "hercules.2014" ¯ ⌵ °□) .
 # take 5
 
 ≡(
