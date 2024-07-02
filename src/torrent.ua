@@ -11,6 +11,27 @@ Output ← °json &fras "files/output.json"
 
 LoadedPatterns ← °json &fras "./files/ptn_torrent_patterns.json"
 
+# pattern types with special handling required
+# 'integer' if needs to be parsed
+# 'boolean' if its existence means true
+Types ← (
+  {{"season" "integer"}
+   {"episode" "integer"}
+   {"year" "integer"}
+   {"extended" "boolean"}
+   {"hardcoded" "boolean"}
+   {"proper" "boolean"}
+   {"repack" "boolean"}
+   {"widescreen" "boolean"}
+   {"unrated" "boolean"}
+   {"3d" "boolean"}}
+
+  ≡°□
+  ↻ 1
+  ≡°⊟
+  map
+)
+
 Patterns ← (
   LoadedPatterns
 
@@ -40,7 +61,7 @@ IsComplex ← |1 (= 2 ⧻ ↘1)
 MatchingPatterns ← (
   ⊃(
     ⊙≡°□
-  | ≡(□ /⊂ regex (GetPattern °□ :))
+  | ≡(□ /⊂ fill[]regex (¯ ⌵ GetPattern °□ :)) # temp 'try' hack because apparent bug in 0.12 of uiua for https://github.com/uiua-lang/uiua/issues/521
   )
   ◌ # remove the input string
 
@@ -53,7 +74,7 @@ MatchingPatterns ← (
   ≠0 ≡◇⧻ .
   ⊃(▽⊙⋅∘)(▽)
   :
-  rows (pick neg1 unbox)
+  ≡(⍣⋕ ∘ ⊡ ¯1 °□)
   :
   map
 )
@@ -63,6 +84,9 @@ MatchingPatterns ← (
 # &p ""
 
 ≡(¯ ⌵) Input
+
+▽ ≡(/↥ ⌕ "hercules" ⸮ ¯ ⌵ °□) .
+# take 5
 
 ≡(
   ⊙◌ °map Patterns
